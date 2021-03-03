@@ -343,7 +343,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -643,7 +643,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -842,7 +842,7 @@ GameObject:
   m_Layer: 0
   m_Name: SolarSystem
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -949,7 +949,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1179,10 +1179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3655aa02b53384db888270f44273fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnFrom: {fileID: 1633715320}
   ship: {fileID: 3715416314242437361, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
   count: 1
   delay: 1
-  target: {fileID: 1633715320}
+  target: {fileID: 644117660}
 --- !u!4 &1831070069
 Transform:
   m_ObjectHideFlags: 0
@@ -1296,7 +1297,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

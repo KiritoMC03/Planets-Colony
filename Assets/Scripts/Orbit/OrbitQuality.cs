@@ -47,10 +47,6 @@ public class OrbitQuality : MonoBehaviour
 
     public void ChangeWidth()
     {
-        Debug.Log("_spaceCameraRange.GetDistanceToSun(): " + _spaceCameraRange.GetDistanceToSun());
-        Debug.Log("_baseLineWidth: " + _baseLineWidth);
-        Debug.Log("_lineScale: " + _lineScale);
-        Debug.Log("_normalRenderDistance: " + _normalRenderDistance);
         _lineRenderer.widthMultiplier = _spaceCameraRange.GetDistanceToSun() * _baseLineWidth * _lineScale / _normalRenderDistance;
     }
 }

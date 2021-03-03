@@ -12,11 +12,15 @@ public class OrbitMovement : MonoBehaviour
     [SerializeField] internal bool orbitActive = true;
     [SerializeField] internal bool toOptimize = false;
 
+    private Transform _transform = null;
     private Vector2 _tempOrbitPosition2D;
     private Vector3 _tempOrbitPosition3D;
+    private Vector3 _startPosition = Vector3.zero;
 
     private void Awake()
     {
+        _transform = transform;
+        _startPosition = _transform.position;
         if (orbitingObject == null)
         {
             orbitActive = false;
@@ -35,9 +39,7 @@ public class OrbitMovement : MonoBehaviour
     void SetOrbitingObjectPosition()
     {
         _tempOrbitPosition2D = orbitPath.Evaluate(orbitProgress);
-        //_tempOrbitPosition3D.Set(_tempOrbitPosition2D.x, _tempOrbitPosition2D.y, 0);
-
-        orbitingObject.localPosition = _tempOrbitPosition2D;
+        orbitingObject.localPosition = _tempOrbitPosition2D + (Vector2)_startPosition;
     }
 
     IEnumerator AnimateOrbit()

@@ -12,13 +12,17 @@ public class OrbitRenderer : MonoBehaviour
     private LineRenderer _lineRenderer;
     private OrbitMovement _orbitMovement;
 
+    private Transform _transform = null;
     private Vector2 _position2D;
     private Vector3 _position3D;
+    private Vector3 _startPosition = Vector3.zero;
 
     private void Awake()
     {
+        _transform = transform;
         _lineRenderer = GetComponent<LineRenderer>();
         _orbitMovement = GetComponent<OrbitMovement>();
+        _startPosition = _transform.position;
     }
 
     private void Start()
@@ -36,7 +40,7 @@ public class OrbitRenderer : MonoBehaviour
         {
             _position2D = _orbit.Evaluate(i / (float)segments);
             _position3D.Set(_position2D.x, _position2D.y, 0f);
-            points[i] = _position3D + transform.position;
+            points[i] = _position3D + _startPosition;
         }
 
         points[segments] = points[0];
