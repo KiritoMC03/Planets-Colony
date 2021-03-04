@@ -38,7 +38,7 @@ namespace PlanetsColony
                     SpaceShip newShip = null;
                     if (_spawnFrom != null)
                     {
-                        newShip = Instantiate(ship, _spawnFrom);
+                        newShip = Instantiate(ship, _spawnFrom.transform.position, Quaternion.identity);
                     }
                     else
                     {
