@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace PlanetsColony
 {
@@ -10,5 +11,7 @@ namespace PlanetsColony
         void AcceptFinish();
         void DeliverCargo(ICargoReceiver cargoReceiver);
         bool CheckCargo();
+        Transform GetUnityTransform();
+        void SetUnityPosition(Vector3 position);
     }
 }

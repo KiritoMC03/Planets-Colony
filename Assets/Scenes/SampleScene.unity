@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnFrom: {fileID: 1633715320}
   ship: {fileID: 3715416314242437361, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-  count: 1
+  count: 999999999
   delay: 1
   target: {fileID: 644117660}
   departureObject: {fileID: 1633715320}

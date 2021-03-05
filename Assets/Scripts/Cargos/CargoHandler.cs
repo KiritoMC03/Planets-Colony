@@ -7,11 +7,13 @@ namespace PlanetsColony
     [RequireComponent(typeof(ICargoTransporter))]
     public class CargoHandler : MonoBehaviour, IAcceptCargo
     {
+        private Transform _transform = null;
         private ICargo _cargo = null;
         private ICargoTransporter _cargoTransporter = null;
 
         private void Awake()
         {
+            _transform = transform;
             _cargoTransporter = GetComponent<ICargoTransporter>();
         }
 
@@ -42,6 +44,19 @@ namespace PlanetsColony
         {
             cargoReceiver.AcceptCargo(_cargo);
             _cargo = null;
+        }
+        public Transform GetUnityTransform()
+        {
+            if(_transform != null)
+            {
+                return _transform;
+            }
+            return transform;
+        }
+
+        public void SetUnityPosition(Vector3 position)
+        {
+            _transform.position = position;
         }
     }
 }
