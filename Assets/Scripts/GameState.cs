@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : MonoBehaviour
+namespace PlanetsColony
 {
-    static internal bool onPause = false;
-
-    public void PausePlay()
+    public class GameState : MonoBehaviour
     {
-        onPause = !onPause;
-        Debug.Log("onPause: " + onPause);
+        static internal bool onPause = false;
+
+        public void PausePlay()
+        {
+            onPause = !onPause;
+        }
     }
 }

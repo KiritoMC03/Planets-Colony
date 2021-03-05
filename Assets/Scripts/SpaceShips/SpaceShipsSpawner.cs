@@ -15,12 +15,17 @@ namespace PlanetsColony
         [SerializeField] private float delay = 1f;
 
         [SerializeField] private Transform target = null;
+        [SerializeField] private Transform departureObject = null;
 
         private void Awake()
         {
             if(_spawnFrom == target)
             {
                 throw new Exception("Spawn From не должен совпадать с Target.");
+            }
+            if(departureObject == null)
+            {
+                throw new Exception("Departure Object не должен быть пустым.");
             }
         }
 
@@ -31,20 +36,22 @@ namespace PlanetsColony
 
         private IEnumerator SpawnerRoutine()
         {
-            while (true)
+            for (int i = 0; i < count; i++)
             {
                 if (ship != null)
                 {
                     SpaceShip newShip = null;
                     if (_spawnFrom != null)
                     {
-                        newShip = Instantiate(ship, _spawnFrom.transform.position, Quaternion.identity);
+                        newShip = ObjectPooler.Instance.GetObject(ship.Type).GetComponent<SpaceShip>();
+                        newShip.transform.position = _spawnFrom.position;
                     }
                     else
                     {
                         newShip = Instantiate(ship);
                     }
                     newShip.SetTarget(target);
+                    newShip.SetDepartureObject(departureObject);
                 }
                 yield return new WaitForSeconds(delay);
             }

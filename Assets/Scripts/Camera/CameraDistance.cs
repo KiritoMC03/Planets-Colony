@@ -18,10 +18,6 @@ namespace PlanetsColony
         public float GetDistanceToSun()
         {
             distanceToSun = Mathf.Abs(_referencePoint.position.z - _transform.position.z);
-
-            Debug.Log("_referencePoint: " + _referencePoint.position.z);
-            Debug.Log("_transform: " + _transform.position.z);
-            Debug.Log("Distance: " + distanceToSun);
             return distanceToSun;
         }
     }

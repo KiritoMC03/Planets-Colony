@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PlanetsColony
 {
     public class CameraZoom : MonoBehaviour
     {
+        [SerializeField] private Scrollbar _scrollbar = null;
         [SerializeField] private float _scrollSpeed = 1f;
-        [SerializeField] private float _minCameraHeight = 0.5f;
+        [SerializeField] private float _minCameraHeight = 1f;
         [SerializeField] private float _maxCameraHeight = 2000f;
         [SerializeField] private float _zoomStep = 0.1f;
 
@@ -29,8 +31,21 @@ namespace PlanetsColony
 
         private void Update()
         {
-            Zoom();
+            ZoomScroll();
+            //Zoom();
             _buttonUsed = false;
+        }
+
+        private void ZoomScroll()
+        {
+            if(_scrollbar != null)
+            {
+                _offset.Set(
+                    _transform.position.x, 
+                    _transform.position.y, 
+                    -(_scrollbar.value * (_minCameraHeight + _maxCameraHeight) / 2) - _minCameraHeight);
+                _transform.position = _offset;
+            }
         }
 
         private void Zoom()
