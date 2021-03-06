@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PlanetsColony
 {
     [RequireComponent(typeof(ICargoTransporter))]
-    public class CargoHandler : MonoBehaviour, IAcceptCargo
+    public class CargoHandler : MonoBehaviour, ITransferringCargo
     {
         private Transform _transform = null;
         private ICargo _cargo = null;
@@ -40,10 +40,12 @@ namespace PlanetsColony
             _cargoTransporter.SetCanMove(true);
         }
 
-        public void DeliverCargo(ICargoReceiver cargoReceiver)
+        public ICargo DeliverCargo(ICargoReceiver cargoReceiver)
         {
+            var tempCargo = _cargo;
             cargoReceiver.AcceptCargo(_cargo);
             _cargo = null;
+            return tempCargo;
         }
         public Transform GetUnityTransform()
         {

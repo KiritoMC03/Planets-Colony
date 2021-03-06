@@ -4,23 +4,18 @@ using UnityEngine;
 
 namespace PlanetsColony
 {
-    public class Cargo : ICargo
+    public class Cargo : Resource, ICargo
     {
-        [SerializeField] private float value = 0f;
-
-        public Cargo(float minValue, float maxValue)
+        public Cargo(Type type, float value) : base(type, value)
         {
-            value = Random.Range(minValue, maxValue);
+            this.value = value;
+            this._type = type;
         }
 
-        public float GetPrice()
+        public Cargo(Type type, float minValue, float maxValue) : base(type, minValue, maxValue)
         {
-            return 0f;
-        }
-
-        public float GetValue()
-        {
-            return value;
+            this.value = Random.Range(minValue, maxValue);
+            this._type = type;
         }
     }
 }

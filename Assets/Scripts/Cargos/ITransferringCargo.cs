@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace PlanetsColony
 {
-    public interface IAcceptCargo
+    public interface ITransferringCargo
     {
         void AcceptCargo(ICargo cargo);
         void AcceptNow();
         void AcceptFinish();
-        void DeliverCargo(ICargoReceiver cargoReceiver);
+        ICargo DeliverCargo(ICargoReceiver cargoReceiver);
         bool CheckCargo();
         Transform GetUnityTransform();
         void SetUnityPosition(Vector3 position);

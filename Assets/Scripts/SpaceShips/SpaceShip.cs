@@ -7,7 +7,7 @@ namespace PlanetsColony
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class SpaceShip : MonoBehaviour, IPooledObject, ICargoTransporter
+    public class Spaceship : MonoBehaviour, IPooledObject, ICargoTransporter
     {
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
 
@@ -18,7 +18,7 @@ namespace PlanetsColony
 
         private Transform _transform = null;
         private Rigidbody2D _rigidbody = null;
-        private IAcceptCargo _cargoHandler = null;
+        private ITransferringCargo _cargoHandler = null;
         private Transform _departureObject = null;
         private float _distanceDelta = 0f;
         private float _tempZRotation = 0f;
@@ -32,7 +32,7 @@ namespace PlanetsColony
         {
             _transform = transform;
             _rigidbody = GetComponent<Rigidbody2D>();
-            _cargoHandler = GetComponent<IAcceptCargo>();
+            _cargoHandler = GetComponent<ITransferringCargo>();
             _distanceDelta = _speed * Time.deltaTime;
         }
 
@@ -123,15 +123,6 @@ namespace PlanetsColony
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var colissionICargoReceiver = collision.GetComponent<ICargoReceiver>();
-            if (colissionICargoReceiver != null && _cargoHandler.CheckCargo())
-            {
-                Debug.Log("colissionICargoReceiver: " + colissionICargoReceiver);
-                _cargoHandler.DeliverCargo(colissionICargoReceiver);
-                ObjectPooler.Instance.DestroyObject(gameObject);
-                return;
-            }
-
             var colissionIAcceptShips = _target.GetComponent<IAcceptShips>();
 
             if (collision.transform == _target && colissionIAcceptShips != null)
@@ -139,26 +130,5 @@ namespace PlanetsColony
                 _target.GetComponent<IAcceptShips>().AcceptShip(_cargoHandler);
             }
         }
-
-        /*
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-
-            var colissionICargoReceiver = collision.GetComponent<ICargoReceiver>();
-            if (colissionICargoReceiver != null)
-            {
-                Debug.Log("colissionICargoReceiver: " + colissionICargoReceiver);
-                _cargoHandler.DeliverCargo(colissionICargoReceiver);
-                ObjectPooler.Instance.DestroyObject(gameObject);
-                return;
-            }
-
-            var colissionIAcceptShips = _target.GetComponent<IAcceptShips>();
-            if (collision.transform == _target && colissionIAcceptShips != null)
-            {
-                _target.GetComponent<IAcceptShips>().AcceptShip(_cargoHandler);
-            }
-        }
-        */
     }
 }

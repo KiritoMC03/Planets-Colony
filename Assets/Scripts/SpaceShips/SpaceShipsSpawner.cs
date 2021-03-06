@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace PlanetsColony
 {
-    public class SpaceShipsSpawner : MonoBehaviour
+    public class SpaceshipsSpawner : MonoBehaviour
     {
         [SerializeField] private Transform _spawnFrom = null;
-        [SerializeField] private SpaceShip ship = null;
+        [SerializeField] private Spaceship ship = null;
         [SerializeField] private uint count = 10;
         [Range(0.01f, 100f)]
         [SerializeField] private float delay = 1f;
@@ -40,10 +40,10 @@ namespace PlanetsColony
             {
                 if (ship != null)
                 {
-                    SpaceShip newShip = null;
+                    Spaceship newShip = null;
                     if (_spawnFrom != null)
                     {
-                        newShip = ObjectPooler.Instance.GetObject(ship.Type).GetComponent<SpaceShip>();
+                        newShip = ObjectPooler.Instance.GetObject(ship.Type).GetComponent<Spaceship>();
                         newShip.transform.position = _spawnFrom.position;
                     }
                     else

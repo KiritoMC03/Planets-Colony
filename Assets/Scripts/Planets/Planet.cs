@@ -9,12 +9,12 @@ namespace PlanetsColony
         [SerializeField] private float sendShipWithCargoDelay = 3f;
 
         private Transform _transform = null;
-        private Queue<IAcceptCargo> spaceShips = null;
+        private Queue<ITransferringCargo> spaceShips = null;
 
         private void Awake()
         {
             _transform = transform;
-            spaceShips = new Queue<IAcceptCargo>();
+            spaceShips = new Queue<ITransferringCargo>();
         }
 
         private void Start()
@@ -31,7 +31,7 @@ namespace PlanetsColony
             }
         }
 
-        public void AcceptShip(IAcceptCargo ship)
+        public void AcceptShip(ITransferringCargo ship)
         {
             spaceShips.Enqueue(ship);
             ship.AcceptNow();
@@ -49,14 +49,14 @@ namespace PlanetsColony
             ship.SetUnityPosition(_transform.position);
         }
 
-        private void SendCargo(IAcceptCargo ship)
+        private void SendCargo(ITransferringCargo ship)
         {
             ship.AcceptCargo(GenerateCargo());
         }
 
         private Cargo GenerateCargo()
         {
-            return new Cargo(1f, 10f);
+            return new Cargo(Resource.Type.Gold, 1f, 10f);
         }
     }
 }

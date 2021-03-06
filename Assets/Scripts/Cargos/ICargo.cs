@@ -7,5 +7,6 @@ namespace PlanetsColony
     {
         float GetValue();
         float GetPrice();
+        Resource.Type GetResourceType();
     }
 }

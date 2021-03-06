@@ -6,6 +6,6 @@ namespace PlanetsColony
 {
     public interface IAcceptShips
     {
-        void AcceptShip(IAcceptCargo ship);
+        void AcceptShip(ITransferringCargo ship);
     }
 }
