@@ -26,6 +26,7 @@ namespace PlanetsColony
             {
                 cargoHandler.DeliverCargo(this);
                 ObjectPooler.Instance.DestroyObject(collision.gameObject);
+                Debug.Log(collision + " - collision: " + collision.gameObject.activeInHierarchy);
                 StatsSystem.Instance.ReduceActiveShipsCount();
                 return;
             }
