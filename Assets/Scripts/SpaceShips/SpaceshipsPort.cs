@@ -36,10 +36,6 @@ namespace PlanetsColony
             }
         }
 
-        private void Start()
-        {
-        }
-
         private IEnumerator SpawnerRoutine()
         {
             while (true)
@@ -47,7 +43,11 @@ namespace PlanetsColony
                 yield return new WaitForSeconds(delay);
                 for (int i = 0; i < planets.Length; i++)
                 {
-                    SendShip(planets[i]);
+                    if (StatsSystem.Instance.CheckAbilityToSpawn())
+                    {
+                        SendShip(planets[i]);
+                        StatsSystem.Instance.IncreaseActiveShipsCount();
+                    }
                 }
             }
         }

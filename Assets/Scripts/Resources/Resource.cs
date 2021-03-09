@@ -25,22 +25,23 @@ namespace PlanetsColony
             Gold,
             Silver
         }
-        public float GetPrice()
+
+        public virtual float GetPrice()
         {
             return 0f;
         }
 
-        public float GetValue()
+        public virtual float GetValue()
         {
             return value;
         }
 
-        public Resource.Type GetResourceType()
+        public virtual Resource.Type GetResourceType()
         {
             return _type;
         }
 
-        public void Add(float value)
+        public virtual void Add(float value)
         {
             this.value += value;
         }

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PlanetsColony
 {
     public class ResourcesStorage : MonoBehaviour, IAcceptShipWithCargo
     {
+        public UnityEvent ResourceAdd;
+
         [SerializeField]
         private Resource[] resources = new Resource[]
         {
@@ -21,11 +24,22 @@ namespace PlanetsColony
                 if (cargo.GetResourceType() == resources[i].GetResourceType())
                 {
                     resources[i].Add(cargo.GetValue());
-
-                    Debug.Log("Type: " + cargo.GetResourceType() + " ||| Value: " + cargo.GetValue());
-                    Debug.Log("Type: " + cargo.GetResourceType() + " ||| AllValue: " + resources[i].GetValue());
+                    ResourceAdd?.Invoke();
                 }
             }
+        }
+
+        public float GetResourceValue(Resource.Type type)
+        {
+            for (int i = 0; i < resources.Length; i++)
+            {
+                if(resources[i].GetResourceType() == type)
+                {
+                    return Mathf.Floor(resources[i].GetValue());
+                }
+            }
+
+            return 0f;
         }
     }
 }

@@ -83,8 +83,6 @@ namespace PlanetsColony
         }
         #endregion
 
-        
-
         #region GettersSetters
         internal void SetTarget(Transform target)
         {
