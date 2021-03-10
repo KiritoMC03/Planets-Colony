@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace PlanetsColony
 {
-    public class ResourcesStorage : MonoBehaviour, IAcceptShipWithCargo
+    public class ResourcesStorage : MonoBehaviour
     {
         public UnityEvent ResourceAdd;
 
@@ -17,7 +17,7 @@ namespace PlanetsColony
             new Resource(Resource.Type.Silver, 0),
         };
 
-        public void AcceptCargoFromShip(ICargo cargo)
+        public void AcceptCargoFromShip(Cargo cargo)
         {
             for (int i = 0; i < resources.Length; i++)
             {

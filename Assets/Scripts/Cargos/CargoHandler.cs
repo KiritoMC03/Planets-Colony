@@ -1,20 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlanetsColony
 {
-    [RequireComponent(typeof(ICargoTransporter))]
-    public class CargoHandler : MonoBehaviour, ITransferringCargo
+    [RequireComponent(typeof(Spaceship), typeof(CargoTransporter))]
+    public class CargoHandler : MonoBehaviour
     {
         private Transform _transform = null;
-        private ICargo _cargo = null;
-        private ICargoTransporter _cargoTransporter = null;
+        private Cargo _cargo = null;
+        private Spaceship _cargoTransporter = null;
 
         private void Awake()
         {
             _transform = transform;
-            _cargoTransporter = GetComponent<ICargoTransporter>();
+            _cargoTransporter = GetComponent<Spaceship>();
+
+            if(_cargoTransporter == null)
+            {
+                throw new ArgumentNullException("Компонент Cargo Transporter не добавлен.");
+            }
         }
 
         public bool CheckCargo()
@@ -22,7 +28,7 @@ namespace PlanetsColony
             return (_cargo != null) ? true : false;
         }
 
-        public void AcceptCargo(ICargo cargo)
+        public void AcceptCargo(Cargo cargo)
         {
             this._cargo = cargo;
         }
@@ -40,7 +46,7 @@ namespace PlanetsColony
             _cargoTransporter.SetCanMove(true);
         }
 
-        public ICargo DeliverCargo(ICargoReceiver cargoReceiver)
+        public Cargo DeliverCargo(CargoReceiver cargoReceiver)
         {
             var tempCargo = _cargo;
             cargoReceiver.AcceptCargo(_cargo);

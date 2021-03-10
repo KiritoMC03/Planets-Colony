@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PlanetsColony
 {
-    public class Cargo : Resource, ICargo
+    public class Cargo : Resource
     {
         public Cargo(Type type, float value) : base(type, value)
         {

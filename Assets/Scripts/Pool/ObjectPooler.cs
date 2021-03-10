@@ -24,6 +24,7 @@ namespace PlanetsColony
                 SpaceShip
             }
             public ObjectType Type;
+            [Header("Require IPooledObject component.")]
             public GameObject Prefab;
             public int StartCount;
         }

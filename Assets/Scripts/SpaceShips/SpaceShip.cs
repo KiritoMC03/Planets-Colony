@@ -7,7 +7,7 @@ namespace PlanetsColony
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class Spaceship : MonoBehaviour, IPooledObject, ICargoTransporter
+    public class Spaceship : MonoBehaviour, IPooledObject
     {
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
 
@@ -18,7 +18,6 @@ namespace PlanetsColony
 
         private Transform _transform = null;
         private Rigidbody2D _rigidbody = null;
-        private ITransferringCargo _cargoHandler = null;
         private Transform _departureObject = null;
         private float _distanceDelta = 0f;
         private float _tempZRotation = 0f;
@@ -32,7 +31,6 @@ namespace PlanetsColony
         {
             _transform = transform;
             _rigidbody = GetComponent<Rigidbody2D>();
-            _cargoHandler = GetComponent<ITransferringCargo>();
             _distanceDelta = _speed * Time.deltaTime;
         }
 
@@ -117,16 +115,5 @@ namespace PlanetsColony
 
         }
         #endregion
-
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            var colissionIAcceptShips = _target.GetComponent<IAcceptShips>();
-
-            if (collision.transform == _target && colissionIAcceptShips != null)
-            {
-                _target.GetComponent<IAcceptShips>().AcceptShip(_cargoHandler);
-            }
-        }
     }
 }

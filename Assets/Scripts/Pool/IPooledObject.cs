@@ -1,6 +1,6 @@
 ﻿namespace PlanetsColony
 {
-    interface IPooledObject
+    public interface IPooledObject
     {
         ObjectPooler.ObjectInfo.ObjectType Type { get; }
     }
