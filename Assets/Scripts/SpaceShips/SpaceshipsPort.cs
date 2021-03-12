@@ -45,8 +45,11 @@ namespace PlanetsColony
                 {
                     if (StatsSystem.Instance.CheckAbilityToSpawn())
                     {
-                        SendShip(planets[i]);
-                        StatsSystem.Instance.IncreaseActiveShipsCount();
+                        if (planets[i].GetComponent<Factory>().GetIsActive())
+                        {
+                            SendShip(planets[i]);
+                            StatsSystem.Instance.IncreaseActiveShipsCount();
+                        }
                     }
                 }
             }

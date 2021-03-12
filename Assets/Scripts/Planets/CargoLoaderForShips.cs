@@ -25,14 +25,14 @@ namespace PlanetsColony
 
         private void Start()
         {
-            StartCoroutine(SendShipWithCargoRoutine(sendShipWithCargoDelay));
+            StartCoroutine(SendShipWithCargoRoutine());
         }
 
-        private IEnumerator SendShipWithCargoRoutine(float delay)
+        private IEnumerator SendShipWithCargoRoutine()
         {
             while (true)
             {
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSeconds(sendShipWithCargoDelay);
                 SendShipWithCargo();
             }
         }
