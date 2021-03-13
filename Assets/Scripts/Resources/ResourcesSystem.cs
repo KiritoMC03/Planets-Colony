@@ -25,6 +25,7 @@ namespace PlanetsColony
             }
         }
         [SerializeField] private ResourcePanel _resourcePanel = null;
+        [SerializeField] private TradingMenu _tradingMenu = null;
         [Header("Only unique types!")]
         [SerializeField] private List<ResourceInfo> _resourceInfo = null;
 
@@ -39,6 +40,19 @@ namespace PlanetsColony
             else
             {
                 _resourcePanel.GenerateResourceList(_resourceInfo);
+            }
+
+
+
+            if (!_tradingMenu.gameObject.activeInHierarchy)
+            {
+                _tradingMenu.gameObject.SetActive(true);
+                _tradingMenu.GenerateTradingList(_resourceInfo);
+                _tradingMenu.gameObject.SetActive(false);
+            }
+            else
+            {
+                _tradingMenu.GenerateTradingList(_resourceInfo);
             }
         }
 
