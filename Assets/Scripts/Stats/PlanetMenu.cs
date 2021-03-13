@@ -37,28 +37,15 @@ namespace PlanetsColony
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit2D hit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Input.mousePosition));
-
                 if (hit)
                 {
-                    Debug.Log("RaycastEnter!");
                     _currentPlanet = hit.collider.gameObject;
-                    _panel.gameObject.SetActive(true);
-                    Debug.Log("_panel: " + _panel);
-                    _panel.Activate(_currentPlanet.GetComponent<Factory>());
+                    if(_currentPlanet.GetComponent<Factory>() != null)
+                    {
+                        _panel.gameObject.SetActive(true);
+                        _panel.Activate(_currentPlanet.GetComponent<Factory>());
+                    }
                 }
-
-                /*
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Debug.DrawLine(_mainCamera.transform.position, hit.point);
-                    Debug.Log("RaycastEnter!");
-
-                    _currentPlanet = hit.collider.gameObject;
-                    _panel.gameObject.SetActive(true);
-                    Debug.Log("_panel: " + _panel);
-                    _panel.Activate(_currentPlanet.GetComponent<Factory>());
-                }
-                */
             }
         }
         
