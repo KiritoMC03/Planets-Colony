@@ -36,6 +36,11 @@ namespace PlanetsColony
             return value;
         }
 
+        internal virtual void ClearValue()
+        {
+            value = 0f;
+        }
+
         public virtual Resource.Type GetResourceType()
         {
             return _type;

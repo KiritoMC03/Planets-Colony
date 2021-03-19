@@ -56,9 +56,10 @@ namespace PlanetsColony
             }
         }
 
-        public void UpdateResourcePanel()
+        public void UpdateResources()
         {
             _resourcePanel.RefreshElements(_resourceInfo);
+            _tradingMenu.RefreshElements(_resourceInfo);
         }
     }
 }

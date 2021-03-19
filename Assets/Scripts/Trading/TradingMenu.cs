@@ -28,8 +28,10 @@ namespace PlanetsColony
             for (int i = 0; i < resourceInfo.Count; i++)
             {
                 var newElement = Instantiate(_resourceTradingPrefab, transform);
-                var tempText = resourceInfo[i].GetName() + " " + _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());
-                newElement.SetResourceName(tempText);
+                var tempText = resourceInfo[i].GetName() + " ";
+                newElement.SetTradingMenu(this);
+                newElement.SetResourceNameAndValue(tempText, _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType()));
+                newElement.SetResourceType(resourceInfo[i].GetResourceType());
                 _generatedElements[i] = newElement;
             }
         }
@@ -38,9 +40,20 @@ namespace PlanetsColony
         {
             for (int i = 0; i < _generatedElements.Length; i++)
             {
-                var tempText = resourceInfo[i].GetName() + " " + _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType()); ;
-                _generatedElements[i].SetResourceName(tempText);
+                var tempText = resourceInfo[i].GetName() + " ";
+                _generatedElements[i].SetResourceNameAndValue(tempText, _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType()));
+                _generatedElements[i].SetResourceType(resourceInfo[i].GetResourceType());
             }
+        }
+
+        public float GetResourseValue(Resource.Type resource)
+        {
+            return _resourcesStorage.GetResourceToTrade(resource);
+        }
+
+        public ResourcesStorage GetResourcesStorageLink()
+        {
+            return _resourcesStorage;
         }
     }
 }

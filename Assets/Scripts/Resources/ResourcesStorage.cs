@@ -7,7 +7,7 @@ namespace PlanetsColony
 {
     public class ResourcesStorage : MonoBehaviour
     {
-        public UnityEvent ResourceAdd;
+        public UnityEvent ResourceChange;
 
         [SerializeField]
         private Resource[] resources = new Resource[]
@@ -24,7 +24,7 @@ namespace PlanetsColony
                 if (cargo.GetResourceType() == resources[i].GetResourceType())
                 {
                     resources[i].Add(cargo.GetValue());
-                    ResourceAdd?.Invoke();
+                    ResourceChange?.Invoke();
                 }
             }
         }
@@ -40,6 +40,20 @@ namespace PlanetsColony
             }
 
             return 0f;
+        }
+
+        public float GetResourceToTrade(Resource.Type type)
+        {
+            float returnValue = 0f;
+            for (int i = 0; i < resources.Length; i++)
+            {
+                if (resources[i].GetResourceType() == type)
+                {
+                    returnValue = Mathf.Floor(resources[i].GetValue());
+                    resources[i].ClearValue();
+                }
+            }
+            return returnValue;
         }
     }
 }

@@ -11,14 +11,24 @@ namespace PlanetsColony
 
         public static StatsSystem Instance = null;
 
+        [SerializeField] private float _money = 0f;
         [SerializeField] private float _maxShipsCount = 10f;
         [SerializeField] private float _activeShipsCount = 0f;
-
         [SerializeField] private uint _score = 0;
 
         private void Awake()
         {
             Instance = this;
+        }
+
+        internal void AddMoney(float value)
+        {
+            _money += value;
+        }
+
+        public float GetMoney()
+        {
+            return _money;
         }
 
         public uint GetScore()
