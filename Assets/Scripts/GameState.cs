@@ -12,5 +12,17 @@ namespace PlanetsColony
         {
             onPause = !onPause;
         }
+		
+		private void Update()
+		{
+			if(onPause)
+			{
+				Time.timeScale = 0f;
+			}
+			else
+			{
+				Time.timeScale = 1f;
+			}	
+		}
     }
 }

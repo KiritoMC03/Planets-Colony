@@ -19,6 +19,7 @@ namespace PlanetsColony
         private void Awake()
         {
             Instance = this;
+			Application.targetFrameRate = 60;
         }
 
         internal void AddMoney(float value)
