@@ -15,6 +15,8 @@ namespace PlanetsColony
             new Resource(Resource.Type.Iron, 0),
             new Resource(Resource.Type.Gold, 0),
             new Resource(Resource.Type.Silver, 0),
+            new Resource(Resource.Type.Uran, 0),
+            new Resource(Resource.Type.Titan, 0)
         };
 
         public void AcceptCargoFromShip(Cargo cargo)

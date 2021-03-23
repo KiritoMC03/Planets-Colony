@@ -23,7 +23,9 @@ namespace PlanetsColony
         {
             Iron,
             Gold,
-            Silver
+            Silver,
+			Uran,
+			Titan
         }
 
         public virtual float GetPrice()
