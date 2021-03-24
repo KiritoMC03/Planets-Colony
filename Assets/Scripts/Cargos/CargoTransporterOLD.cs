@@ -4,7 +4,7 @@ using System.Collections;
 namespace PlanetsColony
 {
     [RequireComponent(typeof(Spaceship), typeof(CargoHandler))]
-    public class CargoTransporter : MonoBehaviour
+    public class CargoTransporterOLD : MonoBehaviour
     {
         private Spaceship _spaceship = null;
         private CargoHandler _cargoHandler = null;

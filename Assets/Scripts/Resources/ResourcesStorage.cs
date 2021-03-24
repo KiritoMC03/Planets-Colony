@@ -53,9 +53,7 @@ namespace PlanetsColony
                 {
                     returnValue = Mathf.Floor(resources[i].GetValue());
                     resources[i].SubstractValue(value);
-                    Debug.Log("ResourceChange");
                     ResourceChange?.Invoke();
-                    Debug.Log("ResourceChangeEND");
                 }
             }
             return returnValue;

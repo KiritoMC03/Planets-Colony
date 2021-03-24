@@ -40,11 +40,8 @@ namespace PlanetsColony
 
         internal virtual void SubstractValue(uint value)
         {
-            Debug.Log("if(value <= this.value) - " + (value <= this.value));
             if(value <= this.value)
             {
-                Debug.Log("IF OK");
-                Debug.Log("Value: " + value);
                 this.value -= value;
             }
         }

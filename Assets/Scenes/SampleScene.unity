@@ -1333,7 +1333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &428788760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5128,7 +5128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cd1f8df14990a44a301d18240ea762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 3715416314242437361, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
+  ship: {fileID: 69080762853621385, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
   planets:
   - {fileID: 13888979}
   - {fileID: 2139621741}
@@ -5324,7 +5324,7 @@ GameObject:
   - component: {fileID: 1933955442}
   - component: {fileID: 1933955441}
   m_Layer: 5
-  m_Name: ResourcePanelActivator (1)
+  m_Name: TradingPanelActivator (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5477,10 +5477,10 @@ RectTransform:
   m_Father: {fileID: 428788760}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.46606445}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 178.70003, y: -20.233032}
+  m_SizeDelta: {x: 297.40005, y: 0.46606445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982673176
 MonoBehaviour:

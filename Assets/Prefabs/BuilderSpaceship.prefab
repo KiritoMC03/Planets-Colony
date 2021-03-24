@@ -9,18 +9,20 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3715416314242437360}
-  - component: {fileID: 69080762853621385}
+  - component: {fileID: 3715416314242437361}
+  - component: {fileID: -2299707657729832125}
   - component: {fileID: -2038976870745426995}
   - component: {fileID: 3715416314242437366}
   - component: {fileID: 3715416314242437367}
   - component: {fileID: 3715416314242437364}
+  - component: {fileID: 6384738252506808496}
   m_Layer: 9
-  m_Name: Spaceship
+  m_Name: BuilderSpaceship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3715416314242437360
 Transform:
   m_ObjectHideFlags: 0
@@ -30,12 +32,28 @@ Transform:
   m_GameObject: {fileID: 3715416314242437365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &69080762853621385
+--- !u!114 &3715416314242437361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715416314242437365}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1a25041652e2c4f84b9a8cc567cd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  _target: {fileID: 0}
+  _speed: 150
+  _rotationSpeed: 0.1
+--- !u!114 &-2299707657729832125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +62,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3715416314242437365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad2412df124791e488a1ee6f5ea90e22, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b7056962971cdb4fab18194451e97ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  _target: {fileID: 0}
-  _speed: 150
-  _rotationSpeed: 0.1
 --- !u!114 &-2038976870745426995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +180,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6384738252506808496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715416314242437365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5a25e6d36ad444cbd0755e4db3b85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

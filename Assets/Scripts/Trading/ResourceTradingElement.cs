@@ -35,7 +35,7 @@ namespace PlanetsColony
             ValidateTradeValue();
             if (_maySale)
             {
-                StatsSystem.Instance.AddMoney(_tradingMenu.GetResourceToTrade(_resourceType, _tradeValue) * _cost);
+                StatsSystem.Instance.AddMoney(_tradeValue * _cost);
                 _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
             }
         }

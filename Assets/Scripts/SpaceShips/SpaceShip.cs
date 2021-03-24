@@ -32,6 +32,7 @@ namespace PlanetsColony
             _transform = transform;
             _rigidbody = GetComponent<Rigidbody2D>();
             _distanceDelta = _speed * Time.deltaTime;
+            DoAwakeWork();
         }
 
         private void Update()
@@ -109,11 +110,11 @@ namespace PlanetsColony
         {
             this._canMove = canMove;
         }
+        #endregion
 
-        public void DeliverCargo()
+        protected virtual void DoAwakeWork()
         {
 
         }
-        #endregion
     }
 }
