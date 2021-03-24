@@ -6,15 +6,15 @@ namespace PlanetsColony
 {
     public class Cargo : Resource
     {
-        public Cargo(Type type, float value) : base(type, value)
+        public Cargo(Type type, uint value) : base(type, value)
         {
             this.value = value;
             this._type = type;
         }
 
-        public Cargo(Type type, float minValue, float maxValue) : base(type, minValue, maxValue)
+        public Cargo(Type type, uint minValue, uint maxValue) : base(type, minValue, maxValue)
         {
-            this.value = Random.Range(minValue, maxValue);
+            this.value = (uint)Random.Range(minValue, maxValue);
             this._type = type;
         }
 
@@ -23,7 +23,7 @@ namespace PlanetsColony
             return 0f;
         }
 
-        public override float GetValue()
+        public override uint GetValue()
         {
             return value;
         }

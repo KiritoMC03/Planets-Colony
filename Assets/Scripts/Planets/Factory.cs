@@ -7,14 +7,14 @@ namespace PlanetsColony
     [RequireComponent(typeof(CargoGenerator))]
     public class Factory : MonoBehaviour
     {
-        [SerializeField] private int _level = 0;
-        [SerializeField] private float _minGeneratedResource = 0f;
-        [SerializeField] private float _maxGeneratedResource = 100f;
+        [SerializeField] private uint _level = 0;
+        [SerializeField] private uint _minGeneratedResource = 0;
+        [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;
 
         private CargoGenerator _cargoGenerator = null;
         private bool _isActive = false;
-        private float _resourceValueMultiplier = 0;
+        private uint _resourceValueMultiplier = 0;
 
         private void Awake()
         {
@@ -54,7 +54,7 @@ namespace PlanetsColony
                 _maxGeneratedResource * _resourceValueMultiplier));
         }
 
-        public int GetLevel()
+        public uint GetLevel()
         {
             return _level;
         }
@@ -70,7 +70,7 @@ namespace PlanetsColony
             return _isActive;
         }
 
-        private float CalculateResourceValueMultiplier()
+        private uint CalculateResourceValueMultiplier()
         {
             return _resourceValueMultiplier = _level;
         }

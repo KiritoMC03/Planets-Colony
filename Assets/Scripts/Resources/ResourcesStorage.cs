@@ -44,7 +44,7 @@ namespace PlanetsColony
             return 0f;
         }
 
-        public float GetResourceToTrade(Resource.Type type)
+        public float GetResourceToTrade(Resource.Type type, uint value)
         {
             float returnValue = 0f;
             for (int i = 0; i < resources.Length; i++)
@@ -52,7 +52,10 @@ namespace PlanetsColony
                 if (resources[i].GetResourceType() == type)
                 {
                     returnValue = Mathf.Floor(resources[i].GetValue());
-                    resources[i].ClearValue();
+                    resources[i].SubstractValue(value);
+                    Debug.Log("ResourceChange");
+                    ResourceChange?.Invoke();
+                    Debug.Log("ResourceChangeEND");
                 }
             }
             return returnValue;

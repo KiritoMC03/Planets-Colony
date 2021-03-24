@@ -9,14 +9,19 @@ namespace PlanetsColony
     {
         [SerializeField] private Text _resource = null;
         [SerializeField] private Text _costText = null;
+        [SerializeField] private InputField _tradeValueField = null;
+
         private float _cost = 1f;
+        private float _resourceValue = 0f;
+        private uint _tradeValue = 0;
         private Resource.Type _resourceType;
+        private bool _maySale = false;
 
         private TradingMenu _tradingMenu = null;
 
         private void OnEnable()
         {
-            _cost = GenerateCost(1f, 100f);
+            _cost = GenerateCost(10, 100);
             _costText.text = "Цена за шт. - " + _cost.ToString();
         }
 
@@ -27,13 +32,18 @@ namespace PlanetsColony
                 throw new System.Exception("TradingMenu не установлено.");
             }
 
-            StatsSystem.Instance.AddMoney(_tradingMenu.GetResourseValue(_resourceType) * _cost);
-            _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
+            ValidateTradeValue();
+            if (_maySale)
+            {
+                StatsSystem.Instance.AddMoney(_tradingMenu.GetResourceToTrade(_resourceType, _tradeValue) * _cost);
+                _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
+            }
         }
 
         internal void SetResourceNameAndValue(string name, float value)
         {
-            _resource.text = name + value;
+            _resourceValue = value;
+            _resource.text = name + _resourceValue;
         }
 
         internal void SetResourceType(Resource.Type resourceType)
@@ -51,14 +61,27 @@ namespace PlanetsColony
             return _resourceType;
         }
 
-        private float GenerateCost(float min, float max)
+        private uint GenerateCost(uint min, uint max)
         {
-            return Random.Range(min, max);
+            return (uint)Random.Range(min, max);
         }
 
         public void SetTradingMenu(TradingMenu tradingMenu)
         {
             this._tradingMenu = tradingMenu;
+        }
+
+        public void ValidateTradeValue()
+        {
+            uint.TryParse(_tradeValueField.text, out _tradeValue);
+
+            if (_tradeValue > _resourceValue)
+            {
+                _tradeValue = (uint)Mathf.Floor(_resourceValue);
+                _tradeValueField.text = _tradeValue.ToString();
+            }
+
+            _maySale = (_tradeValue > 0 && _tradeValue <= _resourceValue);
         }
     }
 }

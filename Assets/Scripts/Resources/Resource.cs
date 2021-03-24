@@ -5,17 +5,17 @@ namespace PlanetsColony
 {
     public class Resource
     {
-        protected float value { get; set; }
+        protected uint value { get; set; }
         protected Type _type;
 
-        public Resource(Type type, float value)
+        public Resource(Type type, uint value)
         {
             this.value = value;
             this._type = type;
         }
-        public Resource(Type type, float minValue, float maxValue)
+        public Resource(Type type, uint minValue, uint maxValue)
         {
-            this.value = Random.Range(minValue, maxValue);
+            this.value = (uint)Random.Range(minValue, maxValue);
             this._type = type;
         }
 
@@ -33,14 +33,20 @@ namespace PlanetsColony
             return 0f;
         }
 
-        public virtual float GetValue()
+        public virtual uint GetValue()
         {
             return value;
         }
 
-        internal virtual void ClearValue()
+        internal virtual void SubstractValue(uint value)
         {
-            value = 0f;
+            Debug.Log("if(value <= this.value) - " + (value <= this.value));
+            if(value <= this.value)
+            {
+                Debug.Log("IF OK");
+                Debug.Log("Value: " + value);
+                this.value -= value;
+            }
         }
 
         public virtual Resource.Type GetResourceType()
@@ -48,7 +54,7 @@ namespace PlanetsColony
             return _type;
         }
 
-        public virtual void Add(float value)
+        public virtual void Add(uint value)
         {
             this.value += value;
         }
