@@ -11,7 +11,7 @@ namespace PlanetsColony
     {
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
 
-        [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.SpaceShip;
+        [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.CargoTransporter;
         [SerializeField] private Transform _target = null;
         [SerializeField] private float _speed = 1f;
         [SerializeField] private float _rotationSpeed = 0.1f;

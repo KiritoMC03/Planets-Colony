@@ -21,7 +21,8 @@ namespace PlanetsColony
         {
             public enum ObjectType
             {
-                SpaceShip
+                CargoTransporter,
+                BuilderSpaceship
             }
             public ObjectType Type;
             [Header("Require IPooledObject component.")]

@@ -8,12 +8,11 @@ namespace PlanetsColony
     [RequireComponent(typeof(Collider2D))]
     public class CargoTransporter : Spaceship
     {
-        private Spaceship _spaceship = null;
         private CargoHandler _cargoHandler = null;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var tempTarget = _spaceship.GetTarget();
+            var tempTarget = GetTarget();
 
             if (collision.transform == tempTarget)
             {
@@ -28,7 +27,6 @@ namespace PlanetsColony
         protected override void DoAwakeWork()
         {
             base.DoAwakeWork();
-            _spaceship = this;
             _cargoHandler = GetComponent<CargoHandler>();
         }
     }

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuilderSpaceship : MonoBehaviour
+namespace PlanetsColony
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BuilderSpaceship : Spaceship
     {
-        
-    }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var tempTarget = GetTarget();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (collision.transform == tempTarget)
+            {
+                ObjectPooler.Instance.DestroyObject(gameObject);
+            }
+        }
     }
 }

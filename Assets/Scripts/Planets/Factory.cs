@@ -11,20 +11,27 @@ namespace PlanetsColony
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;
+        [SerializeField] private SpaceshipsPort _spaceshipsPort = null;
 
+        private Transform _transform = null;
         private CargoGenerator _cargoGenerator = null;
         private bool _isActive = false;
         private uint _resourceValueMultiplier = 0;
 
         private void Awake()
         {
+            _transform = transform;
             _cargoGenerator = GetComponent<CargoGenerator>();
             if (_factorySprite == null)
             {
                 throw new Exception("Установите поле Factory Sprite.");
             }
+            if (_spaceshipsPort == null)
+            {
+                throw new Exception("Установите поле Spaceships Port.");
+            }
 
-            if(_level > 0)
+            if (_level > 0)
             {
                 Activate();
             }
@@ -61,8 +68,13 @@ namespace PlanetsColony
 
         internal void LevelUp()
         {
+            if(_level == 0)
+            {
+                _spaceshipsPort.SendBuilderShip(_transform);
+                StartCoroutine(FactoryBuildRoutine(7f));
+            }
+            
             _level++;
-            Activate();
         }
 
         public bool GetIsActive()
@@ -73,6 +85,12 @@ namespace PlanetsColony
         private uint CalculateResourceValueMultiplier()
         {
             return _resourceValueMultiplier = _level;
+        }
+
+        private IEnumerator FactoryBuildRoutine(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Activate();
         }
     }
 }

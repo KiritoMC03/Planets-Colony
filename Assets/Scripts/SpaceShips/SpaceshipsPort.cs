@@ -8,6 +8,7 @@ namespace PlanetsColony
     public class SpaceshipsPort : MonoBehaviour
     {
         [SerializeField] private Spaceship ship = null;
+        [SerializeField] private BuilderSpaceship builderShip = null;
         [SerializeField] private Transform[] planets = null;
         [Range(0.01f, 100f)]
         [SerializeField] private float delay = 1f;
@@ -15,7 +16,8 @@ namespace PlanetsColony
         private Transform _transform = null;
         private Transform _departureObject = null;
         private Coroutine _spawnerRoutine = null;
-        private Spaceship tempShip = null;
+        private CargoTransporter tempShip = null;
+        private BuilderSpaceship tempBuilderShip = null;
 
         private void Awake()
         {
@@ -57,7 +59,7 @@ namespace PlanetsColony
 
         private void SendShip(Transform target)
         {
-            tempShip = ObjectPooler.Instance.GetObject(ship.Type).GetComponent<Spaceship>();
+            tempShip = ObjectPooler.Instance.GetObject(ship.Type).GetComponent<CargoTransporter>();
             
             tempShip.transform.position = _transform.position;
 
@@ -65,6 +67,16 @@ namespace PlanetsColony
             tempShip.SetDepartureObject(_departureObject);
             
             tempShip = null;
+        }
+
+        public void SendBuilderShip(Transform target)
+        {
+            tempBuilderShip = ObjectPooler.Instance.GetObject(builderShip.Type).GetComponent<BuilderSpaceship>();
+
+            tempBuilderShip.transform.position = _transform.position;
+            tempBuilderShip.SetTarget(target);
+
+            tempBuilderShip = null;
         }
 
         private void OnEnable()

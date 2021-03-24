@@ -266,6 +266,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 1911124398}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!114 &13888984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,6 +1968,9 @@ MonoBehaviour:
   - Type: 0
     Prefab: {fileID: 3715416314242437365, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
     StartCount: 10
+  - Type: 1
+    Prefab: {fileID: 3715416314242437365, guid: 6f1bb8361c28e764f9c0357cb607a888, type: 3}
+    StartCount: 10
 --- !u!4 &547877940
 Transform:
   m_ObjectHideFlags: 0
@@ -2402,6 +2406,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 434427667}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!1 &678635146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,6 +2855,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 493001931}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!1 &783073579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,6 +3835,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 1919971252}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!114 &1225548153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4162,6 +4169,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 1991902720}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!114 &1278471503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4755,6 +4763,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 484167800}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!114 &1598648321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5129,6 +5138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 69080762853621385, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
+  builderShip: {fileID: 6384738252506808496, guid: 6f1bb8361c28e764f9c0357cb607a888, type: 3}
   planets:
   - {fileID: 13888979}
   - {fileID: 2139621741}
@@ -6080,6 +6090,7 @@ MonoBehaviour:
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 545773013}
+  _spaceshipsPort: {fileID: 1633715323}
 --- !u!1001 &3715416313599852781
 PrefabInstance:
   m_ObjectHideFlags: 0
