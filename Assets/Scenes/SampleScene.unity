@@ -465,7 +465,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150208102
 GameObject:
@@ -537,7 +537,7 @@ RectTransform:
   - {fileID: 404925991}
   - {fileID: 1473814565}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -674,7 +674,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &164504055
 MonoBehaviour:
@@ -845,7 +845,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &321973749
 GameObject:
@@ -1983,7 +1983,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &623420924
 GameObject:
@@ -1998,12 +1998,12 @@ GameObject:
   - component: {fileID: 623420928}
   - component: {fileID: 623420927}
   m_Layer: 5
-  m_Name: PlanetPanelPanel
+  m_Name: PlanetPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &623420925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 623420924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418d871b6f518a244a3a5da091d91c13, type: 3}
+  m_Script: {fileID: 11500000, guid: 1124a0b5db9ac8a458822ecb3aea8cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _planetName: {fileID: 447375669}
@@ -2198,7 +2198,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 635707620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccfd5a302f222cb409af8fd50bb895d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 924a62c1877c5764389cd8426a3479ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _moneyValue: {fileID: 545904160}
@@ -2527,7 +2527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745155222
 GameObject:
@@ -2953,7 +2953,7 @@ RectTransform:
   - {fileID: 1933955440}
   - {fileID: 428788760}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3001,7 +3001,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &886935458
 GameObject:
@@ -3309,7 +3309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1015818149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3402,11 +3402,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 1015818148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16c62d8dcf9c5e4eb87696c0cc9e6a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f7e8f5be07088f419b7532a492e37f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceCountPrefab: {fileID: 741479809974908718, guid: 5963fe91e1739704cb44937df3ae786d, type: 3}
   _resourcesStorage: {fileID: 1633715324}
+--- !u!1 &1022456895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1022456896}
+  m_Layer: 0
+  m_Name: ----Menus----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1022456896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022456895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1032971277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,9 +3505,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1074017018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b238e5708c139e246929d402d76947f7, type: 3}
+  m_Script: {fileID: 11500000, guid: a8247178927b84a4c888e8a63b8e370c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: DisableAllBut
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 623420926}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 623420926}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _statsSystem: {fileID: 109331193}
   _panel: {fileID: 623420926}
 --- !u!114 &1074017020
@@ -3553,13 +3610,61 @@ RectTransform:
   m_Children:
   - {fileID: 623420925}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1093733552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1093733554}
+  - component: {fileID: 1093733553}
+  m_Layer: 0
+  m_Name: MenusController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1093733553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093733552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b27979fd18950a4a9ca6e16ea6113e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menusList:
+  - {fileID: 623420926}
+  - {fileID: 635707625}
+  - {fileID: 1015818153}
+  - {fileID: 428788763}
+--- !u!4 &1093733554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093733552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.14747238, y: 0.13961408, z: -0.2704305}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150372620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,17 +4081,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719721732}
-        m_TargetAssemblyTypeName: OpenClose, Assembly-CSharp
-        m_MethodName: OpenOrClose
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: DisableAllBut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1015818148}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 1015818153}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1015818153}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1246879043
 MonoBehaviour:
@@ -4228,6 +4345,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b09d6bafad37534abf9aabbadcf54d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1279183286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279183287}
+  m_Layer: 0
+  m_Name: ---Game---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1279183287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279183286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467689360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,13 +4661,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719721732}
-        m_TargetAssemblyTypeName: OpenClose, Assembly-CSharp
-        m_MethodName: OpenOrClose
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: DisableAllBut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 635707620}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 635707625}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 635707625}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4618,7 +4777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598648315
 GameObject:
@@ -4886,7 +5045,37 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1603165686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603165687}
+  m_Layer: 0
+  m_Name: ----Other----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1603165687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603165686}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1612051416
 GameObject:
@@ -5187,6 +5376,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e84e2e955dc7642a93fc00a8dbae10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1860756830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860756831}
+  m_Layer: 0
+  m_Name: ---UI---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1860756831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860756830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1911124396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5403,17 +5622,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 719721732}
-        m_TargetAssemblyTypeName: OpenClose, Assembly-CSharp
-        m_MethodName: OpenOrClose
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: DisableAllBut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 428788759}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 428788763}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1093733553}
+        m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 428788763}
+          m_ObjectArgumentAssemblyTypeName: PlanetsColony.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1933955442
 MonoBehaviour:
@@ -5453,6 +5684,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933955439}
   m_CullTransparentMesh: 0
+--- !u!1 &1946301334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946301335}
+  m_Layer: 0
+  m_Name: ---Managers---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1946301335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946301334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1982673174
 GameObject:
   m_ObjectHideFlags: 0
@@ -6091,71 +6352,6 @@ MonoBehaviour:
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 545773013}
   _spaceshipsPort: {fileID: 1633715323}
---- !u!1001 &3715416313599852781
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437360, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437361, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1633715320}
-    - target: {fileID: 3715416314242437365, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_Name
-      value: SpaceShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 3715416314242437365, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0edde44aa7aafe9459c85bed0f4d325b, type: 3}
 --- !u!222 &8437138087832153617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6866,7 +7062,7 @@ RectTransform:
   - {fileID: 8437138087862485251}
   - {fileID: 8437138089503216730}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

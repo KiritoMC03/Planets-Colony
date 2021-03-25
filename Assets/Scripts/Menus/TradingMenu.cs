@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace PlanetsColony
 {
-    public class TradingMenu : MonoBehaviour
+    public class TradingMenu : Menu
     {
         [SerializeField] private ResourceTradingElement _resourceTradingPrefab = null;
         [SerializeField] private ResourcesStorage _resourcesStorage = null;

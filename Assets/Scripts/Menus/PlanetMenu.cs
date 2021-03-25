@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PlanetsColony
 {
     public class PlanetMenu : MonoBehaviour
     {
+        public UnityEvent OnEnable;
+
         [SerializeField] private StatsSystem _statsSystem = null;
         [SerializeField] private PlanetMenuPanel _panel = null;
 
@@ -44,6 +47,7 @@ namespace PlanetsColony
                     {
                         _panel.gameObject.SetActive(true);
                         _panel.Activate(_currentPlanet.GetComponent<Factory>());
+                        OnEnable?.Invoke();
                     }
                 }
             }

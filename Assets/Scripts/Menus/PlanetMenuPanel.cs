@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace PlanetsColony
 {
-    public class PlanetMenuPanel : MonoBehaviour
+    public class PlanetMenuPanel : Menu
     {
         [SerializeField] private Text _planetName = null;
         [SerializeField] private Text _factoryLevel = null;

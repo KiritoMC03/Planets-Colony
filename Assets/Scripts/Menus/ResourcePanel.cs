@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace PlanetsColony
 {
-    public class ResourcePanel : MonoBehaviour
+    public class ResourcePanel : Menu
     {
         [SerializeField] private Text _resourceCountPrefab = null;
         [SerializeField] private ResourcesStorage _resourcesStorage = null;

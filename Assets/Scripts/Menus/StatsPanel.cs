@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace PlanetsColony
 {
-    public class StatsPanel : MonoBehaviour
+    public class StatsPanel : Menu
     {
         [SerializeField] private Text _moneyValue = null;
         [SerializeField] private Text _freeScoreCount = null;
