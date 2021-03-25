@@ -1,21 +1,26 @@
-﻿
+﻿using System;
 using UnityEngine;
 
 namespace PlanetsColony
 {
     public class Resource
     {
-        protected uint value { get; set; }
+        protected ulong value { get; set; }
         protected Type _type;
+        private string minMaxValueErrorText = $"Аргументы minValue и maxValue должны быть в пределаха от {ulong.MinValue} до {ulong.MaxValue}";
 
-        public Resource(Type type, uint value)
+        public Resource(Type type, ulong value)
         {
             this.value = value;
             this._type = type;
         }
-        public Resource(Type type, uint minValue, uint maxValue)
+        public Resource(Type type, ulong minValue, ulong maxValue)
         {
-            this.value = (uint)Random.Range(minValue, maxValue);
+            if(minValue < ulong.MinValue || maxValue > ulong.MaxValue)
+            {
+                throw new Exception(minMaxValueErrorText);
+            }
+            this.value = (ulong)UnityEngine.Random.Range(minValue, maxValue);
             this._type = type;
         }
 
@@ -33,12 +38,12 @@ namespace PlanetsColony
             return 0f;
         }
 
-        public virtual uint GetValue()
+        public virtual ulong GetValue()
         {
             return value;
         }
 
-        internal virtual void SubstractValue(uint value)
+        internal virtual void SubstractValue(ulong value)
         {
             if(value <= this.value)
             {
@@ -51,7 +56,7 @@ namespace PlanetsColony
             return _type;
         }
 
-        public virtual void Add(uint value)
+        public virtual void Add(ulong value)
         {
             this.value += value;
         }

@@ -23,7 +23,7 @@ namespace PlanetsColony
             return 0f;
         }
 
-        public override uint GetValue()
+        public override ulong GetValue()
         {
             return value;
         }

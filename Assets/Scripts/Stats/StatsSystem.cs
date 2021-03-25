@@ -11,9 +11,9 @@ namespace PlanetsColony
 
         public static StatsSystem Instance = null;
 
-        [SerializeField] private float _money = 0f;
-        [SerializeField] private float _maxShipsCount = 10f;
-        [SerializeField] private float _activeShipsCount = 0f;
+        [SerializeField] private ulong _money = 0;
+        [SerializeField] private uint _maxShipsCount = 10;
+        [SerializeField] private uint _activeShipsCount = 0;
         [SerializeField] private uint _score = 0;
 
         private void Awake()
@@ -22,12 +22,12 @@ namespace PlanetsColony
 			Application.targetFrameRate = 60;
         }
 
-        internal void AddMoney(float value)
+        internal void AddMoney(ulong value)
         {
             _money += value;
         }
 
-        public float GetMoney()
+        public ulong GetMoney()
         {
             return _money;
         }

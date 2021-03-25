@@ -11,9 +11,9 @@ namespace PlanetsColony
         [SerializeField] private Text _costText = null;
         [SerializeField] private InputField _tradeValueField = null;
 
-        private float _cost = 1f;
-        private float _resourceValue = 0f;
-        private uint _tradeValue = 0;
+        private uint _cost = 1;
+        private ulong _resourceValue = 0;
+        private ulong _tradeValue = 0;
         private Resource.Type _resourceType;
         private bool _maySale = false;
 
@@ -35,12 +35,12 @@ namespace PlanetsColony
             ValidateTradeValue();
             if (_maySale)
             {
-                StatsSystem.Instance.AddMoney(_tradeValue * _cost);
+                StatsSystem.Instance.AddMoney(_tradingMenu.GetResourceToTrade(_resourceType, _tradeValue) * _cost);
                 _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
             }
         }
 
-        internal void SetResourceNameAndValue(string name, float value)
+        internal void SetResourceNameAndValue(string name, ulong value)
         {
             _resourceValue = value;
             _resource.text = name + _resourceValue;
@@ -73,11 +73,11 @@ namespace PlanetsColony
 
         public void ValidateTradeValue()
         {
-            uint.TryParse(_tradeValueField.text, out _tradeValue);
+            ulong.TryParse(_tradeValueField.text, out _tradeValue);
 
             if (_tradeValue > _resourceValue)
             {
-                _tradeValue = (uint)Mathf.Floor(_resourceValue);
+                _tradeValue = (ulong)Mathf.Floor(_resourceValue);
                 _tradeValueField.text = _tradeValue.ToString();
             }
 

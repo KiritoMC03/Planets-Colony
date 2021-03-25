@@ -28,7 +28,7 @@ namespace PlanetsColony
             for (int i = 0; i < resourceInfo.Count; i++)
             {
                 var newElement = Instantiate(_resourceCountPrefab, transform);
-                newElement.text = resourceInfo[i].GetName() + " " + _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());
+                newElement.text = resourceInfo[i].GetName() + " " + (float)_resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());
                 _generatedElements[i] = newElement;
             }
         }
@@ -37,7 +37,7 @@ namespace PlanetsColony
         { 
             for (int i = 0; i < _generatedElements.Length; i++)
             {
-                _generatedElements[i].text = resourceInfo[i].GetName() + " " + _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());
+                _generatedElements[i].text = resourceInfo[i].GetName() + " " + (float)_resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());
             }
         }
     }

@@ -31,27 +31,27 @@ namespace PlanetsColony
             }
         }
 
-        public float GetResourceValue(Resource.Type type)
+        public ulong GetResourceValue(Resource.Type type)
         {
             for (int i = 0; i < resources.Length; i++)
             {
                 if(resources[i].GetResourceType() == type)
                 {
-                    return Mathf.Floor(resources[i].GetValue());
+                    return resources[i].GetValue();
                 }
             }
 
-            return 0f;
+            return 0;
         }
 
-        public float GetResourceToTrade(Resource.Type type, uint value)
+        public ulong GetResourceToTrade(Resource.Type type, ulong value)
         {
-            float returnValue = 0f;
+            ulong returnValue = 0;
             for (int i = 0; i < resources.Length; i++)
             {
                 if (resources[i].GetResourceType() == type)
                 {
-                    returnValue = Mathf.Floor(resources[i].GetValue());
+                    returnValue = resources[i].GetValue();
                     resources[i].SubstractValue(value);
                     ResourceChange?.Invoke();
                 }

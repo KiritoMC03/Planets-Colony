@@ -46,7 +46,7 @@ namespace PlanetsColony
             }
         }
 
-        public float GetResourceToTrade(Resource.Type resource, uint value)
+        public ulong GetResourceToTrade(Resource.Type resource, ulong value)
         {
             return _resourcesStorage.GetResourceToTrade(resource, value);
         }

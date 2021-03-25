@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ namespace PlanetsColony
 
         public void SetStatsText()
         {
-            _moneyValue.text = _moneyValueText + StatsSystem.Instance.GetMoney();
+            _moneyValue.text = _moneyValueText + (float)StatsSystem.Instance.GetMoney();
             _freeScoreCount.text = _freeScoreCountText + StatsSystem.Instance.GetScore();
             _maxShipsCount.text = _maxShipsCountText + StatsSystem.Instance.GetMaxShipsCount();
             _activeShipsCount.text = _activeShipsCountText + StatsSystem.Instance.GetActiveShipsCount();
