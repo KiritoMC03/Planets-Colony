@@ -19,7 +19,5 @@ namespace PlanetsColony
                 ObjectPooler.Instance.DestroyObject(gameObject);
             }
         }
-
-        
     }
 }

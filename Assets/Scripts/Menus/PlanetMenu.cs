@@ -11,7 +11,6 @@ namespace PlanetsColony
     {
         public UnityEvent OnEnable;
 
-        [SerializeField] private StatsSystem _statsSystem = null;
         [SerializeField] private PlanetMenuPanel _panel = null;
 
         private GameObject _currentPlanet = null;
@@ -25,11 +24,6 @@ namespace PlanetsColony
             if(_panel == null)
             {
                 throw new Exception("Необходимо установить поле Panel.");
-            }
-
-            if (_statsSystem == null)
-            {
-                throw new Exception("Требуется установить поле компонента StatsSystem!");
             }
 
             _panel.gameObject.SetActive(false);
@@ -55,11 +49,12 @@ namespace PlanetsColony
         
         public void LevelUp()
         {
-            if(_statsSystem.GetScore() > 0)
+            _planetFactory = _currentPlanet.GetComponent<Factory>();
+            if (_planetFactory.IsCanLevelUp() &&
+                StatsSystem.Instance.GetMoney() >= LevelsSystem.Instance.CalculateNeedMoney(_planetFactory.GetLevel() + 1))
             {
-                _planetFactory = _currentPlanet.GetComponent<Factory>();
                 _planetFactory.LevelUp();
-                _statsSystem.UseScore();
+
                 _panel.UpdateText();
             }
         }

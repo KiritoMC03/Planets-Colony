@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 321973751}
   - component: {fileID: 321973750}
   m_Layer: 5
-  m_Name: FreeScore
+  m_Name: NeedMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,7 +898,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "C\u0432\u043E\u0431\u043E\u0434\u043D\u043E \u043E\u0447\u043A\u043E\u0432:"
+  m_Text: "\u041D\u0443\u0436\u043D\u043E \u0434\u0435\u043D\u0435\u0433:"
 --- !u!222 &321973751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1789,6 +1789,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500687119}
   m_CullTransparentMesh: 0
+--- !u!1 &531627701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531627703}
+  - component: {fileID: 531627702}
+  m_Layer: 0
+  m_Name: LevelSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!114 &531627702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531627701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812e03d5599c9f642a307ae0efdec2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &531627703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531627701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &545773011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2043,7 +2086,7 @@ MonoBehaviour:
   _planetName: {fileID: 447375669}
   _factoryLevel: {fileID: 2046586971}
   _levelUpButton_text: {fileID: 1985613033}
-  _freeScore: {fileID: 321973750}
+  _needMoney: {fileID: 321973750}
 --- !u!114 &623420927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,7 +2570,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745155222
 GameObject:
@@ -3535,7 +3578,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _statsSystem: {fileID: 109331193}
   _panel: {fileID: 623420926}
 --- !u!114 &1074017020
 MonoBehaviour:
@@ -4095,7 +4137,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1093733553}
         m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
-        m_MethodName: Activate
+        m_MethodName: RevertCondition
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1015818153}
@@ -4675,7 +4717,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1093733553}
         m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
-        m_MethodName: Activate
+        m_MethodName: RevertCondition
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 635707625}
@@ -4777,7 +4819,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598648315
 GameObject:
@@ -5045,7 +5087,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603165686
 GameObject:
@@ -5636,7 +5678,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1093733553}
         m_TargetAssemblyTypeName: PlanetsColony.MenusController, Assembly-CSharp
-        m_MethodName: Activate
+        m_MethodName: RevertCondition
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 428788763}

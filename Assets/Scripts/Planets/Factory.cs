@@ -16,6 +16,7 @@ namespace PlanetsColony
         private Transform _transform = null;
         private CargoGenerator _cargoGenerator = null;
         private bool _isActive = false;
+        private bool _canLevelUp = true;
         private uint _resourceValueMultiplier = 0;
 
         private void Awake()
@@ -44,6 +45,7 @@ namespace PlanetsColony
         public void Activate()
         {
             _isActive = true;
+            _canLevelUp = true;
             _factorySprite.gameObject.SetActive(true);
         }
 
@@ -71,6 +73,7 @@ namespace PlanetsColony
             if(_level == 0)
             {
                 _spaceshipsPort.SendBuilderShip(this);
+                _canLevelUp = false;
             }
             else if(_level > 0)
             {
@@ -90,6 +93,11 @@ namespace PlanetsColony
         internal void SetLevel(uint level)
         {
             this._level = level;
+        }
+
+        public bool IsCanLevelUp()
+        {
+            return _canLevelUp;
         }
 
         private uint CalculateResourceValueMultiplier()

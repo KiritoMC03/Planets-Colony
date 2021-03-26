@@ -33,12 +33,9 @@ namespace PlanetsColony
             }
         }
 
-        public void RevertCondition()
+        public void RevertCondition(Menu menu)
         {
-            for (int i = 0; i < _menusList.Length; i++)
-            {
-                _menusList[i].gameObject.SetActive(!_menusList[i].gameObject.activeInHierarchy);
-            }
+            menu.gameObject.SetActive(!menu.gameObject.activeInHierarchy);
         }
     }
 }
