@@ -69,12 +69,12 @@ namespace PlanetsColony
             tempShip = null;
         }
 
-        public void SendBuilderShip(Transform target)
+        public void SendBuilderShip(Factory target)
         {
             tempBuilderShip = ObjectPooler.Instance.GetObject(builderShip.Type).GetComponent<BuilderSpaceship>();
 
             tempBuilderShip.transform.position = _transform.position;
-            tempBuilderShip.SetTarget(target);
+            tempBuilderShip.SetTarget(target.transform);
 
             tempBuilderShip = null;
         }

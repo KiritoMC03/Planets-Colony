@@ -70,11 +70,12 @@ namespace PlanetsColony
         {
             if(_level == 0)
             {
-                _spaceshipsPort.SendBuilderShip(_transform);
-                StartCoroutine(FactoryBuildRoutine(7f));
+                _spaceshipsPort.SendBuilderShip(this);
             }
-            
-            _level++;
+            else if(_level > 0)
+            {
+                IncreaseLevel();
+            }
         }
 
         public bool GetIsActive()
@@ -82,14 +83,29 @@ namespace PlanetsColony
             return _isActive;
         }
 
+        internal void IncreaseLevel()
+        {
+            _level++;
+        }
+        internal void SetLevel(uint level)
+        {
+            this._level = level;
+        }
+
         private uint CalculateResourceValueMultiplier()
         {
             return _resourceValueMultiplier = _level;
         }
 
+        public void Build(float delay)
+        {
+            StartCoroutine(FactoryBuildRoutine(delay));
+        }
+
         private IEnumerator FactoryBuildRoutine(float delay)
         {
             yield return new WaitForSeconds(delay);
+            SetLevel(1);
             Activate();
         }
     }
