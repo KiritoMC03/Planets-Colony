@@ -14,7 +14,6 @@ namespace PlanetsColony
         [SerializeField] private ulong _money = 0;
         [SerializeField] private uint _maxShipsCount = 10;
         [SerializeField] private uint _activeShipsCount = 0;
-        [SerializeField] private uint _score = 0;
 
         private void Awake()
         {
@@ -30,18 +29,6 @@ namespace PlanetsColony
         public ulong GetMoney()
         {
             return _money;
-        }
-
-        public uint GetScore()
-        {
-            return _score;
-        }
-        public void UseScore()
-        {
-            if(_score > 0)
-            {
-                _score--;
-            }
         }
 
         public uint GetMaxShipsCount()

@@ -52,7 +52,5 @@ namespace PlanetsColony
             ship.AcceptFinish();
             ship.SetUnityPosition(_transform.position);
         }
-
-        
     }
 }
