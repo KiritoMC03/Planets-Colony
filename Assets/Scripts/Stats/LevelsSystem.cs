@@ -13,6 +13,8 @@ public class LevelsSystem : MonoBehaviour
 
     public ulong CalculateNeedMoney(uint level)
     {
-        return (ulong)(level * Mathf.Pow(level, 5) - 1);
+        return (ulong)(2*Mathf.Pow(level, 6.252f));
     }
+
+    
 }

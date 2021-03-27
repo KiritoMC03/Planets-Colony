@@ -44,11 +44,11 @@ namespace PlanetsColony
             }
         }
 
-        public float GetMaxShipsCount()
+        public uint GetMaxShipsCount()
         {
             return _maxShipsCount;
         }
-        public float GetActiveShipsCount()
+        public uint GetActiveShipsCount()
         {
             return _activeShipsCount;
         }

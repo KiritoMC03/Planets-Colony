@@ -25,10 +25,10 @@ namespace PlanetsColony
 
         public void SetStatsText()
         {
-            _moneyValue.text = _moneyValueText + (float)StatsSystem.Instance.GetMoney();
-            _freeScoreCount.text = _freeScoreCountText + StatsSystem.Instance.GetScore();
-            _maxShipsCount.text = _maxShipsCountText + StatsSystem.Instance.GetMaxShipsCount();
-            _activeShipsCount.text = _activeShipsCountText + StatsSystem.Instance.GetActiveShipsCount();
+            _moneyValue.text = _moneyValueText + Converter.ValueToString(StatsSystem.Instance.GetMoney());
+            _freeScoreCount.text = _freeScoreCountText + Converter.ValueToString(StatsSystem.Instance.GetScore());
+            _maxShipsCount.text = _maxShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetMaxShipsCount());
+            _activeShipsCount.text = _activeShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetActiveShipsCount());
         }
     }
 }
