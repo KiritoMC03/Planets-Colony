@@ -7,6 +7,9 @@ namespace PlanetsColony
     {
         protected ulong value { get; set; }
         protected Type _type;
+        // 0 - абсолютно не нужен, 255 - абсолютно нужен
+        protected byte _marketValue = 10;
+        protected ulong _soldValue = 0;
         private string minMaxValueErrorText = $"Аргументы minValue и maxValue должны быть в пределаха от {ulong.MinValue} до {ulong.MaxValue}";
 
         public Resource(Type type, ulong value)
@@ -43,12 +46,29 @@ namespace PlanetsColony
             return value;
         }
 
-        internal virtual void SubstractValue(ulong value)
+        internal virtual void Sell(ulong value)
         {
             if(value <= this.value)
             {
-                this.value -= value;
+                SubstractValue(value);
+                _soldValue += value;
+                StatsSystem.Instance.IncreaseAllResourceSoldValue(value);
             }
+        }
+
+        protected virtual void SubstractValue(ulong value)
+        {
+            this.value -= value;
+        }
+
+        public byte GetMarketValue()
+        {
+            return _marketValue;
+        }
+
+        internal void SetMarketValue(byte value)
+        {
+            this._marketValue = value;
         }
 
         public virtual Resource.Type GetResourceType()
@@ -59,6 +79,11 @@ namespace PlanetsColony
         public virtual void Add(ulong value)
         {
             this.value += value;
+        }
+
+        public ulong GetSoldValue()
+        {
+            return _soldValue;
         }
     }
 }

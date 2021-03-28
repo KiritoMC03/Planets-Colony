@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,10 +20,17 @@ namespace PlanetsColony
 
         private TradingMenu _tradingMenu = null;
 
+        private uint tempCost = 0;
+
         private void OnEnable()
         {
-            _cost = GenerateCost(10, 100);
-            _costText.text = "Цена за шт. - " + _cost.ToString();
+            UpdateCost();
+            StatsSystem.Instance.OnMoneyValueChange.AddListener(UpdateCost);
+        }
+
+        private void OnDisable()
+        {
+            StatsSystem.Instance.OnMoneyValueChange.RemoveListener(UpdateCost);
         }
 
         public void Sale()
@@ -35,7 +43,9 @@ namespace PlanetsColony
             ValidateTradeValue();
             if (_maySale)
             {
-                StatsSystem.Instance.AddMoney(_tradingMenu.GetResourceToTrade(_resourceType, _tradeValue) * _cost);
+                var money = _tradingMenu.GetResourceToTrade(_resourceType, _tradeValue) * _cost;
+                Debug.Log("_tradeValue: " + _tradeValue);
+                StatsSystem.Instance.AddMoney(money);
                 _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
             }
         }
@@ -63,7 +73,9 @@ namespace PlanetsColony
 
         private uint GenerateCost(uint min, uint max)
         {
-            return (uint)Random.Range(min, max);
+            tempCost = Convert.ToUInt32(Mathf.Clamp((55 * _tradingMenu.GetResourceMarketValue(_resourceType) / 10), 1, uint.MaxValue));
+            tempCost = Convert.ToUInt32(Mathf.Clamp(tempCost, min, max));
+            return tempCost;
         }
 
         public void SetTradingMenu(TradingMenu tradingMenu)
@@ -82,6 +94,17 @@ namespace PlanetsColony
             }
 
             _maySale = (_tradeValue > 0 && _tradeValue <= _resourceValue);
+        }
+
+        public void SetCost(uint min, uint max)
+        {
+            _cost = GenerateCost(min, max);
+            _costText.text = "Цена за шт.: " + _cost.ToString();
+        }
+
+        public void UpdateCost()
+        {
+            SetCost(10, 1000);
         }
     }
 }

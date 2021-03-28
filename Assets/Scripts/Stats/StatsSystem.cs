@@ -17,6 +17,8 @@ namespace PlanetsColony
         [SerializeField] private uint _maxShipsCount = 10;
         [SerializeField] private uint _activeShipsCount = 0;
 
+        private ulong _allResourceSoldValue = 0;
+
         private void Awake()
         {
             Instance = this;
@@ -86,6 +88,15 @@ namespace PlanetsColony
                 _activeShipsCount--;
                 OnShipCountChange?.Invoke();
             }
+        }
+
+        public virtual void IncreaseAllResourceSoldValue(ulong value)
+        {
+            _allResourceSoldValue += value;
+        }
+        public virtual ulong GetAllResourceSoldValue()
+        {
+            return _allResourceSoldValue;
         }
     }
 }

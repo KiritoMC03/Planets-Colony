@@ -46,9 +46,14 @@ namespace PlanetsColony
             }
         }
 
-        public ulong GetResourceToTrade(Resource.Type resource, ulong value)
+        public ulong GetResourceToTrade(Resource.Type type, ulong value)
         {
-            return _resourcesStorage.GetResourceToTrade(resource, value);
+            return _resourcesStorage.GetResourceToTrade(type, value);
+        }
+
+        public byte GetResourceMarketValue(Resource.Type type)
+        {
+            return _resourcesStorage.GetResourceMarketValue(type);
         }
 
         public ResourcesStorage GetResourcesStorageLink()

@@ -51,12 +51,33 @@ namespace PlanetsColony
             {
                 if (resources[i].GetResourceType() == type)
                 {
-                    returnValue = resources[i].GetValue();
-                    resources[i].SubstractValue(value);
-                    ResourceChange?.Invoke();
+                    if(value <= resources[i].GetValue())
+                    {
+                        returnValue = value;
+                        resources[i].Sell(returnValue);
+                        ResourceChange?.Invoke();
+                    }
                 }
             }
             return returnValue;
+        }
+
+        public byte GetResourceMarketValue(Resource.Type type)
+        {
+            byte returnValue = 0;
+            for (int i = 0; i < resources.Length; i++)
+            {
+                if (resources[i].GetResourceType() == type)
+                {
+                    returnValue = resources[i].GetMarketValue();
+                }
+            }
+            return returnValue;
+        }
+
+        public ref Resource[] GetInitResourcesRef()
+        {
+            return ref resources;
         }
     }
 }
