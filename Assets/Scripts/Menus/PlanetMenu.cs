@@ -17,6 +17,9 @@ namespace PlanetsColony
         private Factory _planetFactory = null;
         private Camera _mainCamera = null;
 
+        // временные переменные здесь:
+        private ulong _tempNeedMoney = 0;
+
         private void Awake()
         {
             _mainCamera = Camera.main;
@@ -50,9 +53,11 @@ namespace PlanetsColony
         public void LevelUp()
         {
             _planetFactory = _currentPlanet.GetComponent<Factory>();
-            if (_planetFactory.IsCanLevelUp() &&
-                StatsSystem.Instance.GetMoney() >= LevelsSystem.Instance.CalculateNeedMoney(_planetFactory.GetLevel() + 1))
+            _tempNeedMoney = LevelsSystem.Instance.CalculateNeedMoney(_planetFactory.GetLevel() + 1);
+
+            if (_planetFactory.IsCanLevelUp() && StatsSystem.Instance.GetMoney() >= _tempNeedMoney)
             {
+                StatsSystem.Instance.UseMoney(_tempNeedMoney);
                 _planetFactory.LevelUp();
 
                 _panel.UpdateText();

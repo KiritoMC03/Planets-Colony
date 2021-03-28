@@ -6,23 +6,27 @@ public static class Converter
 {
     public static string ValueToString(uint value)
     {
-        if (value > Math.Pow(10, 6))
+        if (value < Math.Pow(10, 6))
+        {
+            return value + "";
+        }
+        else if (value / Math.Pow(10, 6) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 6), 2) + " млн.";
         }
-        else if (value > Math.Pow(10, 9))
+        else if (value / Math.Pow(10, 9) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 9), 2) + " млрд.";
         }
-        else if (value > Math.Pow(10, 12))
+        else if (value / Math.Pow(10, 12) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 12), 2) + " трл.";
         }
-        else if (value > Math.Pow(10, 15))
+        else if (value / Math.Pow(10, 15) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 15), 2) + " квдр.";
         }
-        else if (value > Math.Pow(10, 18))
+        else if (value / Math.Pow(10, 18) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 18), 2) + " квнт.";
         }
@@ -34,23 +38,27 @@ public static class Converter
 
     public static string ValueToString(ulong value)
     {
-        if (value > Math.Pow(10, 6))
+        if(value < Math.Pow(10, 6))
+        {
+            return value + "";
+        }
+        else if (value / Math.Pow(10, 6) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 6), 2) + " млн.";
         }
-        else if (value > Math.Pow(10, 9))
+        else if (value / Math.Pow(10, 9) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 9), 2) + " млрд.";
         }
-        else if (value > Math.Pow(10, 12))
+        else if (value / Math.Pow(10, 12) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 12), 2) + " трл.";
         }
-        else if (value > Math.Pow(10, 15))
+        else if (value / Math.Pow(10, 15) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 15), 2) + " квдр.";
         }
-        else if (value > Math.Pow(10, 18))
+        else if (value / Math.Pow(10, 18) < 1000)
         {
             return Math.Round(value / Math.Pow(10, 18), 2) + " квнт.";
         }

@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceType: 0
-  sendShipWithCargoDelay: 1.5
+  sendShipWithCargoDelay: 3
 --- !u!114 &13888986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,21 +434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993b015c9151e8a4dad2d60a54bb1213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShipCountChange:
+  OnMoneyValueChange:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 635707625}
-        m_TargetAssemblyTypeName: PlanetsColony.StatsPanel, Assembly-CSharp
-        m_MethodName: SetStatsText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnShipCountChange:
+    m_PersistentCalls:
+      m_Calls: []
   _money: 0
   _maxShipsCount: 10
   _activeShipsCount: 0
@@ -818,7 +809,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &262304457
 MonoBehaviour:
@@ -862,7 +853,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &321973750
 MonoBehaviour:
@@ -1155,7 +1146,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &393204843
 RectTransform:
@@ -1515,7 +1506,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &447375667
 RectTransform:
@@ -1992,7 +1983,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &547877939
 MonoBehaviour:
@@ -2428,7 +2419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 1
+  _resourceType: 4
   sendShipWithCargoDelay: 3
 --- !u!114 &644117665
 MonoBehaviour:
@@ -2541,7 +2532,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &719721732
 MonoBehaviour:
@@ -2563,7 +2554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719721731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1017048, y: 0.15939024, z: -0.30338728}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2877,8 +2868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 3
-  sendShipWithCargoDelay: 2
+  _resourceType: 1
+  sendShipWithCargoDelay: 3
 --- !u!114 &753985571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2891,7 +2882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc84b251f1ba424da2a9a72bf808eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 28
+  _level: 1
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 493001931}
@@ -3015,7 +3006,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &833768515
 MonoBehaviour:
@@ -3037,7 +3028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833768514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0714103, y: 0.20409243, z: -8.217999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3060,7 +3051,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &886935459
 RectTransform:
@@ -3454,7 +3445,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1074017019
 MonoBehaviour:
@@ -3591,7 +3582,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1093733553
 MonoBehaviour:
@@ -3618,7 +3609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093733552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14747238, y: 0.13961408, z: -0.2704305}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3641,7 +3632,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1150372621
 RectTransform:
@@ -3975,7 +3966,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1246879041
 RectTransform:
@@ -4270,7 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 4
+  _resourceType: 0
   sendShipWithCargoDelay: 3
 --- !u!114 &1278471505
 MonoBehaviour:
@@ -4350,7 +4341,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!224 &1467689361
 RectTransform:
@@ -4544,7 +4535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1488050549
 RectTransform:
@@ -5041,7 +5032,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!224 &1612051417
 RectTransform:
@@ -5505,7 +5496,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1933955440
 RectTransform:
@@ -5810,7 +5801,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1985613032
 RectTransform:
@@ -5956,7 +5947,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &2046586971
 MonoBehaviour:
@@ -6035,7 +6026,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!224 &2135558794
 RectTransform:
@@ -6282,7 +6273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceType: 2
-  sendShipWithCargoDelay: 1.5
+  sendShipWithCargoDelay: 3
 --- !u!114 &2139621748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6336,7 +6327,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!222 &8437138088376505125
 CanvasRenderer:

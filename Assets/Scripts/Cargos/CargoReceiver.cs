@@ -11,6 +11,9 @@ namespace PlanetsColony
         private ResourcesStorage _resourcesStorage = null;
         private Collider2D _collider = null;
 
+        // временные переменные здесь:
+        private CargoHandler _tempCargoHandler = null;
+
         private void Awake()
         {
             _resourcesStorage = GetComponent<ResourcesStorage>();
@@ -25,16 +28,17 @@ namespace PlanetsColony
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var cargoTransporter = collision.GetComponent<CargoHandler>();
-            var cargoHandler = collision.GetComponent<CargoHandler>();
+            _tempCargoHandler = collision.GetComponent<CargoHandler>();
 
-            if (cargoTransporter != null && cargoHandler.CheckCargo())
+            if (_tempCargoHandler != null && _tempCargoHandler.CheckCargo())
             {
-                cargoHandler.DeliverCargo(this);
-                ObjectPooler.Instance.DestroyObject(cargoTransporter.gameObject);
+                _tempCargoHandler.DeliverCargo(this);
+                ObjectPooler.Instance.DestroyObject(_tempCargoHandler.gameObject);
                 StatsSystem.Instance.ReduceActiveShipsCount();
                 return;
             }
+
+            _tempCargoHandler = null;
         }
     }
 }

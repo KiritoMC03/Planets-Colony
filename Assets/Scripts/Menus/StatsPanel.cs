@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PlanetsColony
@@ -15,6 +16,12 @@ namespace PlanetsColony
         private const string _moneyValueText = "Деньги: ";
         private const string _maxShipsCountText = "Максимальное число кораблей: ";
         private const string _activeShipsCountText = "Всего кораблей активно: ";
+
+        private void Awake()
+        {
+            StatsSystem.Instance.OnShipCountChange.AddListener(SetStatsText);
+            StatsSystem.Instance.OnMoneyValueChange.AddListener(SetStatsText);
+        }
 
         private void Start()
         {

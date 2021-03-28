@@ -10,18 +10,23 @@ namespace PlanetsColony
     {
         private CargoHandler _cargoHandler = null;
 
+        // временные переменные здесь:
+        private Transform _tempTarget = null;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var tempTarget = GetTarget();
+            _tempTarget = GetTarget();
 
-            if (collision.transform == tempTarget)
+            if (collision.transform == _tempTarget)
             {
-                var tempShipReceiver = tempTarget.GetComponent<CargoLoaderForShips>();
+                var tempShipReceiver = _tempTarget.GetComponent<CargoLoaderForShips>();
                 if (tempShipReceiver != null)
                 {
                     tempShipReceiver.AcceptShip(_cargoHandler);
                 }
             }
+
+            _tempTarget = null;
         }
 
         protected override void DoAwakeWork()
