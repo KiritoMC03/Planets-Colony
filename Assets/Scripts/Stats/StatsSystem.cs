@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ namespace PlanetsColony
 
         public static StatsSystem Instance = null;
 
-        [SerializeField] private ulong _money = 0;
+        [SerializeField] private BigInteger _money = 0;
         [SerializeField] private uint _maxShipsCount = 10;
         [SerializeField] private uint _activeShipsCount = 0;
 
@@ -31,7 +32,7 @@ namespace PlanetsColony
             OnMoneyValueChange?.Invoke();
         }
 
-        public ulong GetMoney()
+        public BigInteger GetMoney()
         {
             return _money;
         }

@@ -1,70 +1,103 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
-public static class Converter
+namespace PlanetsColony
 {
-    public static string ValueToString(uint value)
+    public static class Converter
     {
-        if (value < Math.Pow(10, 6))
+        private static Pow[] powsList = new Pow[]
         {
-            return value + "";
+            new Pow("млн.", 6),
+            new Pow("млрд.", 9),
+            new Pow("трл.", 12),
+            new Pow("квдр.", 15),
+            new Pow("квнт.", 15)
+        };
+
+        public static string ValueToString(uint value)
+        {
+            for (int i = 0; i < powsList.Length; i++)
+            {
+                if (value < powsList[i].GetValue())
+                {
+                    return value.ToString();
+                }
+
+                if (value / powsList[i].GetValue() < 1000)
+                {
+                    return Math.Round((value / powsList[i].GetValue()), 2) + powsList[i].GetName();
+                }
+            }
+
+            return value.ToString();
         }
-        else if (value / Math.Pow(10, 6) < 1000)
+
+        public static string ValueToString(ulong value)
         {
-            return Math.Round(value / Math.Pow(10, 6), 2) + " млн.";
+            for (int i = 0; i < powsList.Length; i++)
+            {
+                if (value < powsList[i].GetValue())
+                {
+                    return value.ToString();
+                }
+
+                if (value / powsList[i].GetValue() < 1000)
+                {
+                    return Math.Round((value / powsList[i].GetValue()), 2) + powsList[i].GetName();
+                }
+            }
+
+            return value.ToString();
         }
-        else if (value / Math.Pow(10, 9) < 1000)
+
+        public static string ValueToString(BigInteger value)
         {
-            return Math.Round(value / Math.Pow(10, 9), 2) + " млрд.";
-        }
-        else if (value / Math.Pow(10, 12) < 1000)
-        {
-            return Math.Round(value / Math.Pow(10, 12), 2) + " трл.";
-        }
-        else if (value / Math.Pow(10, 15) < 1000)
-        {
-            return Math.Round(value / Math.Pow(10, 15), 2) + " квдр.";
-        }
-        else if (value / Math.Pow(10, 18) < 1000)
-        {
-            return Math.Round(value / Math.Pow(10, 18), 2) + " квнт.";
-        }
-        else
-        {
-            return value + "";
+            for (int i = 0; i < powsList.Length; i++)
+            {
+                if (value < (BigInteger)powsList[i].GetValue())
+                {
+                    return value.ToString();
+                }
+
+                if (value / (BigInteger)powsList[i].GetValue() < 1000)
+                {
+                    return value / (BigInteger)powsList[i].GetValue() + powsList[i].GetName();
+                }
+            }
+
+            return value.ToString();
         }
     }
 
-    public static string ValueToString(ulong value)
+
+    public class Pow
     {
-        if(value < Math.Pow(10, 6))
+        private string _name;
+        private double _value;
+        private uint _digits;
+
+        public Pow(string name, uint digits)
         {
-            return value + "";
+            this._name = name;
+            this._digits = digits;
+
+            this._value = Math.Pow(10, digits);
         }
-        else if (value / Math.Pow(10, 6) < 1000)
+        public string GetName()
         {
-            return Math.Round(value / Math.Pow(10, 6), 2) + " млн.";
+            return _name;
         }
-        else if (value / Math.Pow(10, 9) < 1000)
+
+        public double GetValue()
         {
-            return Math.Round(value / Math.Pow(10, 9), 2) + " млрд.";
+            return _value;
         }
-        else if (value / Math.Pow(10, 12) < 1000)
+
+        public uint GetDigits()
         {
-            return Math.Round(value / Math.Pow(10, 12), 2) + " трл.";
-        }
-        else if (value / Math.Pow(10, 15) < 1000)
-        {
-            return Math.Round(value / Math.Pow(10, 15), 2) + " квдр.";
-        }
-        else if (value / Math.Pow(10, 18) < 1000)
-        {
-            return Math.Round(value / Math.Pow(10, 18), 2) + " квнт.";
-        }
-        else
-        {
-            return value + "";
+            return _digits;
         }
     }
 }
