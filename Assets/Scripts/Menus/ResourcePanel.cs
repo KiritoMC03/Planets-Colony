@@ -12,6 +12,7 @@ namespace PlanetsColony
         [SerializeField] private ResourcesStorage _resourcesStorage = null;
 
         private Text[] _generatedElements;
+        private Text _tempNewElement = null;
 
         private void Awake()
         {
@@ -27,18 +28,31 @@ namespace PlanetsColony
 
             for (int i = 0; i < resourceInfo.Count; i++)
             {
-                var newElement = Instantiate(_resourceCountPrefab, transform);
-                newElement.text = resourceInfo[i].GetName() + " " + Converter.ValueToString(_resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType()));
-                _generatedElements[i] = newElement;
+                _tempNewElement = CreateResourceElement();
+                _tempNewElement.text = CreateResourceCountText(resourceInfo[i]);
+                _generatedElements[i] = _tempNewElement;
             }
+
+            _tempNewElement = null;
+        }
+
+        private Text CreateResourceElement()
+        {
+             return Instantiate(_resourceCountPrefab, transform);
         }
 
         public void RefreshElements(List<ResourcesSystem.ResourceInfo> resourceInfo)
         { 
             for (int i = 0; i < _generatedElements.Length; i++)
             {
-                _generatedElements[i].text = resourceInfo[i].GetName() + " " + Converter.ValueToString(_resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType()));
+                _generatedElements[i].text = CreateResourceCountText(resourceInfo[i]);;
             }
+        }
+
+        private string CreateResourceCountText(ResourcesSystem.ResourceInfo resourceInfo)
+        {
+            var resourceValue = Converter.ValueToString(_resourcesStorage.GetResourceValue(resourceInfo.GetResourceType()));
+            return resourceInfo.GetName() + resourceValue + ResourcesSystem.GetUnitsOfMeasurement();
         }
     }
 }

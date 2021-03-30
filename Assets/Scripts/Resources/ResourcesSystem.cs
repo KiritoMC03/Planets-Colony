@@ -8,11 +8,16 @@ namespace PlanetsColony
 {
     public class ResourcesSystem : MonoBehaviour
     {
+        [SerializeField] internal static ResourcesSystem Instance = null;
+
         [Serializable]
         public struct ResourceInfo
         {
             [SerializeField] private Resource.Type Type;
             [SerializeField] private string name;
+            [Header("За тонну.")]
+            [SerializeField] private uint minCost;
+            [SerializeField] private uint maxCost;
 
             public string GetName()
             {
@@ -23,11 +28,29 @@ namespace PlanetsColony
             {
                 return Type;
             }
+
+            public uint GetMinCost()
+            {
+                return minCost;
+            }
+
+            public uint GetMaxCost()
+            {
+                return maxCost;
+            }
         }
+
         [SerializeField] private ResourcePanel _resourcePanel = null;
         [SerializeField] private TradingMenu _tradingMenu = null;
-        [Header("Only unique types!")]
+        [Header("Не должны повторяться!")]
         [SerializeField] private List<ResourceInfo> _resourceInfo = null;
+
+        private static string unitsOfMeasurement = " тонн.";
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -60,6 +83,37 @@ namespace PlanetsColony
         {
             _resourcePanel.RefreshElements(_resourceInfo);
             _tradingMenu.RefreshElements(_resourceInfo);
+        }
+
+        public static string GetUnitsOfMeasurement()
+        {
+            return unitsOfMeasurement;
+        }
+
+        public uint GetMinCost(Resource.Type type)
+        {
+            for (int i = 0; i < _resourceInfo.Count; i++)
+            {
+                if(_resourceInfo[i].GetResourceType() == type)
+                {
+                    return _resourceInfo[i].GetMinCost();
+                }
+            }
+
+            throw new Exception("Ошибка. Не найден тип ресурса, либо стоимость.");
+        }
+
+        public uint GetMaxCost(Resource.Type type)
+        {
+            for (int i = 0; i < _resourceInfo.Count; i++)
+            {
+                if (_resourceInfo[i].GetResourceType() == type)
+                {
+                    return _resourceInfo[i].GetMaxCost();
+                }
+            }
+
+            throw new Exception("Ошибка. Не найден тип ресурса, либо стоимость.");
         }
     }
 }

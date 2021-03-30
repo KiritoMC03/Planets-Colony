@@ -2893,7 +2893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc84b251f1ba424da2a9a72bf808eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 1
+  _level: 4294967295
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 493001931}
@@ -9518,15 +9518,25 @@ MonoBehaviour:
   _tradingMenu: {fileID: 428788763}
   _resourceInfo:
   - Type: 0
-    name: "\u0416\u0435\u043B\u0435\u0437\u043E:"
+    name: "\u0416\u0435\u043B\u0435\u0437\u043E: "
+    minCost: 130
+    maxCost: 200
   - Type: 1
-    name: "\u0417\u043E\u043B\u043E\u0442\u043E:"
+    name: "\u0417\u043E\u043B\u043E\u0442\u043E: "
+    minCost: 40000000
+    maxCost: 60000000
   - Type: 2
-    name: "\u0421\u0435\u0440\u0435\u0431\u0440\u043E:"
+    name: "\u0421\u0435\u0440\u0435\u0431\u0440\u043E: "
+    minCost: 600000
+    maxCost: 900000
   - Type: 3
-    name: "\u0423\u0440\u0430\u043D:"
+    name: "\u0423\u0440\u0430\u043D: "
+    minCost: 20000
+    maxCost: 35000
   - Type: 4
-    name: "\u0422\u0438\u0442\u0430\u043D:"
+    name: "\u0422\u0438\u0442\u0430\u043D: "
+    minCost: 3500
+    maxCost: 6000
 --- !u!4 &1594384865
 Transform:
   m_ObjectHideFlags: 0

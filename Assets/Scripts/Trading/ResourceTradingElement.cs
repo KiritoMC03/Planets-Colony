@@ -8,9 +8,11 @@ namespace PlanetsColony
 {
     public class ResourceTradingElement : MonoBehaviour
     {
-        [SerializeField] private Text _resource = null;
-        [SerializeField] private Text _costText = null;
+        [SerializeField] private Text _resourceName = null;
+        [SerializeField] private Text _oneCost = null;
         [SerializeField] private InputField _tradeValueField = null;
+
+        private static string _oneCostText = "Цена за шт.: ";
 
         private uint _cost = 1;
         private ulong _resourceValue = 0;
@@ -33,37 +35,69 @@ namespace PlanetsColony
             StatsSystem.Instance.OnMoneyValueChange.RemoveListener(UpdateCost);
         }
 
+        #region TradeWork
         public void Sale()
         {
-            if(_tradingMenu == null)
-            {
-                throw new System.Exception("TradingMenu не установлено.");
-            }
-
+            CheckTradingMenu();
             ValidateTradeValue();
             if (_maySale)
             {
-                var money = _tradingMenu.GetResourceToTrade(_resourceType, _tradeValue) * _cost;
-                Debug.Log("_tradeValue: " + _tradeValue);
-                StatsSystem.Instance.AddMoney(money);
-                _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
+                Trade(_tradeValue);
             }
         }
 
+        public void SaleAll()
+        {
+            if (CheckTradingMenu())
+            {
+                Trade(_resourceValue);
+            }
+        }
+
+        public void UpdateCost()
+        {
+            if(ResourcesSystem.Instance == null)
+            {
+                throw new Exception("Не найден ни один объект ResourcesSystem с корректной ссылкой Instance.");
+            }
+
+            var min = ResourcesSystem.Instance.GetMinCost(_resourceType);
+            var max = ResourcesSystem.Instance.GetMaxCost(_resourceType);
+            SetCost(min, max);
+        }
+
+        private void Trade(ulong value)
+        {
+            var money = _tradingMenu.GetResourceToTrade(_resourceType, value) * _cost;
+            StatsSystem.Instance.AddMoney(money);
+            _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
+        }
+
+        #endregion
+
+        #region TextWork
         internal void SetResourceNameAndValue(string name, ulong value)
         {
             _resourceValue = value;
-            _resource.text = name + _resourceValue;
+            _resourceName.text = name + Converter.ValueToString(value) + ResourcesSystem.GetUnitsOfMeasurement();
+        }
+        #endregion
+
+        #region GettersSetters
+        public void SetTradingMenu(TradingMenu tradingMenu)
+        {
+            this._tradingMenu = tradingMenu;
         }
 
-        internal void SetResourceType(Resource.Type resourceType)
+        private void SetCost(uint min, uint max)
         {
-            this._resourceType = resourceType;
+            _cost = GenerateCost(min, max);
+            _oneCost.text = _oneCostText + _cost.ToString();
         }
 
         public string GetResourceName()
         {
-            return _resource.text;
+            return _resourceName.text;
         }
 
         public Resource.Type GetResourceType()
@@ -71,18 +105,13 @@ namespace PlanetsColony
             return _resourceType;
         }
 
-        private uint GenerateCost(uint min, uint max)
+        internal void SetResourceType(Resource.Type resourceType)
         {
-            tempCost = Convert.ToUInt32(Mathf.Clamp((55 * _tradingMenu.GetResourceMarketValue(_resourceType) / 10), 1, uint.MaxValue));
-            tempCost = Convert.ToUInt32(Mathf.Clamp(tempCost, min, max));
-            return tempCost;
+            this._resourceType = resourceType;
         }
+        #endregion
 
-        public void SetTradingMenu(TradingMenu tradingMenu)
-        {
-            this._tradingMenu = tradingMenu;
-        }
-
+        #region PreTradeWork
         public void ValidateTradeValue()
         {
             ulong.TryParse(_tradeValueField.text, out _tradeValue);
@@ -96,15 +125,21 @@ namespace PlanetsColony
             _maySale = (_tradeValue > 0 && _tradeValue <= _resourceValue);
         }
 
-        public void SetCost(uint min, uint max)
+        private bool CheckTradingMenu()
         {
-            _cost = GenerateCost(min, max);
-            _costText.text = "Цена за шт.: " + _cost.ToString();
+            if (_tradingMenu == null)
+            {
+                throw new System.Exception("TradingMenu не установлено.");
+            }
+            return true;
         }
 
-        public void UpdateCost()
+        private uint GenerateCost(uint min, uint max)
         {
-            SetCost(10, 1000);
+            tempCost = (uint)(Mathf.Sqrt(_tradingMenu.GetResourceMarketValue(_resourceType)) * UnityEngine.Random.Range(min, max));
+            //tempCost = Convert.ToUInt32(Mathf.Clamp(tempCost, min, max));
+            return tempCost;
         }
+        #endregion
     }
 }

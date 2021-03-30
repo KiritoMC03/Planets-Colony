@@ -7,13 +7,16 @@ namespace PlanetsColony
 {
     public class TradingSystem : MonoBehaviour
     {
+        [SerializeField] internal static TradingSystem Instance = null;
+
         [SerializeField] private ResourcesStorage _resourcesStorage = null;
         [SerializeField] private byte _baseMarketValue = 10;
         private Resource[] _resources = null;
 
         private void Awake()
         {
-            if(_resourcesStorage == null)
+            Instance = this;
+            if (_resourcesStorage == null)
             {
                 throw new Exception("Необходимо установить поле ResourcesStorage.");
             }
@@ -35,9 +38,13 @@ namespace PlanetsColony
                     byte mVal = Convert.ToByte(Convert.ToByte(mult) + _baseMarketValue);
 
                     _resources[i].SetMarketValue(mVal);
-
                 }
             }
+        }
+
+        private uint GetBaseMarketValue()
+        {
+            return _baseMarketValue;
         }
     }
 }

@@ -100,7 +100,7 @@ namespace PlanetsColony
             return _canLevelUp;
         }
 
-        private uint CalculateResourceValueMultiplier()
+        private float CalculateResourceValueMultiplier()
         {
             return _resourceValueMultiplier = _level;
         }

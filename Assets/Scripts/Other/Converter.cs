@@ -9,11 +9,12 @@ namespace PlanetsColony
     {
         private static Pow[] powsList = new Pow[]
         {
-            new Pow("млн.", 6),
-            new Pow("млрд.", 9),
-            new Pow("трл.", 12),
-            new Pow("квдр.", 15),
-            new Pow("квнт.", 15)
+            new Pow(" тыс.", 3),
+            new Pow(" млн.", 6),
+            new Pow(" млрд.", 9),
+            new Pow(" трл.", 12),
+            new Pow(" квдр.", 15),
+            new Pow(" квнт.", 15)
         };
 
         public static string ValueToString(uint value)

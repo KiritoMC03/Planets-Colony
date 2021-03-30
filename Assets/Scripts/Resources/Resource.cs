@@ -10,6 +10,7 @@ namespace PlanetsColony
         // 0 - абсолютно не нужен, 255 - абсолютно нужен
         protected byte _marketValue = 10;
         protected ulong _soldValue = 0;
+
         private string minMaxValueErrorText = $"Аргументы minValue и maxValue должны быть в пределаха от {ulong.MinValue} до {ulong.MaxValue}";
 
         public Resource(Type type, ulong value)
