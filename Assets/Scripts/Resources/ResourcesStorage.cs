@@ -19,14 +19,19 @@ namespace PlanetsColony
             new Resource(Resource.Type.Titan, 0)
         };
 
-        public void AcceptCargoFromShip(Cargo cargo)
+        public void AcceptCargoFromShip(List<Cargo> cargos)
         {
-            for (int i = 0; i < resources.Length; i++)
+            for (int i = 0; i < cargos.Count; i++)
             {
-                if (cargo.GetResourceType() == resources[i].GetResourceType())
+                var thisCargo = cargos[i];
+
+                for (int j = 0; j < resources.Length; j++)
                 {
-                    resources[i].Add(cargo.GetValue());
-                    ResourceChange?.Invoke();
+                    if (thisCargo.GetResourceType() == resources[j].GetResourceType())
+                    {
+                        resources[j].Add(thisCargo.GetValue());
+                        ResourceChange?.Invoke();
+                    }
                 }
             }
         }

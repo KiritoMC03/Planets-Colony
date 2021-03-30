@@ -9,15 +9,16 @@ namespace PlanetsColony
     public class CargoHandler : MonoBehaviour
     {
         private Transform _transform = null;
-        private Cargo _cargo = null;
+        private List<Cargo> _cargos = new List<Cargo>();
         private Spaceship _cargoTransporter = null;
 
         private void Awake()
         {
             _transform = transform;
             _cargoTransporter = GetComponent<Spaceship>();
+            _cargos = new List<Cargo>();
 
-            if(_cargoTransporter == null)
+            if (_cargoTransporter == null)
             {
                 throw new ArgumentNullException("Компонент Cargo Transporter не добавлен.");
             }
@@ -25,12 +26,12 @@ namespace PlanetsColony
 
         public bool CheckCargo()
         {
-            return (_cargo != null) ? true : false;
+            return (_cargos != null && _cargos.Count > 0) ? true : false;
         }
 
         public void AcceptCargo(Cargo cargo)
         {
-            this._cargo = cargo;
+            this._cargos.Add(cargo);
         }
 
         public void AcceptNow()
@@ -46,11 +47,11 @@ namespace PlanetsColony
             _cargoTransporter.SetCanMove(true);
         }
 
-        public Cargo DeliverCargo(CargoReceiver cargoReceiver)
+        public List<Cargo> DeliverCargo(CargoReceiver cargoReceiver)
         {
-            var tempCargo = _cargo;
-            cargoReceiver.AcceptCargo(_cargo);
-            _cargo = null;
+            var tempCargo = _cargos;
+            cargoReceiver.AcceptCargo(_cargos);
+            _cargos.Clear();
             return tempCargo;
         }
         public Transform GetUnityTransform()

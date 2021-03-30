@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 0
+  _resourceTypes: 0000000001000000
   sendShipWithCargoDelay: 3
 --- !u!114 &13888986
 MonoBehaviour:
@@ -452,7 +452,6 @@ MonoBehaviour:
   OnShipCountChange:
     m_PersistentCalls:
       m_Calls: []
-  _money: 0
   _maxShipsCount: 10
   _activeShipsCount: 0
 --- !u!4 &109331194
@@ -2431,7 +2430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 4
+  _resourceTypes: 0200000003000000
   sendShipWithCargoDelay: 3
 --- !u!114 &644117665
 MonoBehaviour:
@@ -2880,7 +2879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 1
+  _resourceTypes: 000000000200000001000000
   sendShipWithCargoDelay: 3
 --- !u!114 &753985571
 MonoBehaviour:
@@ -8739,7 +8738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 2
+  _resourceTypes: 0100000004000000
   sendShipWithCargoDelay: 3
 --- !u!114 &1225548155
 MonoBehaviour:
@@ -9085,7 +9084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 0
+  _resourceTypes: 0400000004000000
   sendShipWithCargoDelay: 3
 --- !u!114 &1278471505
 MonoBehaviour:
@@ -9710,7 +9709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 3
+  _resourceTypes: 0300000003000000
   sendShipWithCargoDelay: 3
 --- !u!114 &1598648323
 MonoBehaviour:
@@ -11141,7 +11140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceType: 2
+  _resourceTypes: 0300000004000000
   sendShipWithCargoDelay: 3
 --- !u!114 &2139621748
 MonoBehaviour:

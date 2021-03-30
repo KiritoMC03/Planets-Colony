@@ -7,7 +7,7 @@ namespace PlanetsColony
     [RequireComponent(typeof(Factory))]
     public class CargoLoaderForShips : MonoBehaviour
     {
-        [SerializeField] private Resource.Type _resourceType;
+        [SerializeField] private Resource.Type[] _resourceTypes;
         [SerializeField] private float sendShipWithCargoDelay = 3f;
 
         private Transform _transform = null;
@@ -48,7 +48,10 @@ namespace PlanetsColony
                 return;
             }
             var ship = aceptedSpaceShips.Dequeue();
-            _factory.SendCargo(ship, _resourceType);
+            for (int i = 0; i < _resourceTypes.Length; i++)
+            {
+                _factory.SendCargo(ship, _resourceTypes[i]);
+            }
             ship.AcceptFinish();
             ship.SetUnityPosition(_transform.position);
         }

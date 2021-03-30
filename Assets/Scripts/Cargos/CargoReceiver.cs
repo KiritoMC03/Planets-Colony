@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace PlanetsColony
 {
@@ -21,7 +22,7 @@ namespace PlanetsColony
             _collider.isTrigger = true;
         }
 
-        public void AcceptCargo(Cargo cargo)
+        public void AcceptCargo(List<Cargo> cargo)
         {
             _resourcesStorage.AcceptCargoFromShip(cargo);
         }
