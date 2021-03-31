@@ -19,12 +19,11 @@ namespace PlanetsColony
         {
             _transform = transform;
             _cameraMovement = GetComponent<CameraMovement>();
-            _cameraMovement.Moved.AddListener(Check);
+            _cameraMovement.OnMoved.AddListener(Check);
         }
 
         public void Check()
         {
-            Debug.Log("Check!");
             if (_cameraMovement == null)
             {
                 throw new Exception("Отсутствует компонент CameraMovement.");

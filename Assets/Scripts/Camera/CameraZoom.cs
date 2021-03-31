@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PlanetsColony
 {
     public class CameraZoom : MonoBehaviour
     {
+        public UnityEvent OnZoomed;
+
         [SerializeField] private Scrollbar _scrollbar = null;
         [SerializeField] private float _scrollSpeed = 1f;
         [SerializeField] private float _minCameraHeight = 1f;
@@ -29,10 +32,15 @@ namespace PlanetsColony
             _heightLimiter = new Vector3(0, _minCameraHeight, 0);
         }
 
+        private void Start()
+        {
+            ZoomScroll();
+            OnZoomed?.Invoke();
+        }
+
         private void Update()
         {
             ZoomScroll();
-            //Zoom();
             _buttonUsed = false;
         }
 
@@ -44,10 +52,14 @@ namespace PlanetsColony
                     _transform.position.x, 
                     _transform.position.y, 
                     -(_scrollbar.value * (_minCameraHeight + _maxCameraHeight) / 2) - _minCameraHeight);
+
                 _transform.position = _offset;
+
+                OnZoomed.Invoke();
             }
         }
 
+        /*
         private void Zoom()
         {
             SetScroll();
@@ -59,6 +71,7 @@ namespace PlanetsColony
                 CalculateZoomMultiplier();
             }
         }
+        */
 
         private float SetScroll()
         {
@@ -85,6 +98,5 @@ namespace PlanetsColony
             _buttonUsed = true;
             _scroll = -_zoomStep;
         }
-
     }
 }

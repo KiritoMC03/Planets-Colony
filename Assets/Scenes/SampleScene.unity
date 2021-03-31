@@ -592,8 +592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9a2cd2950d0154fa5ff5929e1773b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximum: {x: 100, y: 100}
-  minimum: {x: -100, y: -100}
+  maximum: {x: 25, y: 25}
+  minimum: {x: -25, y: -25}
 --- !u!114 &164504051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,9 +606,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4e147c3fe186b478d73e86618c12b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Moved:
+  OnMoved:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1068549834}
+        m_TargetAssemblyTypeName: PlanetsColony.BackStart, Assembly-CSharp
+        m_MethodName: MoveForCamera
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 164504053}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Camera, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _speed: 0.2
   _useJoystic: 1
   _joystick: {fileID: 404925992}
@@ -689,6 +701,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefc0f8e95fb938438f233f17f92f889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnZoomed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1068549834}
+        m_TargetAssemblyTypeName: PlanetsColony.BackStart, Assembly-CSharp
+        m_MethodName: MoveForCamera
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 164504053}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Camera, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _scrollbar: {fileID: 745155224}
   _scrollSpeed: 0.1
   _minCameraHeight: 1
@@ -3436,7 +3463,7 @@ Transform:
   - {fileID: 1598648316}
   - {fileID: 1278471498}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1068549830
 GameObject:
@@ -3447,6 +3474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068549833}
+  - component: {fileID: 1068549834}
   - component: {fileID: 1068549832}
   - component: {fileID: 1068549831}
   m_Layer: 8
@@ -3774,8 +3802,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.05
-      minScalar: 0.1
+      scalar: 0.1
+      minScalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4090,7 +4118,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 350
+    maxNumParticles: 5000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4157,7 +4185,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 30, y: 30, z: 1}
+    m_Scale: {x: 100, y: 100, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -8248,8 +8276,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068549834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068549830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f5d76401e0ce24fa556ddd0bc72720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 164504053}
+  _startOffset: {x: 0, y: 0, z: 10}
 --- !u!1 &1074017018
 GameObject:
   m_ObjectHideFlags: 0

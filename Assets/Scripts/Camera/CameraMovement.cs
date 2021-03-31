@@ -7,7 +7,7 @@ namespace PlanetsColony
     [RequireComponent(typeof(CameraDistance))]
     public class CameraMovement : MonoBehaviour
     {
-        public UnityEvent Moved;
+        public UnityEvent OnMoved;
 
         [SerializeField] private float _speed = 1f;
         [SerializeField] private bool _useJoystic = false;
@@ -60,7 +60,7 @@ namespace PlanetsColony
             if (_offset != _zeroOffset)
             {
                 _transform.position += (Vector3)_offset;
-                Moved.Invoke();
+                OnMoved.Invoke();
             }
             CalculateSpeedMultiplier();
         }
