@@ -34,7 +34,20 @@ namespace PlanetsColony
             Gold,
             Silver,
 			Uran,
-			Titan
+			Titan,
+			Nickel,
+			Sulfur,
+			Chromium,
+			Tungsten,
+			Molybdenum,
+			Aluminum,
+			Copper,
+			Tin,
+			Hydrargyrum,
+			Manganese,
+			Asbestos,
+			Graphite,
+			Potassium
         }
 
         public virtual float GetPrice()

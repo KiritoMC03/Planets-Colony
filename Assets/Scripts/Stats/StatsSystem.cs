@@ -37,7 +37,7 @@ namespace PlanetsColony
             return _money;
         }
 
-        internal void UseMoney(ulong value)
+        internal void UseMoney(BigInteger value)
         {
             if(value > this._money)
             {

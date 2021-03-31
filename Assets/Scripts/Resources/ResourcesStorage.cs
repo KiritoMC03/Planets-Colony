@@ -16,7 +16,20 @@ namespace PlanetsColony
             new Resource(Resource.Type.Gold, 0),
             new Resource(Resource.Type.Silver, 0),
             new Resource(Resource.Type.Uran, 0),
-            new Resource(Resource.Type.Titan, 0)
+            new Resource(Resource.Type.Titan, 0),
+			new Resource(Resource.Type.Nickel, 0),
+			new Resource(Resource.Type.Sulfur, 0),
+            new Resource(Resource.Type.Chromium, 0),
+			new Resource(Resource.Type.Tungsten, 0),
+			new Resource(Resource.Type.Molybdenum, 0),
+            new Resource(Resource.Type.Aluminum, 0),
+			new Resource(Resource.Type.Copper, 0),
+			new Resource(Resource.Type.Tin, 0),
+            new Resource(Resource.Type.Hydrargyrum, 0),
+			new Resource(Resource.Type.Manganese, 0),
+			new Resource(Resource.Type.Asbestos, 0),
+            new Resource(Resource.Type.Graphite, 0),
+			new Resource(Resource.Type.Potassium, 0)
         };
 
         public void AcceptCargoFromShip(List<Cargo> cargos)

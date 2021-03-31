@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace PlanetsColony
 {
@@ -18,7 +16,7 @@ namespace PlanetsColony
         private Camera _mainCamera = null;
 
         // временные переменные здесь:
-        private ulong _tempNeedMoney = 0;
+        private BigInteger _tempNeedMoney = 0;
 
         private void Awake()
         {

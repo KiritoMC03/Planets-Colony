@@ -12,9 +12,23 @@ namespace PlanetsColony
             new Pow(" тыс.", 3),
             new Pow(" млн.", 6),
             new Pow(" млрд.", 9),
-            new Pow(" трл.", 12),
-            new Pow(" квдр.", 15),
-            new Pow(" квнт.", 15)
+            new Pow(" трлн.", 12),
+            new Pow(" квадрлн.", 15),
+            new Pow(" квинтлн.", 18),
+            new Pow(" cекстлн.", 21),
+            new Pow(" септлн.", 24),
+            new Pow(" октлн.", 27),
+            new Pow(" нонлн.", 30),
+            new Pow(" децлн.", 33),
+            new Pow(" ундецлн.", 36),
+            new Pow(" дуодецлн.", 39),
+            new Pow(" тредецлн.", 42),
+            new Pow(" кваттуордецлн.", 45),
+            new Pow(" квиндецлн.", 48),
+            new Pow(" сексдецлн.", 51),
+            new Pow(" септдецлн.", 54),
+            new Pow(" октдецлн.", 57),
+            new Pow(" новемдецлн.", 60)
         };
 
         public static string ValueToString(uint value)
