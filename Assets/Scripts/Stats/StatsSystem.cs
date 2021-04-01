@@ -26,7 +26,7 @@ namespace PlanetsColony
 			Application.targetFrameRate = 60;
         }
 
-        internal void AddMoney(ulong value)
+        internal void AddMoney(BigInteger value)
         {
             _money += value;
             OnMoneyValueChange?.Invoke();

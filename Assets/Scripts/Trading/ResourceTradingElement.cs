@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,19 +15,22 @@ namespace PlanetsColony
 
         private static string _oneCostText = "Цена за шт.: ";
 
-        private uint _cost = 1;
+        private BigInteger _cost = 1;
         private ulong _resourceValue = 0;
         private ulong _tradeValue = 0;
         private Resource.Type _resourceType;
         private bool _maySale = false;
 
-        [SerializeField] private TradingMenu _tradingMenu = null;
+        private TradingMenu _tradingMenu = null;
 
-        private uint tempCost = 0;
+        private BigInteger tempCost = 0;
 
         private void OnEnable()
         {
-            UpdateCost();
+            if(_tradingMenu != null)
+            {
+                UpdateCost();
+            }
             StatsSystem.Instance.OnMoneyValueChange.AddListener(UpdateCost);
         }
 
@@ -60,6 +64,10 @@ namespace PlanetsColony
             {
                 throw new Exception("Не найден ни один объект ResourcesSystem с корректной ссылкой Instance.");
             }
+            if(_tradingMenu == null)
+            {
+                throw new Exception("Не установлено поле Trading Menu");
+            }
 
             var min = ResourcesSystem.Instance.GetMinCost(_resourceType);
             var max = ResourcesSystem.Instance.GetMaxCost(_resourceType);
@@ -89,10 +97,13 @@ namespace PlanetsColony
             this._tradingMenu = tradingMenu;
         }
 
-        private void SetCost(uint min, uint max)
+        private void SetCost(ulong min, ulong max)
         {
             _cost = GenerateCost(min, max);
-            _oneCost.text = _oneCostText + _cost.ToString();
+            if(_oneCost != null)
+            {
+                _oneCost.text = _oneCostText + _cost.ToString();
+            }
         }
 
         public string GetResourceName()
@@ -134,16 +145,16 @@ namespace PlanetsColony
             return true;
         }
 
-        private uint GenerateCost(uint min, uint max)
+        private BigInteger GenerateCost(ulong min, ulong max)
         {
+            if(_tradingMenu == null)
+            {
+                throw new Exception("Поле Trading Menu не установлено.");
+            }
 
-            tempCost = 100;
-                /*
-                (uint)
-                (Mathf.Sqrt(
-                    _tradingMenu.GetResourceMarketValue(_resourceType)) 
-                * UnityEngine.Random.Range(min, max));
-                */
+            var marketValue = _tradingMenu.GetResourceMarketValue(_resourceType);
+            var preCost = (Mathf.Sqrt(marketValue) * UnityEngine.Random.Range(min, max));
+            tempCost = (BigInteger)preCost;
             //tempCost = Convert.ToUInt32(Mathf.Clamp(tempCost, min, max));
             return tempCost;
         }

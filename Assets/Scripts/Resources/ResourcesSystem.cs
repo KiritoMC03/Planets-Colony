@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,8 +17,8 @@ namespace PlanetsColony
             [SerializeField] private Resource.Type Type;
             [SerializeField] private string name;
             [Header("За тонну.")]
-            [SerializeField] private uint minCost;
-            [SerializeField] private uint maxCost;
+            [SerializeField] private ulong minCost;
+            [SerializeField] private ulong maxCost;
 
             public string GetName()
             {
@@ -29,12 +30,12 @@ namespace PlanetsColony
                 return Type;
             }
 
-            public uint GetMinCost()
+            public ulong GetMinCost()
             {
                 return minCost;
             }
 
-            public uint GetMaxCost()
+            public ulong GetMaxCost()
             {
                 return maxCost;
             }
@@ -90,7 +91,7 @@ namespace PlanetsColony
             return unitsOfMeasurement;
         }
 
-        public uint GetMinCost(Resource.Type type)
+        public ulong GetMinCost(Resource.Type type)
         {
             for (int i = 0; i < _resourceInfo.Count; i++)
             {
@@ -103,7 +104,7 @@ namespace PlanetsColony
             throw new Exception("Ошибка. Не найден тип ресурса, либо стоимость.");
         }
 
-        public uint GetMaxCost(Resource.Type type)
+        public ulong GetMaxCost(Resource.Type type)
         {
             for (int i = 0; i < _resourceInfo.Count; i++)
             {
