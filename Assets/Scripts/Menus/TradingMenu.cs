@@ -10,6 +10,7 @@ namespace PlanetsColony
     {
         [SerializeField] private ResourceTradingElement _resourceTradingPrefab = null;
         [SerializeField] private ResourcesStorage _resourcesStorage = null;
+        [SerializeField] private Transform _elementsContainer = null;
 
         private ResourceTradingElement[] _generatedElements;
 
@@ -19,6 +20,10 @@ namespace PlanetsColony
             {
                 throw new ArgumentNullException("Заполните поле Resources Storage.");
             }
+            if (_elementsContainer == null)
+            {
+                throw new ArgumentNullException("Заполните поле Elements Container.");
+            }
         }
 
         public void GenerateTradingList(List<ResourcesSystem.ResourceInfo> resourceInfo)
@@ -27,7 +32,12 @@ namespace PlanetsColony
 
             for (int i = 0; i < resourceInfo.Count; i++)
             {
-                var newElement = Instantiate(_resourceTradingPrefab, transform);
+                if (_elementsContainer == null)
+                {
+                    throw new ArgumentNullException("Заполните поле Elements Container.");
+                }
+
+                var newElement = Instantiate(_resourceTradingPrefab, _elementsContainer);
                 var tempText = resourceInfo[i].GetName();
                 newElement.SetTradingMenu(this);
                 newElement.SetResourceNameAndValue(tempText, _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType()));

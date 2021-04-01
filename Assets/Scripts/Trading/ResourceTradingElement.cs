@@ -20,7 +20,7 @@ namespace PlanetsColony
         private Resource.Type _resourceType;
         private bool _maySale = false;
 
-        private TradingMenu _tradingMenu = null;
+        [SerializeField] private TradingMenu _tradingMenu = null;
 
         private uint tempCost = 0;
 
@@ -136,7 +136,14 @@ namespace PlanetsColony
 
         private uint GenerateCost(uint min, uint max)
         {
-            tempCost = (uint)(Mathf.Sqrt(_tradingMenu.GetResourceMarketValue(_resourceType)) * UnityEngine.Random.Range(min, max));
+
+            tempCost = 100;
+                /*
+                (uint)
+                (Mathf.Sqrt(
+                    _tradingMenu.GetResourceMarketValue(_resourceType)) 
+                * UnityEngine.Random.Range(min, max));
+                */
             //tempCost = Convert.ToUInt32(Mathf.Clamp(tempCost, min, max));
             return tempCost;
         }
