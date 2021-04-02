@@ -33,6 +33,7 @@ namespace PlanetsColony
             }
         }
 
+        #region ResourceListWork
         public void GenerateTradingList(List<ResourcesSystem.ResourceInfo> resourceInfo)
         {
             _generatedElements = new ResourceTradingElement[resourceInfo.Count];
@@ -45,7 +46,7 @@ namespace PlanetsColony
                 }
 
                 var tempResourceValue = _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());
-                
+
                 var newElement = Instantiate(_resourceTradingPrefab, _elementsContainer);
                 var tempText = resourceInfo[i].GetName();
                 newElement.SetTradingMenu(this);
@@ -72,7 +73,7 @@ namespace PlanetsColony
             for (int i = 0; i < _generatedElements.Length; i++)
             {
                 var tempResourceValue = _resourcesStorage.GetResourceValue(_generatedElements[i].GetResourceType());
-                if(tempResourceValue == 0)
+                if (tempResourceValue == 0)
                 {
                     _generatedElements[i].gameObject.SetActive(false);
                 }
@@ -89,6 +90,19 @@ namespace PlanetsColony
             CheckActiveElementsCount();
         }
 
+        #endregion
+
+        #region TradeWork
+        public void SaleAllResourcesTypes()
+        {
+            for (int i = 0; i < _generatedElements.Length; i++)
+            {
+                _generatedElements[i].SaleAll();
+            }
+        }
+        #endregion
+
+        #region GettersSetters
         public ulong GetResourceToTrade(Resource.Type type, ulong value)
         {
             return _resourcesStorage.GetResourceToTrade(type, value);
@@ -103,10 +117,12 @@ namespace PlanetsColony
         {
             return _resourcesStorage;
         }
+        #endregion
 
+        #region Utils
         private void CheckActiveElementsCount()
         {
-            if(_activeElementsCount == 0)
+            if (_activeElementsCount == 0)
             {
                 _elementsCountIsNull.text = _elementsCountIsNullMessage;
                 _elementsCountIsNull.gameObject.SetActive(true);
@@ -116,5 +132,6 @@ namespace PlanetsColony
                 _elementsCountIsNull.gameObject.SetActive(false);
             }
         }
+        #endregion
     }
 }

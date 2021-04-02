@@ -10,9 +10,11 @@ namespace PlanetsColony
     {
         [SerializeField] private Text _resourceCountPrefab = null;
         [SerializeField] private ResourcesStorage _resourcesStorage = null;
+        [SerializeField] private Transform _container = null;
 
         private Text[] _generatedElements;
         private Text _tempNewElement = null;
+        private List<ResourcesSystem.ResourceInfo> _tempResourceInfo = null;
 
         private void Awake()
         {
@@ -24,13 +26,22 @@ namespace PlanetsColony
 
         public void GenerateResourceList(List<ResourcesSystem.ResourceInfo> resourceInfo)
         {
+            _tempResourceInfo = resourceInfo;
+            if (_container == null || _resourceCountPrefab == null || _resourcesStorage == null)
+            {
+                return;
+            }
+
             _generatedElements = new Text[resourceInfo.Count];
 
             for (int i = 0; i < resourceInfo.Count; i++)
             {
                 _tempNewElement = CreateResourceElement();
-                _tempNewElement.text = CreateResourceCountText(resourceInfo[i]);
-                _generatedElements[i] = _tempNewElement;
+                if(_tempNewElement != null)
+                {
+                    _tempNewElement.text = CreateResourceCountText(resourceInfo[i]);
+                    _generatedElements[i] = _tempNewElement;
+                }
             }
 
             _tempNewElement = null;
@@ -38,11 +49,19 @@ namespace PlanetsColony
 
         private Text CreateResourceElement()
         {
-             return Instantiate(_resourceCountPrefab, transform);
+            if (_container != null)
+            {
+                return Instantiate(_resourceCountPrefab, _container);
+            }
+            return null;
         }
 
         public void RefreshElements(List<ResourcesSystem.ResourceInfo> resourceInfo)
         { 
+            if(_generatedElements.Length == 0)
+            {
+                GenerateResourceList(_tempResourceInfo);
+            }
             for (int i = 0; i < _generatedElements.Length; i++)
             {
                 _generatedElements[i].text = CreateResourceCountText(resourceInfo[i]);;
