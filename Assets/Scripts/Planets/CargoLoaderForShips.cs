@@ -8,7 +8,7 @@ namespace PlanetsColony
     public class CargoLoaderForShips : MonoBehaviour
     {
         [SerializeField] private Resource.Type[] _resourceTypes;
-        [SerializeField] private float sendShipWithCargoDelay = 3f;
+        [SerializeField] private float _sendShipWithCargoDelay = 3f;
 
         private Transform _transform = null;
         private Factory _factory = null;
@@ -26,13 +26,24 @@ namespace PlanetsColony
             StartCoroutine(SendShipWithCargoRoutine());
         }
 
+
         private IEnumerator SendShipWithCargoRoutine()
         {
             while (true)
             {
-                yield return new WaitForSeconds(sendShipWithCargoDelay);
+                yield return new WaitForSeconds(_sendShipWithCargoDelay);
                 SendShipWithCargo();
             }
+        }
+
+        public Resource.Type[] GetResourceTypes()
+        {
+            return _resourceTypes;
+        }
+
+        public float GetSendShipWithCargoDelay()
+        {
+            return _sendShipWithCargoDelay;
         }
 
         public void AcceptShip(CargoHandler ship)

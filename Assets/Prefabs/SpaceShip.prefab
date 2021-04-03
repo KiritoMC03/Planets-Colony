@@ -50,7 +50,7 @@ MonoBehaviour:
   type: 0
   _target: {fileID: 0}
   _speed: 150
-  _rotationSpeed: 0.18
+  _rotationSpeed: 100
 --- !u!114 &-2038976870745426995
 MonoBehaviour:
   m_ObjectHideFlags: 0

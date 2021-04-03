@@ -26,6 +26,19 @@ namespace PlanetsColony
 			Application.targetFrameRate = 60;
         }
 
+        private void Start()
+        {
+            if (SaveLoadSystem.Instance == null)
+            {
+                throw new Exception("Не найдено ни одного объекта с компоненом SaveLoadSystem.");
+            }
+            else
+            {
+                _money = SaveLoadSystem.Instance.LoadMoney();
+                _allResourceSoldValue = SaveLoadSystem.Instance.LoadAllResourceSoldValue();
+            }
+        }
+
         internal void AddMoney(BigInteger value)
         {
             _money += value;
@@ -35,6 +48,11 @@ namespace PlanetsColony
         public BigInteger GetMoney()
         {
             return _money;
+        }
+
+        internal void SetMoney(BigInteger value)
+        {
+            _money = value;
         }
 
         internal void UseMoney(BigInteger value)

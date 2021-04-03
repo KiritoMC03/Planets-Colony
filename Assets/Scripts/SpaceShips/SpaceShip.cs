@@ -37,11 +37,21 @@ namespace PlanetsColony
 
         private void Update()
         {
-            Move();
+            CheckCanMove();
+            RotateTo(_tempTargetPosition);
+        }
+
+
+        private void FixedUpdate()
+        {
+            CheckCanMove();
+
+            _tempVelocity.Set(0, CalculateDistanceDelta());
+            SetLocalVelocity(_tempVelocity);
         }
 
         #region MoveWork
-        private void Move()
+        private void CheckCanMove()
         {
             if (!_canMove)
             {
@@ -52,10 +62,6 @@ namespace PlanetsColony
             {
                 _tempTargetPosition = _target.position;
             }
-
-            _tempVelocity.Set(0, CalculateDistanceDelta());
-            SetLocalVelocity(_tempVelocity);
-            RotateTo(_tempTargetPosition);
         }
 
         private void RotateTo(Vector3 target)
@@ -64,7 +70,7 @@ namespace PlanetsColony
             _tempZRotation = Mathf.Atan2(_tempDifference.y, _tempDifference.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(_tempZRotation - 90, Vector3.forward);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _rotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
         }
         
         private float CalculateDistanceDelta()

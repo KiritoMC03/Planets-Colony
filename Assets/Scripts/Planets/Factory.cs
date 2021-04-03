@@ -7,17 +7,26 @@ namespace PlanetsColony
     [RequireComponent(typeof(CargoGenerator))]
     public class Factory : MonoBehaviour
     {
-        [SerializeField] private uint _level = 0;
+        [SerializeField] public uint _level = 0;
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;
         [SerializeField] private SpaceshipsPort _spaceshipsPort = null;
+        [Header("Идентификатор. На английском.")]
+        [SerializeField] private string _id = "";
 
         private Transform _transform = null;
         private CargoGenerator _cargoGenerator = null;
         private bool _isActive = false;
         private bool _canLevelUp = true;
         private uint _resourceValueMultiplier = 0;
+
+        private string _levelKey = "_level";
+
+        private void OnApplicationQuit()
+        {
+            SaveLevel();
+        }
 
         private void Awake()
         {
@@ -32,6 +41,24 @@ namespace PlanetsColony
                 throw new Exception("Установите поле Spaceships Port.");
             }
 
+            var temp = GameObject.FindObjectsOfType<Factory>();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    if (i == j) continue;
+                    if(temp[i].GetID() == temp[j].GetID())
+                    {
+                        throw new Exception($"У заводов планет должны быть уникальные идентификаторы! \n {temp[i].gameObject} совпадает с {temp[j].gameObject}");
+                    }
+                }
+            }
+        }
+
+        private void Start()
+        {
+            LoadLevel();
+
             if (_level > 0)
             {
                 Activate();
@@ -40,6 +67,16 @@ namespace PlanetsColony
             {
                 Disactivate();
             }
+        }
+
+        private void SaveLevel()
+        {
+            PlayerPrefs.SetFloat(_id + _levelKey, _level);
+        }
+
+        private void LoadLevel()
+        {
+            _level = Convert.ToUInt32(PlayerPrefs.GetFloat(_id + _levelKey));
         }
 
         public void Activate()
@@ -68,6 +105,11 @@ namespace PlanetsColony
             return _level;
         }
 
+        public string GetID()
+        {
+            return _id;
+        }
+
         internal void LevelUp()
         {
             if(_level == 0)
@@ -89,10 +131,12 @@ namespace PlanetsColony
         internal void IncreaseLevel()
         {
             _level++;
+            SaveLevel();
         }
         internal void SetLevel(uint level)
         {
             this._level = level;
+            SaveLevel();
         }
 
         public bool IsCanLevelUp()
