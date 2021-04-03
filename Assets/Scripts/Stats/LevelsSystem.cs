@@ -24,7 +24,7 @@ public class LevelsSystem : MonoBehaviour
             return _moneyForBuild;
         }
 
-        return (BigInteger)(2 * Mathf.Pow(level, 6.252f));
+        return (BigInteger)(2 * Mathf.Pow(level, 6.252f) + 149999848);
     }
 
     

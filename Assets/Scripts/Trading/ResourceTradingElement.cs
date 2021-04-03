@@ -13,7 +13,7 @@ namespace PlanetsColony
         [SerializeField] private Text _oneCost = null;
         [SerializeField] private InputField _tradeValueField = null;
 
-        private static string _oneCostText = "Цена за шт.: ";
+        private static string _oneCostText = "Цена за тонну: ";
 
         private BigInteger _cost = 1;
         private ulong _resourceValue = 0;

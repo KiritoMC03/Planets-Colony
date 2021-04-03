@@ -33,7 +33,7 @@ namespace PlanetsColony
         public void SetStatsText()
         {
             _moneyValue.text = _moneyValueText + Converter.ValueToString(StatsSystem.Instance.GetMoney());
-            _allResourceSold.text = _allResourceSoldText + Converter.ValueToString(StatsSystem.Instance.GetAllResourceSoldValue());
+            _allResourceSold.text = _allResourceSoldText + Converter.ValueToString(StatsSystem.Instance.GetAllResourceSoldValue()) + ResourcesSystem.GetUnitsOfMeasurement();
             _maxShipsCount.text = _maxShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetMaxShipsCount());
             _activeShipsCount.text = _activeShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetActiveShipsCount());
         }
