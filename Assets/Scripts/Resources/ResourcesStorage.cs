@@ -12,10 +12,10 @@ namespace PlanetsColony.Resources
     {
         public UnityEvent ResourceChange;
 
-        private Dictionary<Resource.Type, ulong> _resources = new Dictionary<Resource.Type, ulong>();
+        private Dictionary<Resource.Type, BigInteger> _resources = new Dictionary<Resource.Type, BigInteger>();
         private void Awake()
         {
-            _resources = Resource.GenerateDictionaryByTypes<ulong>(0);
+            _resources = Resource.GenerateDictionaryByTypes<BigInteger>(0);
         }
 
         public void AcceptCargoFromShip(List<Cargo> cargos)
@@ -26,12 +26,12 @@ namespace PlanetsColony.Resources
                 _resources[thisCargo.GetResourceType()] += thisCargo.GetValue();
                 ResourceChange?.Invoke();
 
-                //BigInteger.Add(_resources[thisCargo.GetResourceType()], thisCargo.GetValue());
+                BigInteger.Add(_resources[thisCargo.GetResourceType()], thisCargo.GetValue());
             }
         }
 
 #region GettersSetters
-        public ulong GetResourceValue(Resource.Type type)
+        public BigInteger GetResourceValue(Resource.Type type)
         {
             try
             {
@@ -43,9 +43,9 @@ namespace PlanetsColony.Resources
             }
         }
 
-        public ulong GetResourceToTrade(Resource.Type type, ulong value)
+        public BigInteger GetResourceToTrade(Resource.Type type, BigInteger value)
         {
-            ulong returnValue = 0;
+            BigInteger returnValue = 0;
             if (value <= _resources[type])
             {
                 returnValue = value;
@@ -54,7 +54,7 @@ namespace PlanetsColony.Resources
             }
             return returnValue;
         }
-        public ref Dictionary<Resource.Type, ulong> GetInitResourcesRef()
+        public ref Dictionary<Resource.Type, BigInteger> GetInitResourcesRef()
         {
             return ref _resources;
         }

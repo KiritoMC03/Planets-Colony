@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlanetsColony.Resources;
 using PlanetsColony.Trading;
+using System.Numerics;
 
 namespace PlanetsColony
 {
     public class Cargo : Resource
     {
-        private ulong value { get; set; }
+        private BigInteger _value { get; set; }
 
-        public Cargo(Type type, uint value)
+        public Cargo(Type type, BigInteger value)
         {
-            this.value = value;
+            this._value = value;
             this._type = type;
         }
 
-        public Cargo(Type type, uint minValue, uint maxValue)
+        public Cargo(Type type, ulong minValue, ulong maxValue)
         {
-            this.value = (uint)Random.Range(minValue, maxValue);
+            this._value = (ulong)Random.Range(minValue, maxValue);
             this._type = type;
         }
 
-        public ulong GetValue()
+        public Cargo(Type type, ulong minValue, ulong maxValue, BigInteger multiplier)
         {
-            return value;
+            this._value = multiplier * (ulong)Random.Range(minValue, maxValue);
+            this._type = type;
+        }
+
+        public BigInteger GetValue()
+        {
+            return _value;
         }
 
         public override Resource.Type GetResourceType()
@@ -32,9 +39,9 @@ namespace PlanetsColony
             return _type;
         }
 
-        internal void Sell(ulong value)
+        internal void Sell(BigInteger value)
         {
-            if (value <= this.value)
+            if (value <= this._value)
             {
                 SubstractValue(value);
                 ResourceSalesAccount.AddSoldValue(_type, value);
@@ -42,14 +49,14 @@ namespace PlanetsColony
             }
         }
 
-        private void SubstractValue(ulong value)
+        private void SubstractValue(BigInteger value)
         {
-            this.value -= value;
+            this._value -= value;
         }
 
-        public void Add(ulong value)
+        public void Add(BigInteger value)
         {
-            this.value += value;
+            this._value += value;
         }
     }
 }

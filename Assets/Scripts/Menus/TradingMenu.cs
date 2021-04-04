@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using PlanetsColony.Resources;
 using PlanetsColony.Trading;
+using System.Numerics;
 
 namespace PlanetsColony
 {
@@ -105,7 +106,7 @@ namespace PlanetsColony
         #endregion
 
         #region GettersSetters
-        public ulong GetResourceToTrade(Resource.Type type, ulong value)
+        public BigInteger GetResourceToTrade(Resource.Type type, BigInteger value)
         {
             return _resourcesStorage.GetResourceToTrade(type, value);
         }

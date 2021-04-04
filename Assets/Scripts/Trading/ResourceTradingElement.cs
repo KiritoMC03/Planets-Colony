@@ -19,8 +19,8 @@ namespace PlanetsColony
         private static string _oneCostText = "Цена за тонну: ";
 
         private BigInteger _cost = 1;
-        private ulong _resourceValue = 0;
-        private ulong _tradeValue = 0;
+        private BigInteger _resourceValue = 0;
+        private BigInteger _tradeValue = 0;
         private Resource.Type _resourceType;
         private bool _maySale = false;
 
@@ -77,7 +77,7 @@ namespace PlanetsColony
             SetCost(min, max);
         }
 
-        private void Trade(ulong value)
+        private void Trade(BigInteger value)
         {
             var money = _tradingMenu.GetResourceToTrade(_resourceType, value) * _cost;
             StatsSystem.Instance.AddMoney(money);
@@ -87,7 +87,7 @@ namespace PlanetsColony
         #endregion
 
         #region TextWork
-        internal void SetResourceNameAndValue(string name, ulong value)
+        internal void SetResourceNameAndValue(string name, BigInteger value)
         {
             _resourceValue = value;
             _resourceName.text = name + Converter.ValueToString(value) + ResourcesSystem.GetUnitsOfMeasurement();
@@ -128,11 +128,11 @@ namespace PlanetsColony
         #region PreTradeWork
         public void ValidateTradeValue()
         {
-            ulong.TryParse(_tradeValueField.text, out _tradeValue);
+            BigInteger.TryParse(_tradeValueField.text, out _tradeValue);
 
             if (_tradeValue > _resourceValue)
             {
-                _tradeValue = (ulong)Mathf.Floor(_resourceValue);
+                _tradeValue = _resourceValue;
                 _tradeValueField.text = _tradeValue.ToString();
             }
 

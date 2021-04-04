@@ -126,9 +126,7 @@ namespace PlanetsColony
         public void SendCargo(CargoHandler ship, Resource.Type resourceType)
         {
             CalculateResourceValueMultiplier();
-            ship.AcceptCargo(_cargoGenerator.GenerateCargo(resourceType, 
-                _minGeneratedResource * _resourceValueMultiplier, 
-                _maxGeneratedResource * _resourceValueMultiplier));
+            ship.AcceptCargo(_cargoGenerator.GenerateCargo(resourceType, _minGeneratedResource, _maxGeneratedResource, _resourceValueMultiplier));
         }
         #endregion
 

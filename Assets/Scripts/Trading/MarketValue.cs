@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Resources;
+using System.Numerics;
 
 namespace PlanetsColony.Trading
 {
@@ -12,6 +13,9 @@ namespace PlanetsColony.Trading
         [SerializeField] public byte BaseMarketValue => _baseMarketValue;
         private static byte _baseMarketValue = 10;
         private static Dictionary<Resource.Type, byte> _values = new Dictionary<Resource.Type, byte>();
+        // temp variables:
+        private BigInteger _shareOfSale = 1;
+        private float _tempMarketValue = 1f;
 
         private void Awake()
         {
@@ -32,9 +36,17 @@ namespace PlanetsColony.Trading
         {
             for (int i = 0; i < Resource.GetTypesCount(); i++)
             {
-                var shareOfSale = ResourceSalesAccount.GetAllResourceSoldValue() / Mathf.Clamp(ResourceSalesAccount.GetSoldValue(Resource.GetType(i)), 1, ulong.MaxValue);
-                var marketValue = Mathf.Clamp(shareOfSale, 1, byte.MaxValue - _baseMarketValue);
-                _values[Resource.GetType(i)] = Convert.ToByte(marketValue + _baseMarketValue);
+                try
+                {
+                    _shareOfSale = ResourceSalesAccount.GetAllResourceSoldValue() / ResourceSalesAccount.GetSoldValue(Resource.GetType(i));
+                }
+                catch
+                {
+                    _shareOfSale = ResourceSalesAccount.GetAllResourceSoldValue() / (ResourceSalesAccount.GetSoldValue(Resource.GetType(i)) + 1);
+                }
+
+                _tempMarketValue = Mathf.Clamp((float)_shareOfSale, 1, byte.MaxValue - _baseMarketValue);
+                _values[Resource.GetType(i)] = Convert.ToByte(_tempMarketValue + _baseMarketValue);
             }
         }
 

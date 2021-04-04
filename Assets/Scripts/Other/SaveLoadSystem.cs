@@ -59,12 +59,12 @@ namespace PlanetsColony
             _tempResourceSoldValue = ResourceSalesAccount.GetAllResourceSoldValue().ToString();
             PlayerPrefs.SetString(ALLRESOURCE_SOLD_VALUE_KEY, _tempResourceSoldValue);
         }
-        public ulong LoadAllResourceSoldValue()
+        public BigInteger LoadAllResourceSoldValue()
         {
-            ulong returnValue = 0;
+            BigInteger returnValue = 0;
             if (PlayerPrefs.HasKey(ALLRESOURCE_SOLD_VALUE_KEY))
             {
-                returnValue = ulong.Parse(PlayerPrefs.GetString(ALLRESOURCE_SOLD_VALUE_KEY));
+                returnValue = BigInteger.Parse(PlayerPrefs.GetString(ALLRESOURCE_SOLD_VALUE_KEY));
             }
             else
             {

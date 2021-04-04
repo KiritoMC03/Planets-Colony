@@ -2,17 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Resources;
+using System.Numerics;
 
 namespace PlanetsColony.Trading
 {
     public class ResourceSalesAccount : MonoBehaviour
     {
-        private static Dictionary<Resource.Type, ulong> _values = new Dictionary<Resource.Type, ulong>();
-        private static ulong _allResourceSoldValue = 0;
+        private static Dictionary<Resource.Type, BigInteger> _values = new Dictionary<Resource.Type, BigInteger>();
+        private static BigInteger _allResourceSoldValue = 0;
 
         private void Awake()
         {
-            _values = Resource.GenerateDictionaryByTypes<ulong>(0);
+            _values = Resource.GenerateDictionaryByTypes<BigInteger>(0);
         }
 
         private void Start()
@@ -20,27 +21,27 @@ namespace PlanetsColony.Trading
             _allResourceSoldValue = SaveLoadSystem.Instance.LoadAllResourceSoldValue();
         }
 
-        public static void AddSoldValue(Resource.Type type, ulong value)
+        public static void AddSoldValue(Resource.Type type, BigInteger value)
         {
             _values[type] += value;
         }
 
-        public static ulong GetSoldValue(Resource.Type type)
+        public static BigInteger GetSoldValue(Resource.Type type)
         {
             return _values[type];
         }
 
-        public static ulong AddAllResourceSoldValue(ulong value)
+        public static BigInteger AddAllResourceSoldValue(BigInteger value)
         {
             return _allResourceSoldValue += value;
         }
 
-        public static ulong GetAllResourceSoldValue()
+        public static BigInteger GetAllResourceSoldValue()
         {
             return _allResourceSoldValue;
         }
 
-        public ref Dictionary<Resource.Type, ulong> GetValuesList()
+        public ref Dictionary<Resource.Type, BigInteger> GetValuesList()
         {
             return ref _values;
         }
