@@ -10,6 +10,11 @@ namespace PlanetsColony.Trading
         private static Dictionary<Resource.Type, ulong> _values = new Dictionary<Resource.Type, ulong>();
         private static ulong _allResourceSoldValue = 0;
 
+        private void Awake()
+        {
+            _values = Resource.GenerateDictionaryByTypes<ulong>(0);
+        }
+
         public static void AddSoldValue(Resource.Type type, ulong value)
         {
             _values[type] += value;

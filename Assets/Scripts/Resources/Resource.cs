@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlanetsColony.Resources
@@ -59,6 +60,17 @@ namespace PlanetsColony.Resources
 			Tungsten,
 			Uran,
 			Zinc
+        }
+
+        public static Dictionary<Type, TValue> GenerateDictionaryByTypes<TValue>(TValue value)
+        {
+            Dictionary<Type, TValue> dictionary = new Dictionary<Type, TValue>();
+            for (int i = 0; i < GetTypesCount(); i++)
+            {
+                dictionary.Add(GetType(i), value);
+                dictionary[GetType(i)] = value;
+            }
+            return dictionary;
         }
 
         public virtual float GetPrice()

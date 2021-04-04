@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PlanetsColony.Resources;
-
+using PlanetsColony.Trading;
 
 namespace PlanetsColony
 {
@@ -109,11 +109,6 @@ namespace PlanetsColony
         public ulong GetResourceToTrade(Resource.Type type, ulong value)
         {
             return _resourcesStorage.GetResourceToTrade(type, value);
-        }
-
-        public byte GetResourceMarketValue(Resource.Type type)
-        {
-            return _resourcesStorage.GetResourceMarketValue(type);
         }
 
         public ResourcesStorage GetResourcesStorageLink()

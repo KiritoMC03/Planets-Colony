@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using PlanetsColony.Resources;
 using PlanetsColony.Utils;
-
+using PlanetsColony.Trading;
 
 namespace PlanetsColony
 {
@@ -155,10 +155,8 @@ namespace PlanetsColony
                 throw new Exception("Поле Trading Menu не установлено.");
             }
 
-            var marketValue = _tradingMenu.GetResourceMarketValue(_resourceType);
-            var preCost = (Mathf.Sqrt(marketValue) * UnityEngine.Random.Range(min, max));
+            var preCost = (Mathf.Sqrt(MarketValue.Get(_resourceType)) * UnityEngine.Random.Range(min, max));
             tempCost = (BigInteger)preCost;
-            //tempCost = Convert.ToUInt32(Mathf.Clamp(tempCost, min, max));
             return tempCost;
         }
         #endregion

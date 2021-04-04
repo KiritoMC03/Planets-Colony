@@ -10,7 +10,6 @@ namespace PlanetsColony
     public class Spaceship : MonoBehaviour, IPooledObject
     {
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
-
         [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.CargoTransporter;
         [SerializeField] private Transform _target = null;
         [SerializeField] private float _speed = 1f;

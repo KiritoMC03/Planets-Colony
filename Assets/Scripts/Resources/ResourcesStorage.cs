@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanetsColony.Trading;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -50,11 +51,7 @@ namespace PlanetsColony.Resources
 
         private void Awake()
         {
-            for (int i = 0; i < Resource.GetTypesCount(); i++)
-            {
-                _resources.Add(Resource.GetType(i), 0);
-                _resources[Resource.GetType(i)] = 0;
-            }
+            _resources = Resource.GenerateDictionaryByTypes<ulong>(0);
         }
 
         public void AcceptCargoFromShip(List<Cargo> cargos)
@@ -91,22 +88,6 @@ namespace PlanetsColony.Resources
                 ResourceChange?.Invoke();
             }
             return returnValue;
-        }
-
-        public byte GetResourceMarketValue(Resource.Type type)
-        {
-            return 10;
-            /*
-            byte returnValue = 0;
-            for (int i = 0; i < _resources.Count; i++)
-            {
-                if (_resources[i].GetResourceType() == type)
-                {
-                    returnValue = _resources[i].GetMarketValue();
-                }
-            }
-            return returnValue;
-            */
         }
 
         public ref Dictionary<Resource.Type, ulong> GetInitResourcesRef()

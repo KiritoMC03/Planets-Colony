@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Resources;
 
-
 namespace PlanetsColony
 {
     [RequireComponent(typeof(Collider2D))]
