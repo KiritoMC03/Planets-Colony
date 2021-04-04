@@ -92,6 +92,14 @@ namespace PlanetsColony
             _resourceValue = value;
             _resourceName.text = name + Converter.ValueToString(value) + ResourcesSystem.GetUnitsOfMeasurement();
         }
+
+        private void SetOneCostText(BigInteger cost)
+        {
+            if (_oneCost != null)
+            {
+                _oneCost.text = _oneCostText + Converter.ValueToString(cost);
+            }
+        }
         #endregion
 
         #region GettersSetters
@@ -103,10 +111,7 @@ namespace PlanetsColony
         private void SetCost(ulong min, ulong max)
         {
             _cost = GenerateCost(min, max);
-            if(_oneCost != null)
-            {
-                _oneCost.text = _oneCostText + _cost.ToString();
-            }
+            SetOneCostText(_cost);
         }
 
         public string GetResourceName()

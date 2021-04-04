@@ -51,6 +51,8 @@ namespace PlanetsColony.Resources
                 returnValue = value;
                 _resources[type] -= returnValue;
                 ResourceChange?.Invoke();
+                ResourceSalesAccount.AddSoldValue(type, value);
+                ResourceSalesAccount.AddAllResourceSoldValue(value);
             }
             return returnValue;
         }

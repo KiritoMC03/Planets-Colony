@@ -38,25 +38,5 @@ namespace PlanetsColony
         {
             return _type;
         }
-
-        internal void Sell(BigInteger value)
-        {
-            if (value <= this._value)
-            {
-                SubstractValue(value);
-                ResourceSalesAccount.AddSoldValue(_type, value);
-                ResourceSalesAccount.AddAllResourceSoldValue(value);
-            }
-        }
-
-        private void SubstractValue(BigInteger value)
-        {
-            this._value -= value;
-        }
-
-        public void Add(BigInteger value)
-        {
-            this._value += value;
-        }
     }
 }

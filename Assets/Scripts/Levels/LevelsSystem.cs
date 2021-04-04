@@ -15,13 +15,13 @@ namespace PlanetsColony.Levels
             _moneyForBuild = _moneyForBuildFactory;
         }
 
-        public static BigInteger CalculateNeedMoney(uint level)
+        public static BigInteger CalculateNeedMoney(ulong level)
         {
             if (level == 1)
             {
                 return _moneyForBuild;
             }
-            return (BigInteger)(2 * Mathf.Pow(level, 6.252f) + 149999848);
+            return (2 * BigInteger.Pow(level, 6) + 149999848);
         }
     }
 }

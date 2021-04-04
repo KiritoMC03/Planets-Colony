@@ -31,9 +31,11 @@ namespace PlanetsColony.Trading
             return _values[type];
         }
 
-        public static BigInteger AddAllResourceSoldValue(BigInteger value)
+        public static void AddAllResourceSoldValue(BigInteger value)
         {
-            return _allResourceSoldValue += value;
+            Debug.Log("_allResourceSoldValue PRE: " + _allResourceSoldValue);
+            Debug.Log("_allResourceSoldValue POST: " + _allResourceSoldValue + value);
+            _allResourceSoldValue += value;
         }
 
         public static BigInteger GetAllResourceSoldValue()
