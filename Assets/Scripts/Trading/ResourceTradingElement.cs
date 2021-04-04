@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
+using PlanetsColony.Resources;
+using PlanetsColony.Utils;
+
 
 namespace PlanetsColony
 {

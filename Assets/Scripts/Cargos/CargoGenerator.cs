@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using PlanetsColony.Resources;
 
 namespace PlanetsColony
 {

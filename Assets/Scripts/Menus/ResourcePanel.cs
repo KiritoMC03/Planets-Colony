@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlanetsColony.Resources;
+using PlanetsColony.Utils;
+
 
 namespace PlanetsColony
 {
@@ -31,9 +34,7 @@ namespace PlanetsColony
             {
                 return;
             }
-
             _generatedElements = new Text[resourceInfo.Count];
-
             for (int i = 0; i < resourceInfo.Count; i++)
             {
                 _tempNewElement = CreateResourceElement();
@@ -43,7 +44,6 @@ namespace PlanetsColony
                     _generatedElements[i] = _tempNewElement;
                 }
             }
-
             _tempNewElement = null;
         }
 

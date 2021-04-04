@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 
-namespace PlanetsColony
+namespace PlanetsColony.Utils
 {
     public static class Converter
     {

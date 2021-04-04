@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlanetsColony.Resources;
+
 
 namespace PlanetsColony
 {
@@ -69,6 +71,7 @@ namespace PlanetsColony
 
         public void RefreshElements(List<ResourcesSystem.ResourceInfo> resourceInfo)
         {
+            
             _activeElementsCount = 0;
             for (int i = 0; i < _generatedElements.Length; i++)
             {

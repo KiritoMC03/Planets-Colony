@@ -1,14 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace PlanetsColony
+namespace PlanetsColony.Resources
 {
     public class ResourcesStorage : MonoBehaviour
     {
         public UnityEvent ResourceChange;
 
+        private Dictionary<Resource.Type, ulong> _resources = new Dictionary<Resource.Type, ulong>();
+        
+        /*
         [SerializeField]
         private Resource[] resources = new Resource[]
         {
@@ -41,71 +46,72 @@ namespace PlanetsColony
 			new Resource(Resource.Type.Uran, 0),
 			new Resource(Resource.Type.Zinc, 0)
         };
+        */
+
+        private void Awake()
+        {
+            for (int i = 0; i < Resource.GetTypesCount(); i++)
+            {
+                _resources.Add(Resource.GetType(i), 0);
+                _resources[Resource.GetType(i)] = 0;
+            }
+        }
 
         public void AcceptCargoFromShip(List<Cargo> cargos)
         {
             for (int i = 0; i < cargos.Count; i++)
             {
                 var thisCargo = cargos[i];
+                _resources[thisCargo.GetResourceType()] += thisCargo.GetValue();
+                ResourceChange?.Invoke();
 
-                for (int j = 0; j < resources.Length; j++)
-                {
-                    if (thisCargo.GetResourceType() == resources[j].GetResourceType())
-                    {
-                        resources[j].Add(thisCargo.GetValue());
-                        ResourceChange?.Invoke();
-                    }
-                }
+                //BigInteger.Add(_resources[thisCargo.GetResourceType()], thisCargo.GetValue());
             }
         }
 
         public ulong GetResourceValue(Resource.Type type)
         {
-            for (int i = 0; i < resources.Length; i++)
+            try
             {
-                if(resources[i].GetResourceType() == type)
-                {
-                    return resources[i].GetValue();
-                }
+                return _resources[type];
+            }  
+            catch
+            {
+                throw new Exception($"ResourceType {nameof(type)} don`t found.");
             }
-
-            return 0;
         }
 
         public ulong GetResourceToTrade(Resource.Type type, ulong value)
         {
             ulong returnValue = 0;
-            for (int i = 0; i < resources.Length; i++)
+            if(value <= _resources[type])
             {
-                if (resources[i].GetResourceType() == type)
-                {
-                    if(value <= resources[i].GetValue())
-                    {
-                        returnValue = value;
-                        resources[i].Sell(returnValue);
-                        ResourceChange?.Invoke();
-                    }
-                }
+                returnValue = value;
+                _resources[type] -= returnValue;
+                ResourceChange?.Invoke();
             }
             return returnValue;
         }
 
         public byte GetResourceMarketValue(Resource.Type type)
         {
+            return 10;
+            /*
             byte returnValue = 0;
-            for (int i = 0; i < resources.Length; i++)
+            for (int i = 0; i < _resources.Count; i++)
             {
-                if (resources[i].GetResourceType() == type)
+                if (_resources[i].GetResourceType() == type)
                 {
-                    returnValue = resources[i].GetMarketValue();
+                    returnValue = _resources[i].GetMarketValue();
                 }
             }
             return returnValue;
+            */
         }
 
-        public ref Resource[] GetInitResourcesRef()
+        public ref Dictionary<Resource.Type, ulong> GetInitResourcesRef()
         {
-            return ref resources;
+            return ref _resources;
         }
     }
 }

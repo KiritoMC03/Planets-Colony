@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using PlanetsColony.Resources;
 
 namespace PlanetsColony
 {
@@ -25,7 +26,6 @@ namespace PlanetsColony
         {
             StartCoroutine(SendShipWithCargoRoutine());
         }
-
 
         private IEnumerator SendShipWithCargoRoutine()
         {

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using PlanetsColony.Resources;
+
 
 namespace PlanetsColony
 {
@@ -30,7 +32,6 @@ namespace PlanetsColony
         private void OnTriggerEnter2D(Collider2D collision)
         {
             _tempCargoHandler = collision.GetComponent<CargoHandler>();
-
             if (_tempCargoHandler != null && _tempCargoHandler.CheckCargo())
             {
                 _tempCargoHandler.DeliverCargo(this);

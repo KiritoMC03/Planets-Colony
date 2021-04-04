@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace PlanetsColony
+namespace PlanetsColony.Resources
 {
     public class Resource
     {
@@ -10,8 +10,9 @@ namespace PlanetsColony
         // 0 - абсолютно не нужен, 255 - абсолютно нужен
         protected byte _marketValue = 10;
         protected ulong _soldValue = 0;
-
+        private static Array _typeValue = Enum.GetValues(typeof(Type));
         private string minMaxValueErrorText = $"Аргументы minValue и maxValue должны быть в пределаха от {ulong.MinValue} до {ulong.MaxValue}";
+        private static int[] _typesArray = (int[])(Enum.GetValues(typeof(Type)));
 
         public Resource(Type type, ulong value)
         {
@@ -28,7 +29,7 @@ namespace PlanetsColony
             this._type = type;
         }
 
-        public enum Type
+        public enum Type : uint
         {
             Aluminum,
 			Ammonia,
@@ -68,6 +69,21 @@ namespace PlanetsColony
         public virtual ulong GetValue()
         {
             return value;
+        }
+
+        public static int[] GetTypesArray()
+        {
+            return _typesArray;
+        }
+
+        public static Type GetType(int index)
+        {
+            return (Type)Enum.GetValues(typeof(Type)).GetValue(index);
+        }
+
+        public static int GetTypesCount()
+        {
+            return _typesArray.Length;
         }
 
         internal virtual void Sell(ulong value)
