@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Resources;
+using System;
 
 namespace PlanetsColony
 {
@@ -12,7 +13,7 @@ namespace PlanetsColony
     {
         private ResourcesStorage _resourcesStorage = null;
         private Collider2D _collider = null;
-
+        private Rigidbody2D _rigidbody = null;
         // временные переменные здесь:
         private CargoHandler _tempCargoHandler = null;
 
@@ -20,7 +21,25 @@ namespace PlanetsColony
         {
             _resourcesStorage = GetComponent<ResourcesStorage>();
             _collider = GetComponent<Collider2D>();
+            _rigidbody = GetComponent<Rigidbody2D>();
+            CheckInitializeFields();
             _collider.isTrigger = true;
+        }
+
+        private void CheckInitializeFields()
+        {
+            if (_resourcesStorage == null)
+            {
+                throw new Exception("Resources Storage component not found.");
+            }
+            if (_resourcesStorage == null)
+            {
+                throw new Exception("Collider component not found.");
+            }
+            if (_rigidbody == null)
+            {
+                throw new Exception("Rigidbody2D component not found.");
+            }
         }
 
         public void AcceptCargo(List<Cargo> cargo)

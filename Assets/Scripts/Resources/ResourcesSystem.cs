@@ -57,28 +57,45 @@ namespace PlanetsColony
 
         private void Start()
         {
+            GenerateMenu(_resourcePanel, _resourceInfo);
+            GenerateMenu(_tradingMenu, _resourceInfo);
+
+            /*
             if (!_resourcePanel.gameObject.activeInHierarchy)
             {
                 _resourcePanel.gameObject.SetActive(true);
-                _resourcePanel.GenerateResourceList(_resourceInfo);
+                _resourcePanel.GenerateList(_resourceInfo);
                 _resourcePanel.gameObject.SetActive(false);
             }
             else
             {
-                _resourcePanel.GenerateResourceList(_resourceInfo);
+                _resourcePanel.GenerateList(_resourceInfo);
             }
-
-
 
             if (!_tradingMenu.gameObject.activeInHierarchy)
             {
                 _tradingMenu.gameObject.SetActive(true);
-                _tradingMenu.GenerateTradingList(_resourceInfo);
+                _tradingMenu.GenerateList(_resourceInfo);
                 _tradingMenu.gameObject.SetActive(false);
             }
             else
             {
-                _tradingMenu.GenerateTradingList(_resourceInfo);
+                _tradingMenu.GenerateList(_resourceInfo);
+            }
+            */
+        }
+
+        private void GenerateMenu(Menu menu, List<ResourceInfo> resourceInfo)
+        {
+            if (!menu.gameObject.activeInHierarchy)
+            {
+                menu.gameObject.SetActive(true);
+                menu.GenerateList(resourceInfo);
+                menu.gameObject.SetActive(false);
+            }
+            else
+            {
+                menu.GenerateList(resourceInfo);
             }
         }
 
@@ -88,11 +105,7 @@ namespace PlanetsColony
             _tradingMenu.RefreshElements(_resourceInfo);
         }
 
-        public static string GetUnitsOfMeasurement()
-        {
-            return unitsOfMeasurement;
-        }
-
+#region GettersSetters
         public ulong GetMinCost(Resource.Type type)
         {
             for (int i = 0; i < _resourceInfo.Count; i++)
@@ -118,5 +131,11 @@ namespace PlanetsColony
 
             throw new Exception("Ошибка. Не найден тип ресурса, либо стоимость.");
         }
+
+        public static string GetUnitsOfMeasurement()
+         {
+             return unitsOfMeasurement;
+         }
+#endregion
     }
 }

@@ -56,15 +56,7 @@ namespace PlanetsColony
             _cargos.Clear();
             return tempCargo;
         }
-        public Transform GetUnityTransform()
-        {
-            if(_transform != null)
-            {
-                return _transform;
-            }
-            return transform;
-        }
-
+        
         public void SetUnityPosition(Vector3 position)
         {
             _transform.position = position;

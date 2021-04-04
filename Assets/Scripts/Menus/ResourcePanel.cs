@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using PlanetsColony.Resources;
 using PlanetsColony.Utils;
 
-
 namespace PlanetsColony
 {
     public class ResourcePanel : Menu
@@ -18,6 +17,7 @@ namespace PlanetsColony
         private Text[] _generatedElements;
         private Text _tempNewElement = null;
         private List<ResourcesSystem.ResourceInfo> _tempResourceInfo = null;
+        private string _resourceValue = null;
 
         private void Awake()
         {
@@ -27,13 +27,14 @@ namespace PlanetsColony
             }
         }
 
-        public void GenerateResourceList(List<ResourcesSystem.ResourceInfo> resourceInfo)
+        public override void GenerateList(List<ResourcesSystem.ResourceInfo> resourceInfo)
         {
             _tempResourceInfo = resourceInfo;
             if (_container == null || _resourceCountPrefab == null || _resourcesStorage == null)
             {
                 return;
             }
+
             _generatedElements = new Text[resourceInfo.Count];
             for (int i = 0; i < resourceInfo.Count; i++)
             {
@@ -60,7 +61,7 @@ namespace PlanetsColony
         { 
             if(_generatedElements.Length == 0)
             {
-                GenerateResourceList(_tempResourceInfo);
+                GenerateList(_tempResourceInfo);
             }
             for (int i = 0; i < _generatedElements.Length; i++)
             {
@@ -70,8 +71,8 @@ namespace PlanetsColony
 
         private string CreateResourceCountText(ResourcesSystem.ResourceInfo resourceInfo)
         {
-            var resourceValue = Converter.ValueToString(_resourcesStorage.GetResourceValue(resourceInfo.GetResourceType()));
-            return resourceInfo.GetName() + resourceValue + ResourcesSystem.GetUnitsOfMeasurement();
+            _resourceValue = Converter.ValueToString(_resourcesStorage.GetResourceValue(resourceInfo.GetResourceType()));
+            return resourceInfo.GetName() + _resourceValue + ResourcesSystem.GetUnitsOfMeasurement();
         }
     }
 }

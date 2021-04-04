@@ -36,11 +36,6 @@ namespace PlanetsColony.Trading
                 var marketValue = Mathf.Clamp(shareOfSale, 1, byte.MaxValue - _baseMarketValue);
                 _values[Resource.GetType(i)] = Convert.ToByte(marketValue + _baseMarketValue);
             }
-
-            foreach (var item in _values)
-            {
-                
-            }
         }
 
         public static byte GetBaseMarketValue()

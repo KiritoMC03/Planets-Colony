@@ -18,8 +18,6 @@ namespace PlanetsColony
         [SerializeField] private uint _maxShipsCount = 10;
         [SerializeField] private uint _activeShipsCount = 0;
 
-        private ulong _allResourceSoldValue = 0;
-
         private void Awake()
         {
             Instance = this;
@@ -35,14 +33,48 @@ namespace PlanetsColony
             else
             {
                 _money = SaveLoadSystem.Instance.LoadMoney();
-                _allResourceSoldValue = SaveLoadSystem.Instance.LoadAllResourceSoldValue();
             }
         }
 
+#region MoneyWork
         internal void AddMoney(BigInteger value)
         {
             _money += value;
             OnMoneyValueChange?.Invoke();
+        }
+
+        internal void UseMoney(BigInteger value)
+        {
+            if (value > _money)
+            {
+                throw new Exception("Аргумент value превосходит число монет.");
+            }
+            else
+            {
+                _money -= value;
+            }
+            OnMoneyValueChange?.Invoke();
+        }
+
+        internal void TryUseMoney(ulong value)
+        {
+            if (value <= _money)
+            {
+                _money -= value;
+            }
+            OnMoneyValueChange?.Invoke();
+        }
+        #endregion
+
+#region GettersSetters
+        public uint GetMaxShipsCount()
+        {
+            return _maxShipsCount;
+        }
+
+        public uint GetActiveShipsCount()
+        {
+            return _activeShipsCount;
         }
 
         public BigInteger GetMoney()
@@ -55,45 +87,12 @@ namespace PlanetsColony
             _money = value;
         }
 
-        internal void UseMoney(BigInteger value)
-        {
-            if(value > this._money)
-            {
-                throw new Exception("Аргумент value превосходит число монет.");
-            }
-            else
-            {
-                this._money -= value;
-            }
-            OnMoneyValueChange?.Invoke();
-        }
+#endregion
 
-        internal void TryUseMoney(ulong value)
-        {
-            if (value <= this._money)
-            {
-                this._money -= value;
-            }
-            OnMoneyValueChange?.Invoke();
-        }
-
-        public uint GetMaxShipsCount()
-        {
-            return _maxShipsCount;
-        }
-        public uint GetActiveShipsCount()
-        {
-            return _activeShipsCount;
-        }
-
-        public bool CheckAbilityToSpawn()
-        {
-            return (_activeShipsCount < _maxShipsCount);
-        }
-
+#region ShipCountWork
         public void IncreaseActiveShipsCount()
         {
-            if(_activeShipsCount < _maxShipsCount)
+            if (_activeShipsCount < _maxShipsCount)
             {
                 _activeShipsCount++;
                 OnShipCountChange?.Invoke();
@@ -102,20 +101,19 @@ namespace PlanetsColony
 
         public void ReduceActiveShipsCount()
         {
-            if(_activeShipsCount > 0)
+            if (_activeShipsCount > 0)
             {
                 _activeShipsCount--;
                 OnShipCountChange?.Invoke();
             }
         }
+#endregion
 
-        public virtual void IncreaseAllResourceSoldValue(ulong value)
+#region Utils
+        public bool CheckAbilityToSpawn()
         {
-            _allResourceSoldValue += value;
+            return (_activeShipsCount < _maxShipsCount);
         }
-        public virtual ulong GetAllResourceSoldValue()
-        {
-            return _allResourceSoldValue;
-        }
+#endregion
     }
 }

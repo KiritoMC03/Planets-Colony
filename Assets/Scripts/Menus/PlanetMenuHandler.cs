@@ -2,31 +2,28 @@
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
+using PlanetsColony.Levels;
 
 namespace PlanetsColony
 {
-    public class PlanetMenu : MonoBehaviour
+    public class PlanetMenuHandler : MonoBehaviour
     {
-        public UnityEvent OnEnable;
+        public UnityEvent OnPlanetClick;
 
         [SerializeField] private PlanetMenuPanel _panel = null;
-
-        private GameObject _currentPlanet = null;
-        private Factory _planetFactory = null;
+        private Factory _currentPlanetWithFactory = null;
         private Camera _mainCamera = null;
-
         // временные переменные здесь:
         private BigInteger _tempNeedMoney = 0;
+        private RaycastHit2D _temphit;
 
         private void Awake()
         {
             _mainCamera = Camera.main;
-
             if(_panel == null)
             {
                 throw new Exception("Необходимо установить поле Panel.");
             }
-
             _panel.gameObject.SetActive(false);
         }
 
@@ -34,15 +31,15 @@ namespace PlanetsColony
         {
             if (Input.GetMouseButtonDown(0))
             {
-                RaycastHit2D hit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Input.mousePosition));
-                if (hit)
+                _temphit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Input.mousePosition));
+                if (_temphit)
                 {
-                    _currentPlanet = hit.collider.gameObject;
-                    if(_currentPlanet.GetComponent<Factory>() != null)
+                    _currentPlanetWithFactory = _temphit.collider.GetComponent<Factory>();
+                    if(_currentPlanetWithFactory != null)
                     {
                         _panel.gameObject.SetActive(true);
-                        _panel.Activate(_currentPlanet.GetComponent<Factory>());
-                        OnEnable?.Invoke();
+                        _panel.Activate(_currentPlanetWithFactory);
+                        OnPlanetClick?.Invoke();
                     }
                 }
             }
@@ -50,14 +47,11 @@ namespace PlanetsColony
         
         public void LevelUp()
         {
-            _planetFactory = _currentPlanet.GetComponent<Factory>();
-            _tempNeedMoney = LevelsSystem.Instance.CalculateNeedMoney(_planetFactory.GetLevel() + 1);
-
-            if (_planetFactory.IsCanLevelUp() && StatsSystem.Instance.GetMoney() >= _tempNeedMoney)
+            _tempNeedMoney = LevelsSystem.CalculateNeedMoney(_currentPlanetWithFactory.GetLevel() + 1);
+            if (_currentPlanetWithFactory.IsCanLevelUp() && StatsSystem.Instance.GetMoney() >= _tempNeedMoney)
             {
                 StatsSystem.Instance.UseMoney(_tempNeedMoney);
-                _planetFactory.LevelUp();
-
+                _currentPlanetWithFactory.LevelUp();
                 _panel.UpdateText();
             }
         }

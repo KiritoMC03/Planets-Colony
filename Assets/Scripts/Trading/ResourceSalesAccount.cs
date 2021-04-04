@@ -15,6 +15,11 @@ namespace PlanetsColony.Trading
             _values = Resource.GenerateDictionaryByTypes<ulong>(0);
         }
 
+        private void Start()
+        {
+            _allResourceSoldValue = SaveLoadSystem.Instance.LoadAllResourceSoldValue();
+        }
+
         public static void AddSoldValue(Resource.Type type, ulong value)
         {
             _values[type] += value;

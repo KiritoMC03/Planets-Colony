@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanetsColony.Trading;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -55,7 +56,7 @@ namespace PlanetsColony
 
         public void SaveAllResourceSoldValue()
         {
-            _tempResourceSoldValue = StatsSystem.Instance.GetAllResourceSoldValue().ToString();
+            _tempResourceSoldValue = ResourceSalesAccount.GetAllResourceSoldValue().ToString();
             PlayerPrefs.SetString(ALLRESOURCE_SOLD_VALUE_KEY, _tempResourceSoldValue);
         }
         public ulong LoadAllResourceSoldValue()

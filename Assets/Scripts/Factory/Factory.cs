@@ -2,13 +2,15 @@
 using System.Collections;
 using System;
 using PlanetsColony.Resources;
-
+using UnityEngine.Events;
 
 namespace PlanetsColony
 {
     [RequireComponent(typeof(CargoGenerator))]
     public class Factory : MonoBehaviour
     {
+        public UnityEvent OnActivate;
+
         [SerializeField] public uint _level = 0;
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
@@ -42,19 +44,7 @@ namespace PlanetsColony
             {
                 throw new Exception("Установите поле Spaceships Port.");
             }
-
-            var temp = GameObject.FindObjectsOfType<Factory>();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                for (int j = 0; j < temp.Length; j++)
-                {
-                    if (i == j) continue;
-                    if(temp[i].GetID() == temp[j].GetID())
-                    {
-                        throw new Exception($"У заводов планет должны быть уникальные идентификаторы! \n {temp[i].gameObject} совпадает с {temp[j].gameObject}");
-                    }
-                }
-            }
+            CheckOtherFactoriesID();
         }
 
         private void Start()
@@ -71,6 +61,7 @@ namespace PlanetsColony
             }
         }
 
+#region LevelWork
         private void SaveLevel()
         {
             PlayerPrefs.SetFloat(_id + _levelKey, _level);
@@ -81,53 +72,17 @@ namespace PlanetsColony
             _level = Convert.ToUInt32(PlayerPrefs.GetFloat(_id + _levelKey));
         }
 
-        public void Activate()
-        {
-            _isActive = true;
-            _canLevelUp = true;
-            _factorySprite.gameObject.SetActive(true);
-        }
-
-        public void Disactivate()
-        {
-            _isActive = false;
-            _factorySprite.gameObject.SetActive(false);
-        }
-
-        public void SendCargo(CargoHandler ship, Resource.Type resourceType)
-        {
-            CalculateResourceValueMultiplier();
-            ship.AcceptCargo(_cargoGenerator.GenerateCargo(resourceType, 
-                _minGeneratedResource * _resourceValueMultiplier, 
-                _maxGeneratedResource * _resourceValueMultiplier));
-        }
-
-        public uint GetLevel()
-        {
-            return _level;
-        }
-
-        public string GetID()
-        {
-            return _id;
-        }
-
         internal void LevelUp()
         {
-            if(_level == 0)
+            if (_level == 0)
             {
                 _spaceshipsPort.SendBuilderShip(this);
                 _canLevelUp = false;
             }
-            else if(_level > 0)
+            else if (_level > 0)
             {
                 IncreaseLevel();
             }
-        }
-
-        public bool GetIsActive()
-        {
-            return _isActive;
         }
 
         internal void IncreaseLevel()
@@ -135,22 +90,9 @@ namespace PlanetsColony
             _level++;
             SaveLevel();
         }
-        internal void SetLevel(uint level)
-        {
-            this._level = level;
-            SaveLevel();
-        }
+#endregion
 
-        public bool IsCanLevelUp()
-        {
-            return _canLevelUp;
-        }
-
-        private float CalculateResourceValueMultiplier()
-        {
-            return _resourceValueMultiplier = _level;
-        }
-
+#region BuildWork
         public void Build(float delay)
         {
             StartCoroutine(FactoryBuildRoutine(delay));
@@ -162,5 +104,82 @@ namespace PlanetsColony
             SetLevel(1);
             Activate();
         }
+        #endregion
+
+#region ConditionWork
+        public void Activate()
+        {
+            _isActive = true;
+            _canLevelUp = true;
+            _factorySprite.gameObject.SetActive(true);
+            OnActivate?.Invoke();
+        }
+
+        public void Disactivate()
+        {
+            _isActive = false;
+            _factorySprite.gameObject.SetActive(false);
+        }
+        #endregion
+
+#region CargoWork
+        public void SendCargo(CargoHandler ship, Resource.Type resourceType)
+        {
+            CalculateResourceValueMultiplier();
+            ship.AcceptCargo(_cargoGenerator.GenerateCargo(resourceType, 
+                _minGeneratedResource * _resourceValueMultiplier, 
+                _maxGeneratedResource * _resourceValueMultiplier));
+        }
+        #endregion
+
+#region Utils
+        private float CalculateResourceValueMultiplier()
+        {
+            return _resourceValueMultiplier = _level;
+        }
+
+        private static void CheckOtherFactoriesID()
+        {
+            var temp = FindObjectsOfType<Factory>();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    if (i == j) continue;
+                    if (temp[i].GetID() == temp[j].GetID())
+                    {
+                        throw new Exception($"У заводов планет должны быть уникальные идентификаторы! \n {temp[i].gameObject} совпадает с {temp[j].gameObject}");
+                    }
+                }
+            }
+        }
+#endregion
+
+#region GettersSetters
+        internal void SetLevel(uint level)
+        {
+            this._level = level;
+            SaveLevel();
+        }
+
+        public bool IsCanLevelUp()
+        {
+            return _canLevelUp;
+        }
+        public bool GetIsActive()
+        {
+            return _isActive;
+        }
+
+        public uint GetLevel()
+        {
+            return _level;
+        }
+
+        public string GetID()
+        {
+            return _id;
+        }
+#endregion
     }
 }

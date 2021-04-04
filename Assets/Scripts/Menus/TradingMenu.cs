@@ -36,7 +36,7 @@ namespace PlanetsColony
         }
 
         #region ResourceListWork
-        public void GenerateTradingList(List<ResourcesSystem.ResourceInfo> resourceInfo)
+        public override void GenerateList(List<ResourcesSystem.ResourceInfo> resourceInfo)
         {
             _generatedElements = new ResourceTradingElement[resourceInfo.Count];
 
@@ -71,7 +71,6 @@ namespace PlanetsColony
 
         public void RefreshElements(List<ResourcesSystem.ResourceInfo> resourceInfo)
         {
-            
             _activeElementsCount = 0;
             for (int i = 0; i < _generatedElements.Length; i++)
             {

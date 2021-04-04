@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using PlanetsColony.Utils;
+using PlanetsColony.Trading;
 
 namespace PlanetsColony
 {
@@ -16,6 +17,11 @@ namespace PlanetsColony
         private const string _maxShipsCountText = "Максимальное число кораблей: ";
         private const string _activeShipsCountText = "Всего кораблей активно: ";
 
+        private string _calcMoney = null;
+        private string _calcAllResourceSold = null;
+        private string _calcShipsCount = null;
+        private string _calcactiveShipsCount = null;
+
         private void Awake()
         {
             StatsSystem.Instance.OnShipCountChange.AddListener(SetStatsText);
@@ -29,10 +35,19 @@ namespace PlanetsColony
 
         public void SetStatsText()
         {
-            _moneyValue.text = _moneyValueText + Converter.ValueToString(StatsSystem.Instance.GetMoney());
-            _allResourceSold.text = _allResourceSoldText + Converter.ValueToString(StatsSystem.Instance.GetAllResourceSoldValue()) + ResourcesSystem.GetUnitsOfMeasurement();
-            _maxShipsCount.text = _maxShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetMaxShipsCount());
-            _activeShipsCount.text = _activeShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetActiveShipsCount());
+            CalculateStrings();
+            _moneyValue.text = _moneyValueText + _calcMoney;
+            _allResourceSold.text = _calcAllResourceSold;
+            _maxShipsCount.text = _calcShipsCount;
+            _activeShipsCount.text = _calcactiveShipsCount;
+        }
+
+        private void CalculateStrings()
+        {
+            _calcMoney = Converter.ValueToString(StatsSystem.Instance.GetMoney());
+            _calcAllResourceSold = _allResourceSoldText + Converter.ValueToString(ResourceSalesAccount.GetAllResourceSoldValue()) + ResourcesSystem.GetUnitsOfMeasurement();
+            _calcShipsCount = _maxShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetMaxShipsCount());
+            _calcactiveShipsCount = _activeShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetActiveShipsCount());
         }
     }
 }

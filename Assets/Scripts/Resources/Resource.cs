@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanetsColony.Trading;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,11 @@ namespace PlanetsColony.Resources
 {
     public class Resource
     {
-        protected ulong value { get; set; }
         protected Type _type;
-        // 0 - абсолютно не нужен, 255 - абсолютно нужен
-        protected byte _marketValue = 10;
-        protected ulong _soldValue = 0;
-        private static Array _typeValue = Enum.GetValues(typeof(Type));
-        private string minMaxValueErrorText = $"Аргументы minValue и maxValue должны быть в пределаха от {ulong.MinValue} до {ulong.MaxValue}";
+        private string _minMaxValueErrorText = $"Аргументы minValue и maxValue должны быть в пределаха от {ulong.MinValue} до {ulong.MaxValue}";
         private static int[] _typesArray = (int[])(Enum.GetValues(typeof(Type)));
 
+        /*
         public Resource(Type type, ulong value)
         {
             this.value = value;
@@ -24,12 +21,12 @@ namespace PlanetsColony.Resources
         {
             if(minValue < ulong.MinValue || maxValue > ulong.MaxValue)
             {
-                throw new Exception(minMaxValueErrorText);
+                throw new Exception(_minMaxValueErrorText);
             }
             this.value = (ulong)UnityEngine.Random.Range(minValue, maxValue);
             this._type = type;
         }
-
+        */
         public enum Type : uint
         {
             Aluminum,
@@ -73,16 +70,7 @@ namespace PlanetsColony.Resources
             return dictionary;
         }
 
-        public virtual float GetPrice()
-        {
-            return 0f;
-        }
-
-        public virtual ulong GetValue()
-        {
-            return value;
-        }
-
+#region GettersSetters
         public static int[] GetTypesArray()
         {
             return _typesArray;
@@ -97,45 +85,10 @@ namespace PlanetsColony.Resources
         {
             return _typesArray.Length;
         }
-
-        internal virtual void Sell(ulong value)
-        {
-            if(value <= this.value)
-            {
-                SubstractValue(value);
-                _soldValue += value;
-                StatsSystem.Instance.IncreaseAllResourceSoldValue(value);
-            }
-        }
-
-        protected virtual void SubstractValue(ulong value)
-        {
-            this.value -= value;
-        }
-
-        public byte GetMarketValue()
-        {
-            return _marketValue;
-        }
-
-        internal void SetMarketValue(byte value)
-        {
-            this._marketValue = value;
-        }
-
-        public virtual Resource.Type GetResourceType()
+        public virtual Type GetResourceType()
         {
             return _type;
         }
-
-        public virtual void Add(ulong value)
-        {
-            this.value += value;
-        }
-
-        public ulong GetSoldValue()
-        {
-            return _soldValue;
-        }
+#endregion
     }
 }
