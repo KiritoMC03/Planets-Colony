@@ -6,7 +6,7 @@ namespace PlanetsColony
 {
     public class ObjectPooler : MonoBehaviour
     {
-        [SerializeField] internal static ObjectPooler Instance = null;
+        internal static ObjectPooler Instance = null;
         [SerializeField] private List<ObjectInfo> objectsInfo;
 
         private Dictionary<ObjectInfo.ObjectType, Pool> pools;

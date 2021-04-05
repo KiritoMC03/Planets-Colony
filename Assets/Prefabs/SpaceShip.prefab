@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 69080762853621385}
   - component: {fileID: -2038976870745426995}
   - component: {fileID: 3715416314242437366}
-  - component: {fileID: 3715416314242437367}
+  - component: {fileID: 1939654983688391643}
   - component: {fileID: 3715416314242437364}
   m_Layer: 9
   m_Name: Spaceship
@@ -51,6 +51,7 @@ MonoBehaviour:
   _target: {fileID: 0}
   _speed: 150
   _rotationSpeed: 100
+  _shipSprite: {fileID: 3715416314242437364}
 --- !u!114 &-2038976870745426995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,8 +85,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &3715416314242437367
-PolygonCollider2D:
+--- !u!58 &1939654983688391643
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,23 +99,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.0713466, y: 0.031333335, z: 0.051342886, w: 0.031333335}
-    pivot: {x: 0.5379928, y: 0.48816162}
-    oldSize: {x: 0.28672, y: 0.28}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.0002808366, y: -0.10134752}
-      - {x: -0.081180885, y: -0.0996412}
-      - {x: -0.042248216, y: -0.053236023}
-      - {x: 0.0005392451, y: 0.111579604}
-      - {x: 0.043111812, y: -0.051141843}
-      - {x: 0.079035535, y: -0.09961552}
+  serializedVersion: 2
+  m_Radius: 0.08
 --- !u!212 &3715416314242437364
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -155,12 +141,12 @@ SpriteRenderer:
   m_SortingLayerID: -303380407
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b7294256cda347d4095264720bf7a8f4, type: 3}
+  m_Sprite: {fileID: 8377495993855353131, guid: 39d5643eed27ef444854516bbd27a533, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.144, y: 0.156}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

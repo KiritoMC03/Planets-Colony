@@ -28,10 +28,12 @@ namespace PlanetsColony
 
         private void Awake()
         {
-            _transform = transform;
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _distanceDelta = _speed * Time.deltaTime;
             DoAwakeWork();
+        }
+
+        private void Start()
+        {
+            DoStartWork();
         }
 
         private void Update()
@@ -118,6 +120,13 @@ namespace PlanetsColony
         #endregion
 
         protected virtual void DoAwakeWork()
+        {
+            _transform = transform;
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _distanceDelta = _speed * Time.deltaTime;
+        }
+
+        protected virtual void DoStartWork()
         {
 
         }
