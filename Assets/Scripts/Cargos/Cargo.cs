@@ -17,18 +17,6 @@ namespace PlanetsColony
             this._type = type;
         }
 
-        public Cargo(Type type, ulong minValue, ulong maxValue)
-        {
-            this._value = (ulong)Random.Range(minValue, maxValue);
-            this._type = type;
-        }
-
-        public Cargo(Type type, ulong minValue, ulong maxValue, BigInteger multiplier)
-        {
-            this._value = multiplier * (ulong)Random.Range(minValue, maxValue);
-            this._type = type;
-        }
-
         public BigInteger GetValue()
         {
             return _value;

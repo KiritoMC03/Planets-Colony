@@ -16,7 +16,7 @@ namespace PlanetsColony.Levels
         [SerializeField] private int _maxLevel = 16;
         [SerializeField] private Sprite[] _spriteForLevels = null;
         [SerializeField] private static Sprite[] _spriteForLevelsa = null;
-        private int _currentLevel = 1;
+        [SerializeField] private int _currentLevel = 1;
 
         private void Awake()
         {
