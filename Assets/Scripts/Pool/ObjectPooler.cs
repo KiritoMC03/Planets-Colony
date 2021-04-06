@@ -59,8 +59,6 @@ namespace PlanetsColony
                     pools[obj.Type].objects.Enqueue(tempStartGameObject);
                 }
             }
-            // Debug.Log("objectInfo: " + objectsInfo.Count);
-            // Debug.Log("pools: " + pools.Count);
             Destroy(emptyGameObject);
         }
 

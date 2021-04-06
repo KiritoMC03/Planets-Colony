@@ -33,8 +33,6 @@ namespace PlanetsColony.Trading
 
         public static void AddAllResourceSoldValue(BigInteger value)
         {
-            Debug.Log("_allResourceSoldValue PRE: " + _allResourceSoldValue);
-            Debug.Log("_allResourceSoldValue POST: " + _allResourceSoldValue + value);
             _allResourceSoldValue += value;
         }
 

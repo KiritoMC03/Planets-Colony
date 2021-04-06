@@ -51,7 +51,6 @@ namespace PlanetsColony
         public void UpdateLevelSprite()
         {
             _shipSprite.sprite = SpaceshipsLevelling.Instance.GetCurrentSprite();
-            Debug.Log("UpdateSprite!");
         }
     }
 }
