@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PlanetsColony.Trading;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace PlanetsColony
 {
@@ -14,6 +16,7 @@ namespace PlanetsColony
 
         public static StatsSystem Instance = null;
 
+        [SerializeField] private MoneyGain _moneyGain = null;
         [SerializeField] private BigInteger _money = 0;
         [SerializeField] private uint _maxShipsCount = 10;
         [SerializeField] private uint _activeShipsCount = 0;
@@ -34,11 +37,20 @@ namespace PlanetsColony
             {
                 _money = SaveLoadSystem.Instance.LoadMoney();
             }
+            if (_moneyGain == null)
+            {
+                Debug.LogError("Money Gain field must not be null.");
+            }
+            else
+            {
+                _moneyGain = _moneyGain.GetComponent<MoneyGain>();
+            }
         }
 
 #region MoneyWork
         internal void AddMoney(BigInteger value)
         {
+            _moneyGain.Show(value);
             _money += value;
             OnMoneyValueChange?.Invoke();
         }
