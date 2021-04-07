@@ -17,12 +17,20 @@ namespace PlanetsColony
         private static string ALLRESOURCE_SOLD_VALUE_KEY = "resourceSoldValue"; 
         private string _tempResourceSoldValue = "";
 
+        private static string UPDATE_KEY = "Beta 0.5.6";
+
         private void Awake()
         {
             Instance = this;
             if (_factoryLevelling == null)
             {
                 throw new Exception("FactoryLevelling field must not be null.");
+            }
+
+            if (!PlayerPrefs.HasKey(UPDATE_KEY))
+            {
+                PlayerPrefs.DeleteAll();
+                PlayerPrefs.SetString(UPDATE_KEY, "YES");
             }
         }
 

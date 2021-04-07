@@ -295,7 +295,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0000000008000000090000000c00000014000000
+  _resourceRareInfo:
+  - Type: 0
+    _rare: 40
+  - Type: 8
+    _rare: 63
+  - Type: 9
+    _rare: 12
+  - Type: 12
+    _rare: 70
+  - Type: 20
+    _rare: 35
   _sendShipWithCargoDelay: 3
 --- !u!114 &13888986
 MonoBehaviour:
@@ -3283,7 +3293,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0b0000000100000016000000
+  _resourceRareInfo:
+  - Type: 11
+    _rare: 91
+  - Type: 1
+    _rare: 70
+  - Type: 22
+    _rare: 42
   _sendShipWithCargoDelay: 3
 --- !u!114 &644117665
 MonoBehaviour:
@@ -3814,7 +3830,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0c00000010000000180000001b000000
+  _resourceRareInfo:
+  - Type: 12
+    _rare: 60
+  - Type: 16
+    _rare: 40
+  - Type: 24
+    _rare: 32
+  - Type: 27
+    _rare: 51
   _sendShipWithCargoDelay: 3
 --- !u!114 &753985571
 MonoBehaviour:
@@ -9938,7 +9962,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0b0000001600000009000000
+  _resourceRareInfo:
+  - Type: 11
+    _rare: 86
+  - Type: 22
+    _rare: 16
+  - Type: 9
+    _rare: 24
   _sendShipWithCargoDelay: 3
 --- !u!114 &1225548155
 MonoBehaviour:
@@ -10367,7 +10397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0b0000000900000011000000
+  _resourceRareInfo:
+  - Type: 11
+    _rare: 68
+  - Type: 9
+    _rare: 26
+  - Type: 17
+    _rare: 67
   _sendShipWithCargoDelay: 3
 --- !u!114 &1278471505
 MonoBehaviour:
@@ -11391,7 +11427,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0b000000090000000c0000001000000006000000
+  _resourceRareInfo:
+  - Type: 11
+    _rare: 76
+  - Type: 9
+    _rare: 18
+  - Type: 12
+    _rare: 21
+  - Type: 16
+    _rare: 6
+  - Type: 6
+    _rare: 3
   _sendShipWithCargoDelay: 3
 --- !u!114 &1598648323
 MonoBehaviour:
@@ -13222,7 +13268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceTypes: 0c0000000d00000010000000
+  _resourceRareInfo:
+  - Type: 12
+    _rare: 80
+  - Type: 13
+    _rare: 35
+  - Type: 16
+    _rare: 50
   _sendShipWithCargoDelay: 3
 --- !u!114 &2139621748
 MonoBehaviour:
