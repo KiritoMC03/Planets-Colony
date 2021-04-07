@@ -30,6 +30,7 @@ namespace PlanetsColony.Trading
 
         public void Show(BigInteger addedMoney)
         {
+            Debug.Log("addedMoney: " + addedMoney);
             _text.text = "Добавлено монет: " + Converter.ValueToString(addedMoney);
             if (_showTextRoutine != null)
             {

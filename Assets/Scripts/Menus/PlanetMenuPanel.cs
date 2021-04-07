@@ -26,7 +26,7 @@ namespace PlanetsColony
             _planetName.text = planetFactory.gameObject.name;
             _factoryLevel.text = _factoryLevelText + planetFactory.GetLevel();
             _levelUpButton_text.text = (planetFactory.GetLevel() > 0) ? _levelUpText : _levelBuildText;
-            _needMoney.text = _needMoneyText + Converter.ValueToString(LevelsSystem.CalculateNeedMoney(planetFactory.GetLevel() + 1));
+            _needMoney.text = _needMoneyText + Converter.ValueToString(FactoryLevelling.CalculateNeedMoney(planetFactory.GetLevel() + 1));
         }
 
         public void UpdateText()

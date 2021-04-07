@@ -80,8 +80,11 @@ namespace PlanetsColony
         private void Trade(BigInteger value)
         {
             var money = _tradingMenu.GetResourceToTrade(_resourceType, value) * _cost;
-            StatsSystem.Instance.AddMoney(money);
-            _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
+            if(money != 0)
+            {
+                StatsSystem.Instance.AddMoney(money);
+                _tradingMenu.GetResourcesStorageLink().ResourceChange?.Invoke();
+            }
         }
 
         #endregion

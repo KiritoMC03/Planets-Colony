@@ -50,6 +50,7 @@ namespace PlanetsColony
 #region MoneyWork
         internal void AddMoney(BigInteger value)
         {
+            Debug.Log("value: " + value);
             _moneyGain.Show(value);
             _money += value;
             OnMoneyValueChange?.Invoke();

@@ -11,7 +11,7 @@ namespace PlanetsColony
     {
         public UnityEvent OnActivate;
 
-        [SerializeField] public ulong _level = 0;
+        [SerializeField] public uint _level = 0;
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;
@@ -69,7 +69,7 @@ namespace PlanetsColony
 
         private void LoadLevel()
         {
-            _level = Convert.ToUInt64(PlayerPrefs.GetFloat(_id + _levelKey));
+            _level = Convert.ToUInt32(PlayerPrefs.GetFloat(_id + _levelKey));
         }
 
         internal void LevelUp()
@@ -169,7 +169,7 @@ namespace PlanetsColony
             return _isActive;
         }
 
-        public ulong GetLevel()
+        public uint GetLevel()
         {
             return _level;
         }

@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812e03d5599c9f642a307ae0efdec2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyForBuildFactory: 30000000000
+  _moneyForBuildFactory: 300000000000

@@ -10337,7 +10337,7 @@ MonoBehaviour:
   OnActivate:
     m_PersistentCalls:
       m_Calls: []
-  _level: 0
+  _level: 1
   _minGeneratedResource: 0
   _maxGeneratedResource: 100
   _factorySprite: {fileID: 1991902720}
@@ -12471,6 +12471,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4888922963209753112, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
   m_PrefabInstance: {fileID: 1919971250}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1921392840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6521246988404258545, guid: 97648d4e5457ef14f8263ef25e5df6fe, type: 3}
+  m_PrefabInstance: {fileID: 6521246987990599751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812e03d5599c9f642a307ae0efdec2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1933955439
 GameObject:
   m_ObjectHideFlags: 0
@@ -13297,6 +13308,30 @@ PrefabInstance:
       propertyPath: _tradingMenu
       value: 
       objectReference: {fileID: 592729808}
+    - target: {fileID: 1473929809158898551, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
+      propertyPath: _resourceInfo.Array.data[6].maxCost
+      value: 225000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473929809158898551, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
+      propertyPath: _resourceInfo.Array.data[6].minCost
+      value: 200000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473929809158898551, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
+      propertyPath: _resourceInfo.Array.data[7].minCost
+      value: 4000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473929809158898551, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
+      propertyPath: _resourceInfo.Array.data[7].maxCost
+      value: 6000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473929809158898551, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
+      propertyPath: _resourceInfo.Array.data[9].minCost
+      value: 1100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473929809158898551, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
+      propertyPath: _resourceInfo.Array.data[9].maxCost
+      value: 1400000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
 --- !u!1001 &3571336730394868415
@@ -13645,7 +13680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6521246988404258546, guid: 97648d4e5457ef14f8263ef25e5df6fe, type: 3}
       propertyPath: m_Name
-      value: LevelSystem
+      value: FactoryLevelling
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97648d4e5457ef14f8263ef25e5df6fe, type: 3}
@@ -13660,6 +13695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveLoadSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 6602192659192679622, guid: 5c2c05633bef3d4458f40c349c32cf60, type: 3}
+      propertyPath: _factoryLevelling
+      value: 
+      objectReference: {fileID: 1921392840}
     - target: {fileID: 6602192659192679623, guid: 5c2c05633bef3d4458f40c349c32cf60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

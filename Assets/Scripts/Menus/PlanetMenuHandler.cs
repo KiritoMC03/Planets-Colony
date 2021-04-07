@@ -47,7 +47,7 @@ namespace PlanetsColony
         
         public void LevelUp()
         {
-            _tempNeedMoney = LevelsSystem.CalculateNeedMoney(_currentPlanetWithFactory.GetLevel() + 1);
+            _tempNeedMoney = FactoryLevelling.CalculateNeedMoney(_currentPlanetWithFactory.GetLevel() + 1);
             if (_currentPlanetWithFactory.IsCanLevelUp() && StatsSystem.Instance.GetMoney() >= _tempNeedMoney)
             {
                 StatsSystem.Instance.UseMoney(_tempNeedMoney);
