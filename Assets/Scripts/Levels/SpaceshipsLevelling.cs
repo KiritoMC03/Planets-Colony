@@ -67,7 +67,7 @@ namespace PlanetsColony.Levels
 
         public BigInteger CalculateMoneyForLevelUp()
         {
-            return (BigInteger.Pow(6, Convert.ToInt32(Mathf.Pow(_currentLevel, 1.7f)) + 11));
+            return (BigInteger.Pow(9, Convert.ToInt32(Mathf.Pow(_currentLevel, 2f)) + 11));
         }
 
         private bool CheckNeedMoney()
