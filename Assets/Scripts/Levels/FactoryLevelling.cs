@@ -24,7 +24,7 @@ namespace PlanetsColony.Levels
             }
             try
             {
-                return (BigInteger.Pow(7, Convert.ToInt32(2 * level)) * 3000000000);
+                return (BigInteger.Pow(6, Convert.ToInt32(level)) * 3000000);
             }
             catch
             {
