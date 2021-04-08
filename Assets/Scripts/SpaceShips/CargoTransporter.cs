@@ -2,6 +2,7 @@
 using System.Collections;
 using PlanetsColony.Levels;
 using System;
+using PlanetsColony.Improvements;
 
 namespace PlanetsColony
 {
@@ -12,6 +13,7 @@ namespace PlanetsColony
     {
         [SerializeField] private SpriteRenderer _shipSprite = null;
         private CargoHandler _cargoHandler = null;
+        private float _speedImprovement = 0f;
         // временные переменные здесь:
         private Transform _tempTarget = null;
 
@@ -45,12 +47,28 @@ namespace PlanetsColony
         {
             base.DoStartWork();
             SpaceshipsLevelling.Instance.OnSpaceshipsLevelUp.AddListener(UpdateLevelSprite);
+            CargoTransporterSpeedImprovement.Instance.OnLevelUp.AddListener(SetSpeedImprovement);
             UpdateLevelSprite();
         }
 
         public void UpdateLevelSprite()
         {
             _shipSprite.sprite = SpaceshipsLevelling.Instance.GetCurrentSprite();
+        }
+
+        protected override float CalculateDistanceDelta()
+        {
+            return base.CalculateDistanceDelta() + _speedImprovement;
+        }
+
+        private void SetSpeedImprovement()
+        {
+            _speedImprovement = CargoTransporterSpeedImprovement.GetImprovedSpeed(_speed);
+        }
+
+        private void OnEnable()
+        {
+            SetSpeedImprovement();
         }
     }
 }

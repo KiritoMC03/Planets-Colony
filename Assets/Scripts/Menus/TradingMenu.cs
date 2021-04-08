@@ -24,15 +24,15 @@ namespace PlanetsColony
         {
             if (_resourcesStorage == null)
             {
-                throw new ArgumentNullException("Заполните поле Resources Storage.");
+                throw new ArgumentNullException("Resources Storage field must not be null.");
             }
             if (_elementsContainer == null)
             {
-                throw new ArgumentNullException("Заполните поле Elements Container.");
+                throw new ArgumentNullException("Elements Container field must not be null.");
             }
             if (_elementsCountIsNull == null)
             {
-                throw new ArgumentNullException("Заполните поле Elements Count Is Null.");
+                throw new ArgumentNullException("Elements Count Is Null field must not be null.");
             }
         }
 
@@ -45,7 +45,7 @@ namespace PlanetsColony
             {
                 if (_elementsContainer == null)
                 {
-                    throw new ArgumentNullException("Заполните поле Elements Container.");
+                    throw new ArgumentNullException("Elements Container field must not be null.");
                 }
 
                 var tempResourceValue = _resourcesStorage.GetResourceValue(resourceInfo[i].GetResourceType());

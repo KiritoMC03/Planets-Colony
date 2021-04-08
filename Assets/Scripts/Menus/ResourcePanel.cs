@@ -23,7 +23,7 @@ namespace PlanetsColony
         {
             if(_resourcesStorage == null)
             {
-                throw new ArgumentNullException("Заполните поле Resources Storage.");
+                throw new ArgumentNullException("Resources Storage field must not be null.");
             }
         }
 

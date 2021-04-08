@@ -12,7 +12,7 @@ namespace PlanetsColony
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
         [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.CargoTransporter;
         [SerializeField] private Transform _target = null;
-        [SerializeField] private float _speed = 1f;
+        [SerializeField] protected float _speed = 1f;
         [SerializeField] private float _rotationSpeed = 0.1f;
 
         private Transform _transform = null;
@@ -74,7 +74,7 @@ namespace PlanetsColony
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
         }
         
-        private float CalculateDistanceDelta()
+        protected virtual float CalculateDistanceDelta()
         {
             return _distanceDelta = _speed * Time.deltaTime;
         }
@@ -108,6 +108,7 @@ namespace PlanetsColony
         {
             return _departureObject;
         }
+
         public void SetDepartureObjectAsTarget()
         {
             _target = _departureObject;
@@ -126,9 +127,6 @@ namespace PlanetsColony
             _distanceDelta = _speed * Time.deltaTime;
         }
 
-        protected virtual void DoStartWork()
-        {
-
-        }
+        protected virtual void DoStartWork() {}
     }
 }

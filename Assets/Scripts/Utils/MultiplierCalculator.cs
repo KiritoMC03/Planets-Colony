@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanetsColony.Improvements;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -9,6 +10,10 @@ namespace PlanetsColony.Utils
     public class MultiplierCalculator : MonoBehaviour
     {
         private static ulong _resourceValueMultiplier = 0;
+
+        private void Awake()
+        {
+        }
 
         public static BigInteger CalculateGeneratedResourceMultiplier(uint level)
         {

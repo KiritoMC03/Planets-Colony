@@ -22,7 +22,7 @@ namespace PlanetsColony
             _mainCamera = Camera.main;
             if(_panel == null)
             {
-                throw new Exception("Необходимо установить поле Panel.");
+                throw new Exception("Panel field must not be null.");
             }
             _panel.gameObject.SetActive(false);
         }
