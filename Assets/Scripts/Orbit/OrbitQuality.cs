@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlanetsColony.Utils;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace PlanetsColony
@@ -49,7 +50,7 @@ namespace PlanetsColony
 
         public void ChangeWidth()
         {
-            _lineRenderer.widthMultiplier = _spaceCameraRange.GetDistanceToSun() * _baseLineWidth * _lineScale / _normalRenderDistance;
+            _lineRenderer.widthMultiplier = MultiplierCalculator.CalculateOrbitLineWidthMultiplier(_spaceCameraRange.GetDistanceToSun(), _baseLineWidth, _lineScale, _normalRenderDistance);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using PlanetsColony.Resources;
 using UnityEngine.Events;
+using PlanetsColony.Utils;
 
 namespace PlanetsColony
 {
@@ -23,7 +24,6 @@ namespace PlanetsColony
         private CargoGenerator _cargoGenerator = null;
         private bool _isActive = false;
         private bool _canLevelUp = true;
-        private ulong _resourceValueMultiplier = 0;
 
         private string _levelKey = "_level";
 
@@ -125,16 +125,15 @@ namespace PlanetsColony
 #region CargoWork
         public void SendCargo(CargoHandler ship, Resource.Type resourceType)
         {
-            CalculateResourceValueMultiplier();
-            ship.AcceptCargo(_cargoGenerator.GenerateCargo(resourceType, _minGeneratedResource, _maxGeneratedResource, _resourceValueMultiplier));
+            var tempCargo = _cargoGenerator.GenerateCargo(resourceType, 
+                _minGeneratedResource, 
+                _maxGeneratedResource, 
+                MultiplierCalculator.CalculateGeneratedResourceMultiplier(_level));
+            ship.AcceptCargo(tempCargo);
         }
         #endregion
 
 #region Utils
-        private float CalculateResourceValueMultiplier()
-        {
-            return _resourceValueMultiplier = _level;
-        }
 
         private static void CheckOtherFactoriesID()
         {

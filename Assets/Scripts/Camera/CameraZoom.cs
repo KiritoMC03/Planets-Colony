@@ -22,7 +22,6 @@ namespace PlanetsColony
         private Vector3 _zeroOffset = Vector3.zero;
         private Vector3 _offset = Vector3.zero;
         private float _scroll = 0f;
-        private float _zoomMultiplier = 1f;
         private bool _buttonUsed = false;
 
         private void Awake()
@@ -59,20 +58,6 @@ namespace PlanetsColony
             }
         }
 
-        /*
-        private void Zoom()
-        {
-            SetScroll();
-            _offset.Set(0f, 0f, SetScroll() * _zoomMultiplier);
-
-            if (_offset != _zeroOffset)
-            {
-                _transform.position += _offset;
-                CalculateZoomMultiplier();
-            }
-        }
-        */
-
         private float SetScroll()
         {
             if (!_buttonUsed)
@@ -80,11 +65,6 @@ namespace PlanetsColony
                 _scroll = Input.GetAxis("Mouse ScrollWheel");
             }
             return _scroll;
-        }
-
-        private float CalculateZoomMultiplier()
-        {
-            return _zoomMultiplier = _scrollSpeed * _cameraDistance.GetDistanceToSun();
         }
 
         public void ZoomIn()

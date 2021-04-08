@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanetsColony.Utils;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -44,7 +45,7 @@ namespace PlanetsColony
         private void Start()
         {
             _transform = transform;
-            _speedMultiplier = CalculateSpeedMultiplier();
+            _speedMultiplier = MultiplierCalculator.CalculateCameraSpeedMultiplier(_speed, _cameraDistance.GetDistanceToSun());
         }
 
         private void Update()
@@ -56,13 +57,17 @@ namespace PlanetsColony
         private void Move()
         {
             _offset = GetInput() * _speedMultiplier;
+            if(_offset.x == 0 && _offset.y == 0)
+            {
+                return;
+            }
 
             if (_offset != _zeroOffset)
             {
                 _transform.position += (Vector3)_offset;
                 OnMoved.Invoke();
             }
-            CalculateSpeedMultiplier();
+            _speedMultiplier = MultiplierCalculator.CalculateCameraSpeedMultiplier(_speed, _cameraDistance.GetDistanceToSun());
         }
 
         private Vector2 GetInput()
@@ -79,35 +84,6 @@ namespace PlanetsColony
             }
 
             return new Vector2(_horizontal, _vertical);
-        }
-
-        private float CalculateSpeedMultiplier()
-        {
-            return _speedMultiplier = _speed * Mathf.Sqrt(_cameraDistance.GetDistanceToSun()) / 5;
-        }
-
-
-        //ToDo: ПЕРЕПИШИ ЭТО ДЕРЬМО::::::
-        
-        public void Up()
-        {
-            _ignoreAxis = true;
-            _vertical = _speedMultiplier;
-        }
-        public void Down()
-        {
-            _ignoreAxis = true;
-            _vertical = -_speedMultiplier;
-        }
-        public void Left()
-        {
-            _ignoreAxis = true;
-            _horizontal = -_speedMultiplier;
-        }
-        public void Right()
-        {
-            _ignoreAxis = true;
-            _horizontal = _speedMultiplier;
         }
     }
 }
