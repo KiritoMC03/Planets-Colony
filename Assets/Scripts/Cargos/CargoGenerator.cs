@@ -4,7 +4,7 @@ using PlanetsColony.Resources;
 using System.Numerics;
 using PlanetsColony.Levels;
 
-namespace PlanetsColony
+namespace PlanetsColony.Cargos
 {
     [RequireComponent(typeof(CargoLoaderForShips))]
     public class CargoGenerator : MonoBehaviour

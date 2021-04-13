@@ -1,9 +1,10 @@
-﻿using System;
+﻿using PlanetsColony.Factories;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlanetsColony
+namespace PlanetsColony.Spaceships
 {
     public class SpaceshipsPort : MonoBehaviour
     {

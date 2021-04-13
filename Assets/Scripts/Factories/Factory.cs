@@ -4,8 +4,10 @@ using System;
 using PlanetsColony.Resources;
 using UnityEngine.Events;
 using PlanetsColony.Utils;
+using PlanetsColony.Spaceships;
+using PlanetsColony.Cargos;
 
-namespace PlanetsColony
+namespace PlanetsColony.Factories
 {
     [RequireComponent(typeof(CargoGenerator))]
     public class Factory : MonoBehaviour

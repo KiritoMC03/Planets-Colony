@@ -5,7 +5,7 @@ using PlanetsColony.Resources;
 using PlanetsColony.Trading;
 using System.Numerics;
 
-namespace PlanetsColony
+namespace PlanetsColony.Cargos
 {
     public class Cargo : Resource
     {

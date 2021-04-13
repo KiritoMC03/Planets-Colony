@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using PlanetsColony.Factories;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlanetsColony
+namespace PlanetsColony.Spaceships
 {
     public class BuilderSpaceship : Spaceship
     {

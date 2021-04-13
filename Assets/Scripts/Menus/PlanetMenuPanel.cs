@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using PlanetsColony.Utils;
 using PlanetsColony.Levels;
+using PlanetsColony.Factories;
 
 namespace PlanetsColony
 {

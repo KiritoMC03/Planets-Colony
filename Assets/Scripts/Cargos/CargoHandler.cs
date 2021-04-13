@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlanetsColony.Resources;
+using PlanetsColony.Spaceships;
 
-
-namespace PlanetsColony
+namespace PlanetsColony.Cargos
 {
     [RequireComponent(typeof(Spaceship), typeof(CargoTransporter))]
     public class CargoHandler : MonoBehaviour

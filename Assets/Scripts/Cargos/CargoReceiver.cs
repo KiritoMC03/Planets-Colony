@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using PlanetsColony.Resources;
 using System;
 
-namespace PlanetsColony
+namespace PlanetsColony.Cargos
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]

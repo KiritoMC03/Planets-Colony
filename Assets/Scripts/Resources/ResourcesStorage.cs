@@ -1,4 +1,5 @@
-﻿using PlanetsColony.Trading;
+﻿using PlanetsColony.Cargos;
+using PlanetsColony.Trading;
 using System;
 using System.Collections;
 using System.Collections.Generic;

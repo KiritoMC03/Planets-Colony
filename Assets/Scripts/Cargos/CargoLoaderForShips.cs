@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Resources;
 using System;
+using PlanetsColony.Factories;
 
-namespace PlanetsColony
+namespace PlanetsColony.Cargos
 {
     [RequireComponent(typeof(Factory))]
     public class CargoLoaderForShips : MonoBehaviour
