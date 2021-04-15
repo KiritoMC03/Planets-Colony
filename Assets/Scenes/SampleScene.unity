@@ -137,6 +137,9 @@ GameObject:
   - component: {fileID: 13888985}
   - component: {fileID: 13888984}
   - component: {fileID: 13888983}
+  - component: {fileID: 13888989}
+  - component: {fileID: 13888990}
+  - component: {fileID: 13888988}
   - component: {fileID: 13888982}
   - component: {fileID: 13888981}
   - component: {fileID: 13888980}
@@ -295,18 +298,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
-  - Type: 0
-    _rare: 40
-  - Type: 8
-    _rare: 63
+  _resourceInfo:
   - Type: 9
-    _rare: 12
+    _rare: 16
   - Type: 12
-    _rare: 70
+    _rare: 65
   - Type: 20
-    _rare: 35
-  _sendShipWithCargoDelay: 3
+    _rare: 43
+  - Type: 0
+    _rare: 72
+  - Type: 8
+    _rare: 28
 --- !u!114 &13888986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +339,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34244403999cbb34f9928ae66b43f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &13888988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13888978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &13888989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13888978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &13888990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13888978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &35566706
@@ -3381,6 +3420,9 @@ GameObject:
   - component: {fileID: 644117664}
   - component: {fileID: 644117663}
   - component: {fileID: 644117665}
+  - component: {fileID: 644117668}
+  - component: {fileID: 644117667}
+  - component: {fileID: 644117666}
   - component: {fileID: 644117659}
   - component: {fileID: 644117658}
   - component: {fileID: 644117657}
@@ -3550,14 +3592,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
+  _resourceInfo:
   - Type: 11
-    _rare: 91
+    _rare: 78
   - Type: 1
-    _rare: 70
+    _rare: 16
   - Type: 22
-    _rare: 42
-  _sendShipWithCargoDelay: 3
+    _rare: 26
 --- !u!114 &644117665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3579,6 +3620,43 @@ MonoBehaviour:
   _factorySprite: {fileID: 434427667}
   _spaceshipsPort: {fileID: 1633715323}
   _id: Jupiter
+--- !u!114 &644117666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644117656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &644117667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644117656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &644117668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644117656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &677118946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,6 +3996,9 @@ GameObject:
   - component: {fileID: 753985570}
   - component: {fileID: 753985569}
   - component: {fileID: 753985571}
+  - component: {fileID: 753985574}
+  - component: {fileID: 753985573}
+  - component: {fileID: 753985572}
   - component: {fileID: 753985566}
   - component: {fileID: 753985565}
   - component: {fileID: 753985563}
@@ -4087,16 +4168,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
+  _resourceInfo:
   - Type: 12
-    _rare: 60
-  - Type: 16
-    _rare: 40
-  - Type: 24
-    _rare: 32
-  - Type: 27
-    _rare: 51
-  _sendShipWithCargoDelay: 3
+    _rare: 38
+  - Type: 13
+    _rare: 43
+  - Type: 18
+    _rare: 27
+  - Type: 4
+    _rare: 37
+  - Type: 5
+    _rare: 41
+  - Type: 0
+    _rare: 0
 --- !u!114 &753985571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4118,6 +4202,43 @@ MonoBehaviour:
   _factorySprite: {fileID: 493001931}
   _spaceshipsPort: {fileID: 1633715323}
   _id: Mars
+--- !u!114 &753985572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753985562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &753985573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753985562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &753985574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753985562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &777346754
 GameObject:
   m_ObjectHideFlags: 0
@@ -10193,6 +10314,9 @@ GameObject:
   - component: {fileID: 1225548154}
   - component: {fileID: 1225548153}
   - component: {fileID: 1225548152}
+  - component: {fileID: 1225548159}
+  - component: {fileID: 1225548158}
+  - component: {fileID: 1225548157}
   - component: {fileID: 1225548151}
   - component: {fileID: 1225548150}
   - component: {fileID: 1225548149}
@@ -10351,14 +10475,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
+  _resourceInfo:
   - Type: 11
-    _rare: 86
+    _rare: 79
   - Type: 22
-    _rare: 16
+    _rare: 31
   - Type: 9
-    _rare: 24
-  _sendShipWithCargoDelay: 3
+    _rare: 12
 --- !u!114 &1225548155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10389,6 +10512,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 655087ba136ecdc469d58aea1bb46862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1225548157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225548147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &1225548158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225548147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1225548159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225548147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1246879040
@@ -10628,6 +10788,9 @@ GameObject:
   - component: {fileID: 1278471504}
   - component: {fileID: 1278471503}
   - component: {fileID: 1278471502}
+  - component: {fileID: 1278471509}
+  - component: {fileID: 1278471508}
+  - component: {fileID: 1278471507}
   - component: {fileID: 1278471501}
   - component: {fileID: 1278471500}
   - component: {fileID: 1278471499}
@@ -10786,14 +10949,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
+  _resourceInfo:
+  - Type: 6
+    _rare: 18
   - Type: 11
-    _rare: 68
-  - Type: 9
-    _rare: 26
-  - Type: 17
-    _rare: 67
-  _sendShipWithCargoDelay: 3
+    _rare: 71
+  - Type: 12
+    _rare: 19
+  - Type: 16
+    _rare: 23
+  - Type: 20
+    _rare: 13
 --- !u!114 &1278471505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10824,6 +10990,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b09d6bafad37534abf9aabbadcf54d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1278471507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278471497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &1278471508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278471497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1278471509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278471497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1279183286
@@ -11791,6 +11994,9 @@ GameObject:
   - component: {fileID: 1598648322}
   - component: {fileID: 1598648321}
   - component: {fileID: 1598648320}
+  - component: {fileID: 1598648327}
+  - component: {fileID: 1598648326}
+  - component: {fileID: 1598648325}
   - component: {fileID: 1598648319}
   - component: {fileID: 1598648318}
   - component: {fileID: 1598648317}
@@ -11949,18 +12155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
+  _resourceInfo:
   - Type: 11
-    _rare: 76
+    _rare: 87
   - Type: 9
-    _rare: 18
-  - Type: 12
-    _rare: 21
-  - Type: 16
-    _rare: 6
-  - Type: 6
-    _rare: 3
-  _sendShipWithCargoDelay: 3
+    _rare: 24
+  - Type: 17
+    _rare: 23
 --- !u!114 &1598648323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11991,6 +12192,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62783d63b38388e47b0b2ec79c424e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1598648325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598648315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &1598648326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598648315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1598648327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598648315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1600169299
@@ -13621,6 +13859,9 @@ GameObject:
   - component: {fileID: 2139621747}
   - component: {fileID: 2139621746}
   - component: {fileID: 2139621748}
+  - component: {fileID: 2139621751}
+  - component: {fileID: 2139621750}
+  - component: {fileID: 2139621749}
   - component: {fileID: 2139621743}
   - component: {fileID: 2139621742}
   - component: {fileID: 2139621740}
@@ -13790,14 +14031,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceRareInfo:
-  - Type: 12
-    _rare: 80
+  _resourceInfo:
   - Type: 13
-    _rare: 35
+    _rare: 43
+  - Type: 12
+    _rare: 78
   - Type: 16
-    _rare: 50
-  _sendShipWithCargoDelay: 3
+    _rare: 49
 --- !u!114 &2139621748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13819,6 +14059,43 @@ MonoBehaviour:
   _factorySprite: {fileID: 545773013}
   _spaceshipsPort: {fileID: 1633715323}
   _id: Venus
+--- !u!114 &2139621749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139621739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438e86681312dd4f9d261380e4d4b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sendShipWithCargoDelay: 3
+--- !u!114 &2139621750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139621739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951039764647fd4e9c4dc1828f7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2139621751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139621739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e263167a1c63a2f499553470a1583fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1473929810417738391
 PrefabInstance:
   m_ObjectHideFlags: 0

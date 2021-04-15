@@ -21,7 +21,7 @@ namespace PlanetsColony.Spaceships
 
             if (collision.transform == _tempTarget)
             {
-                var tempShipReceiver = _tempTarget.GetComponent<CargoLoaderForShips>();
+                var tempShipReceiver = _tempTarget.GetComponent<SpaceshipsReceiver>();
                 if (tempShipReceiver != null)
                 {
                     tempShipReceiver.AcceptShip(_cargoHandler);
