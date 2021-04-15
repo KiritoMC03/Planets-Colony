@@ -6,18 +6,18 @@ using System;
 
 namespace PlanetsColony.Cargos
 {
-    [RequireComponent(typeof(SpaceshipsStoragePort))]
+    [RequireComponent(typeof(ISpaceshipsStoragePort))]
     public class SpaceshipsReceiver : MonoBehaviour
     {
-        private SpaceshipsStoragePort _spaceshipsStoragePort = null;
+        private ISpaceshipsStoragePort _spaceshipsStoragePort = null;
 
         private void Awake()
         {
-            _spaceshipsStoragePort = GetComponent<SpaceshipsStoragePort>();
+            _spaceshipsStoragePort = GetComponent<ISpaceshipsStoragePort>();
 
             if (_spaceshipsStoragePort == null)
             {
-                throw new NullReferenceException("SpaceshipsStoragePort component not found.");
+                throw new NullReferenceException("No component that implements the ISpaceshipsStoragePort interface was found.");
             }
         }
 

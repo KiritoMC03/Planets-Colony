@@ -7,12 +7,12 @@ using PlanetsColony.Factories;
 
 namespace Assets.Scripts.WorkWithSpaceships
 {
-    [RequireComponent(typeof(SpaceshipsStoragePort), typeof(Factory))]
+    [RequireComponent(typeof(ISpaceshipsStoragePort), typeof(ICargoLoader), typeof(Factory))]
     public class SpaceshipsSender : MonoBehaviour
     {
         [SerializeField] private float _sendShipWithCargoDelay = 3f;
-        private CargoLoaderForShips _cargoLoaderForShips = null;
-        private SpaceshipsStoragePort _spaceshipsStoragePort = null;
+        private ICargoLoader _cargoLoaderForShips = null;
+        private ISpaceshipsStoragePort _spaceshipsStoragePort = null;
         private Queue<CargoHandler> _tempSpaceships = null;
         private Transform _transform = null;
         private Coroutine _sendShipWithCargoRoutine = null;
@@ -21,17 +21,17 @@ namespace Assets.Scripts.WorkWithSpaceships
         private void Awake()
         {
             _transform = transform;
-            _spaceshipsStoragePort = GetComponent<SpaceshipsStoragePort>();
-            _cargoLoaderForShips = GetComponent<CargoLoaderForShips>();
+            _spaceshipsStoragePort = GetComponent<ISpaceshipsStoragePort>();
+            _cargoLoaderForShips = GetComponent<ICargoLoader>();
             _factory = GetComponent<Factory>();
 
             if (_spaceshipsStoragePort == null)
             {
-                throw new NullReferenceException("SpaceshipsStoragePort component not found.");
+                throw new NullReferenceException("No component that implements the ISpaceshipsStoragePort interface was found.");
             }
             if (_cargoLoaderForShips == null)
             {
-                throw new NullReferenceException("CargoLoaderForShips component not found.");
+                throw new NullReferenceException("No component that implements the ICargoLoader interface was found.");
             }
             if (_factory == null)
             {

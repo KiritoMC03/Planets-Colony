@@ -5,7 +5,7 @@ using PlanetsColony.Cargos;
 
 namespace Assets.Scripts.WorkWithSpaceships
 {
-    public class SpaceshipsStoragePort : MonoBehaviour
+    public class SpaceshipsStoragePort : MonoBehaviour, ISpaceshipsStoragePort
     {
         private Queue<CargoHandler> aceptedSpaceShips = null;
 

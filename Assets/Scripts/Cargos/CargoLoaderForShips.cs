@@ -7,7 +7,7 @@ using PlanetsColony.Factories;
 
 namespace PlanetsColony.Cargos
 {
-    public class CargoLoaderForShips : MonoBehaviour
+    public class CargoLoaderForShips : MonoBehaviour, ICargoLoader
     {
         [Serializable]
         public struct ResourceInfo
@@ -32,7 +32,7 @@ namespace PlanetsColony.Cargos
         {
             for (int i = 0; i < _resourceInfo.Length; i++)
             {
-                if (_resourceInfo[i].GetRare()*100 > 100 || _resourceInfo[i].GetRare()*100 < 0)
+                if (_resourceInfo[i].GetRare() * 100 > 100 || _resourceInfo[i].GetRare() * 100 < 0)
                 {
                     Application.Quit();
                     throw new Exception("Rare value Incorrect.");
@@ -47,7 +47,7 @@ namespace PlanetsColony.Cargos
                 factory.SendCargo(ship, _resourceInfo[i].GetResourceType());
             }
         }
-    
+
         public float GetResourceRare(Resource.Type type)
         {
             for (int i = 0; i < _resourceInfo.Length; i++)

@@ -6,17 +6,17 @@ using PlanetsColony.Levels;
 
 namespace PlanetsColony.Cargos
 {
-    [RequireComponent(typeof(CargoLoaderForShips))]
+    [RequireComponent(typeof(ICargoLoader))]
     public class CargoGenerator : MonoBehaviour
     {
-        private CargoLoaderForShips _cargoLoader = null;
+        private ICargoLoader _cargoLoader = null;
         private BigInteger _tempValue = 0;
         private BigInteger _tempBigInt = 0;
         private int _tempInt = 0;
 
         private void Awake()
         {
-            _cargoLoader = GetComponent<CargoLoaderForShips>();
+            _cargoLoader = GetComponent<ICargoLoader>();
         }
 
         public Cargo GenerateCargo(Resource.Type type, BigInteger value)
