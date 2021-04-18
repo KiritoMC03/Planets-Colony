@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using PlanetsColony.Utils;
 using PlanetsColony.Spaceships;
 using PlanetsColony.Cargos;
+using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Factories
 {
@@ -125,7 +126,7 @@ namespace PlanetsColony.Factories
         #endregion
 
 #region CargoWork
-        public void SendCargo(CargoHandler ship, Resource.Type resourceType)
+        public void SendCargo(SpaceshipCargoHandler ship, Resource.Type resourceType)
         {
             var tempCargo = _cargoGenerator.GenerateCargo(resourceType, 
                 _minGeneratedResource, 

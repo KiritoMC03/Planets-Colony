@@ -5,10 +5,11 @@ using UnityEngine;
 using PlanetsColony.Resources;
 using PlanetsColony.Spaceships;
 
-namespace PlanetsColony.Cargos
+namespace PlanetsColony.Cargos.CargoHandlingByShip
 {
-    [RequireComponent(typeof(Spaceship), typeof(CargoTransporter))]
-    public class CargoHandler : MonoBehaviour
+    [RequireComponent(typeof(CargoTransporter))]
+    [RequireComponent(typeof(SpaceshipCargoKeeper), typeof(SpaceshipCargoReceiver), typeof(SpaceshipCargoUnloader))]
+    public class SpaceshipCargoHandler : MonoBehaviour
     {
         private Transform _transform = null;
         private List<Cargo> _cargos = new List<Cargo>();
@@ -28,7 +29,7 @@ namespace PlanetsColony.Cargos
 
         public bool CheckCargo()
         {
-            return (_cargos != null && _cargos.Count > 0) ? true : false;
+            return (_cargos != null && _cargos.Count > 0);
         }
 
         public void AcceptCargo(Cargo cargo)
@@ -49,7 +50,7 @@ namespace PlanetsColony.Cargos
             _cargoTransporter.SetCanMove(true);
         }
 
-        public List<Cargo> DeliverCargo(CargoReceiver cargoReceiver)
+        public List<Cargo> DeliverCargo(Cargos.CargoReceiver cargoReceiver)
         {
             var tempCargo = _cargos;
             cargoReceiver.AcceptCargo(_cargos);
@@ -57,9 +58,5 @@ namespace PlanetsColony.Cargos
             return tempCargo;
         }
         
-        public void SetUnityPosition(Vector3 position)
-        {
-            _transform.position = position;
-        }
     }
 }

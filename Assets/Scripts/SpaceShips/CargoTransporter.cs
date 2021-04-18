@@ -35,5 +35,10 @@ namespace PlanetsColony.Spaceships
         {
             base.DoStartWork();
         }
+
+        public void SetUnityPosition(Vector3 position)
+        {
+            _transform.position = position;
+        }
     }
 }

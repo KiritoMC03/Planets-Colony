@@ -34,7 +34,7 @@ namespace PlanetsColony.Trading
 
         public void CalculateMarketValue()
         {
-            for (int i = 0; i < Resource.GetTypesCount(); i++)
+            for (int i = 0; i < Resource.GetPossibleTypesCount(); i++)
             {
                 try
                 {

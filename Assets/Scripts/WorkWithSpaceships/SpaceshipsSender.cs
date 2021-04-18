@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using PlanetsColony.Cargos;
 using PlanetsColony.Factories;
+using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace Assets.Scripts.WorkWithSpaceships
 {
@@ -13,7 +14,7 @@ namespace Assets.Scripts.WorkWithSpaceships
         [SerializeField] private float _sendShipWithCargoDelay = 3f;
         private ICargoLoader _cargoLoaderForShips = null;
         private ISpaceshipsStoragePort _spaceshipsStoragePort = null;
-        private Queue<CargoHandler> _tempSpaceships = null;
+        private Queue<SpaceshipCargoHandler> _tempSpaceships = null;
         private Transform _transform = null;
         private Coroutine _sendShipWithCargoRoutine = null;
         private Factory _factory = null;
@@ -50,7 +51,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             }
         }
 
-        public void SendShipWithCargo(Queue<CargoHandler> spaceships)
+        public void SendShipWithCargo(Queue<SpaceshipCargoHandler> spaceships)
         {
             if (spaceships.Count < 1)
             {
@@ -68,7 +69,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             _sendShipWithCargoRoutine = StartCoroutine(SendShipWithCargoRoutine(_spaceshipsStoragePort.GetAcceptedShips()));
         }
 
-        private IEnumerator SendShipWithCargoRoutine(Queue<CargoHandler> spaceships)
+        private IEnumerator SendShipWithCargoRoutine(Queue<SpaceshipCargoHandler> spaceships)
         {
             _tempSpaceships = spaceships;
             while (true)

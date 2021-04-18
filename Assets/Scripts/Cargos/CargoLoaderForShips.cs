@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PlanetsColony.Resources;
 using System;
 using PlanetsColony.Factories;
+using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Cargos
 {
@@ -40,7 +41,7 @@ namespace PlanetsColony.Cargos
             }
         }
 
-        public void LoadCargoForShip(ref CargoHandler ship, ref Factory factory)
+        public void LoadCargoForShip(ref SpaceshipCargoHandler ship, ref Factory factory)
         {
             for (int i = 0; i < _resourceInfo.Length; i++)
             {

@@ -2,24 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Cargos;
+using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace Assets.Scripts.WorkWithSpaceships
 {
     public class SpaceshipsStoragePort : MonoBehaviour, ISpaceshipsStoragePort
     {
-        private Queue<CargoHandler> aceptedSpaceShips = null;
+        private Queue<SpaceshipCargoHandler> aceptedSpaceShips = null;
 
         private void Awake()
         {
-            aceptedSpaceShips = new Queue<CargoHandler>();
+            aceptedSpaceShips = new Queue<SpaceshipCargoHandler>();
         }
 
-        public void AddShip(CargoHandler ship)
+        public void AddShip(SpaceshipCargoHandler ship)
         {
             aceptedSpaceShips.Enqueue(ship);
         }
 
-        public void TryAddShip(CargoHandler ship)
+        public void TryAddShip(SpaceshipCargoHandler ship)
         {
             if (ship != null)
             {
@@ -27,7 +28,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             }
         }
 
-        public Queue<CargoHandler> GetAcceptedShips()
+        public Queue<SpaceshipCargoHandler> GetAcceptedShips()
         {
             return aceptedSpaceShips;
         }
