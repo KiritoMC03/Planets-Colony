@@ -12,62 +12,33 @@ namespace PlanetsColony.Levels
         public UnityEvent OnSpaceshipsLevelUp;
 
         public static SpaceshipsLevelling Instance = null;
-
+        public int MaxLevel 
+        { 
+            get => _maxLevel; 
+            private set => _maxLevel = value;
+        }
+        public int CurrentLevel 
+        { 
+            get => _currentLevel;
+            private set => _currentLevel = value; 
+        }
         [SerializeField] private int _maxLevel = 16;
-        [SerializeField] private Sprite[] _spriteForLevels = null;
-        [SerializeField] private static Sprite[] _spriteForLevelsa = null;
         [SerializeField] private int _currentLevel = 1;
+        [SerializeField] private SpaceshipsLevelSprites _spaceshipsLevelSprites = null;
 
         private void Awake()
         {
             Instance = this;
-            if (_maxLevel < 1)
+            if (MaxLevel < 1)
             {
                 throw new Exception("MaxLevel must be greater than zero.");
             }
 
-            if(_spriteForLevels == null || _spriteForLevels.Length == 0)
-            {
-                throw new Exception("Need one spaceship sprite or more.");
-            }
-        }
-
-        public Sprite GetCurrentSprite()
-        {
-            try
-            {
-                return _spriteForLevels[_currentLevel - 1];
-            }
-            catch
-            {
-                throw new Exception($"");
-            }
-        }
-
-        public Sprite TryGetCurrentSprite()
-        {
-            if (_currentLevel - 1 < _spriteForLevels.Length && 
-                _spriteForLevels[_currentLevel - 1] != null)
-            {
-                return _spriteForLevels[_currentLevel - 1];
-            }
-
-            return null;
-        }
-
-        public int GetMaxLevel()
-        {
-            return _maxLevel;
-        }
-
-        public int GetCurrentLevel()
-        {
-            return _currentLevel;
         }
 
         public BigInteger CalculateMoneyForLevelUp()
         {
-            return (BigInteger.Pow(9, Convert.ToInt32(Mathf.Pow(_currentLevel, 2f)) + 11));
+            return (BigInteger.Pow(9, Convert.ToInt32(Mathf.Pow(CurrentLevel, 2f)) + 11));
         }
 
         private bool CheckNeedMoney()
@@ -77,12 +48,17 @@ namespace PlanetsColony.Levels
 
         public void LevelUp()
         {
-            if (_currentLevel < _maxLevel && CheckNeedMoney())
+            if (CurrentLevel < MaxLevel && CheckNeedMoney())
             {
                 StatsSystem.Instance.UseMoney(CalculateMoneyForLevelUp());
-                _currentLevel++;
+                CurrentLevel++;
                 OnSpaceshipsLevelUp?.Invoke();
             }
+        }
+
+        public Sprite FindAppropriateSprite()
+        {
+            return _spaceshipsLevelSprites.GetCurrentSprite(_currentLevel);
         }
     }
 }

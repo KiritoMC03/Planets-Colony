@@ -39,7 +39,7 @@ namespace PlanetsColony.Cargos
 
         private BigInteger CalculateFinalyValue(Resource.Type type, BigInteger value)
         {
-            _tempBigInt = BigInteger.Pow(value, SpaceshipsLevelling.Instance.GetCurrentLevel());
+            _tempBigInt = BigInteger.Pow(value, SpaceshipsLevelling.Instance.CurrentLevel);
             _tempInt = Convert.ToInt32(_cargoLoader.GetResourceRare(type) * 100);
             _tempBigInt = (_tempBigInt * _tempInt) / 100;
             return _tempBigInt;
@@ -47,7 +47,7 @@ namespace PlanetsColony.Cargos
 
         private BigInteger CalculateFinalyValue(Resource.Type type, ulong value)
         {
-            _tempBigInt = BigInteger.Pow(value, SpaceshipsLevelling.Instance.GetCurrentLevel());
+            _tempBigInt = BigInteger.Pow(value, SpaceshipsLevelling.Instance.CurrentLevel);
             _tempInt = Convert.ToInt32(_cargoLoader.GetResourceRare(type) * 100);
             _tempBigInt = (_tempBigInt * _tempInt) / 100;
             return _tempBigInt;

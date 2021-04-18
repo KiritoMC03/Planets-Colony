@@ -25,8 +25,8 @@ namespace PlanetsColony
 
         private void SetText()
         {
-            _currentLevel.text = _currentLevelText + SpaceshipsLevelling.Instance.GetCurrentLevel();
-            _maxLevel.text = _maxLevelText + SpaceshipsLevelling.Instance.GetMaxLevel();
+            _currentLevel.text = _currentLevelText + SpaceshipsLevelling.Instance.CurrentLevel;
+            _maxLevel.text = _maxLevelText + SpaceshipsLevelling.Instance.MaxLevel;
             _levelUpCost.text = _levelUpCostText + Converter.ValueToString(SpaceshipsLevelling.Instance.CalculateMoneyForLevelUp());
         }
 
