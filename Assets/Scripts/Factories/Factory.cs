@@ -4,116 +4,38 @@ using System;
 using PlanetsColony.Resources;
 using UnityEngine.Events;
 using PlanetsColony.Utils;
-using PlanetsColony.Spaceships;
 using PlanetsColony.Cargos;
 using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Factories
 {
-    [RequireComponent(typeof(CargoGenerator))]
-    public class Factory : MonoBehaviour
+    [RequireComponent(typeof(CargoGenerator), typeof(IFactoryLevel))]
+    public class Factory : MonoBehaviour, IFactory
     {
         public UnityEvent OnActivate;
 
-        [SerializeField] public uint _level = 0;
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;
-        [SerializeField] private SpaceshipsPort _spaceshipsPort = null;
+        [SerializeField] private string _planetName = "Марс";
         [Header("Идентификатор. На английском.")]
         [SerializeField] private string _id = "";
 
         private Transform _transform = null;
         private CargoGenerator _cargoGenerator = null;
+        private IFactoryLevel _factoryLevel = null;
         private bool _isActive = false;
-        private bool _canLevelUp = true;
-
-        private string _levelKey = "_level";
-
-        private void OnApplicationQuit()
-        {
-            SaveLevel();
-        }
 
         private void Awake()
         {
-            _transform = transform;
-            _cargoGenerator = GetComponent<CargoGenerator>();
-            if (_factorySprite == null)
-            {
-                throw new Exception("Установите поле Factory Sprite.");
-            }
-            if (_spaceshipsPort == null)
-            {
-                throw new Exception("Установите поле Spaceships Port.");
-            }
+            InitFields();
             CheckOtherFactoriesID();
         }
 
-        private void Start()
-        {
-            LoadLevel();
-
-            if (_level > 0)
-            {
-                Activate();
-            }
-            else
-            {
-                Disactivate();
-            }
-        }
-
-#region LevelWork
-        private void SaveLevel()
-        {
-            PlayerPrefs.SetFloat(_id + _levelKey, _level);
-        }
-
-        private void LoadLevel()
-        {
-            _level = Convert.ToUInt32(PlayerPrefs.GetFloat(_id + _levelKey));
-        }
-
-        internal void LevelUp()
-        {
-            if (_level == 0)
-            {
-                _spaceshipsPort.SendBuilderShip(this);
-                _canLevelUp = false;
-            }
-            else if (_level > 0)
-            {
-                IncreaseLevel();
-            }
-        }
-
-        internal void IncreaseLevel()
-        {
-            _level++;
-            SaveLevel();
-        }
-#endregion
-
-#region BuildWork
-        public void Build(float delay)
-        {
-            StartCoroutine(FactoryBuildRoutine(delay));
-        }
-
-        private IEnumerator FactoryBuildRoutine(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            SetLevel(1);
-            Activate();
-        }
-        #endregion
-
-#region ConditionWork
         public void Activate()
         {
             _isActive = true;
-            _canLevelUp = true;
+            _factoryLevel.SetCanLevelUp(true);
             _factorySprite.gameObject.SetActive(true);
             OnActivate?.Invoke();
         }
@@ -123,20 +45,57 @@ namespace PlanetsColony.Factories
             _isActive = false;
             _factorySprite.gameObject.SetActive(false);
         }
-        #endregion
 
-#region CargoWork
         public void SendCargo(SpaceshipCargoHandler ship, Resource.Type resourceType)
         {
-            var tempCargo = _cargoGenerator.GenerateCargo(resourceType, 
-                _minGeneratedResource, 
-                _maxGeneratedResource, 
-                MultiplierCalculator.CalculateGeneratedResourceMultiplier(_level));
+            var tempCargo = _cargoGenerator.GenerateCargo(resourceType,
+                _minGeneratedResource,
+                _maxGeneratedResource,
+                MultiplierCalculator.CalculateGeneratedResourceMultiplier(_factoryLevel.GetLevel()));
             ship.AcceptCargo(tempCargo);
         }
-        #endregion
 
-#region Utils
+        public bool GetIsActive()
+        {
+            return _isActive;
+        }
+
+        public string GetID()
+        {
+            return _id;
+        }
+
+        public Transform GetUnityTransform()
+        {
+            return _transform;
+        }
+
+        public string GetName()
+        {
+            return _planetName;
+        }
+
+        public IFactoryLevel GetLinkToIFactoryLevel()
+        {
+            return _factoryLevel;
+        }
+
+        private void InitFields()
+        {
+            _transform = transform;
+            _cargoGenerator = GetComponent<CargoGenerator>();
+            _factoryLevel = GetComponent<IFactoryLevel>();
+            if (_factorySprite == null)
+            {
+                throw new Exception("Установите поле Factory Sprite.");
+            }
+            if (_factoryLevel == null)
+            {
+                throw new NullReferenceException("No component that implements the IFactoryLevel interface was found.");
+            }
+        }
+
+        #region Utils
 
         private static void CheckOtherFactoriesID()
         {
@@ -153,33 +112,7 @@ namespace PlanetsColony.Factories
                 }
             }
         }
-#endregion
 
-#region GettersSetters
-        internal void SetLevel(uint level)
-        {
-            this._level = level;
-            SaveLevel();
-        }
-
-        public bool IsCanLevelUp()
-        {
-            return _canLevelUp;
-        }
-        public bool GetIsActive()
-        {
-            return _isActive;
-        }
-
-        public uint GetLevel()
-        {
-            return _level;
-        }
-
-        public string GetID()
-        {
-            return _id;
-        }
-#endregion
+        #endregion
     }
 }

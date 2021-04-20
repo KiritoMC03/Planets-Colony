@@ -12,11 +12,12 @@ namespace PlanetsColony.Spaceships
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var tempTarget = GetTarget();
+            var tempFactoryBuilder = collision.GetComponent<IFactoryBuilder>();
             var tempFactory = collision.GetComponent<Factory>();
 
             if (collision.transform == tempTarget && tempFactory != null)
             {
-                tempFactory.Build(_factoryBuildTime);
+                tempFactoryBuilder.Build(tempFactory, _factoryBuildTime);
                 ObjectPooler.Instance.DestroyObject(gameObject);
             }
         }

@@ -14,25 +14,32 @@ namespace PlanetsColony
         [SerializeField] private Text _levelUpButton_text = null;
         [SerializeField] private Text _needMoney = null;
 
-        private Factory tempFactory = null;
+        private IFactory _tempFactory = null;
+        private IFactoryLevel _tempFactoryLevel = null;
 
         private string _factoryLevelText = "Уровень завода: ";
         private string _levelUpText = "Улучшить завод.";
         private string _levelBuildText = "Построить завод.";
         private string _needMoneyText = "Нужно денег: ";
 
-        public void Activate(Factory planetFactory)
+        public void Activate(IFactory planetFactory)
         {
-            tempFactory = planetFactory;
-            _planetName.text = planetFactory.gameObject.name;
-            _factoryLevel.text = _factoryLevelText + planetFactory.GetLevel();
-            _levelUpButton_text.text = (planetFactory.GetLevel() > 0) ? _levelUpText : _levelBuildText;
-            _needMoney.text = _needMoneyText + Converter.ValueToString(FactoryLevelling.CalculateNeedMoney(planetFactory.GetLevel() + 1));
+            SetTempFields(planetFactory);
+            _planetName.text = planetFactory.GetName();
+            _factoryLevel.text = _factoryLevelText + _tempFactoryLevel.GetLevel();
+            _levelUpButton_text.text = (_tempFactoryLevel.GetLevel() > 0) ? _levelUpText : _levelBuildText;
+            _needMoney.text = _needMoneyText + Converter.ValueToString(FactoryLevelling.CalculateNeedMoney(_tempFactoryLevel.GetLevel() + 1));
         }
 
         public void UpdateText()
         {
-            Activate(tempFactory);
+            Activate(_tempFactory);
+        }
+
+        private void SetTempFields(IFactory factory)
+        {
+            _tempFactory = factory;
+            _tempFactoryLevel = factory.GetLinkToIFactoryLevel();
         }
     }
 }
