@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PlanetsColony.Resources;
 using System;
+using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Cargos
 {
@@ -15,7 +16,7 @@ namespace PlanetsColony.Cargos
         private Collider2D _collider = null;
         private Rigidbody2D _rigidbody = null;
         // временные переменные здесь:
-        private CargoHandler _tempCargoHandler = null;
+        private SpaceshipCargoHandler _tempCargoHandler = null;
 
         private void Awake()
         {
@@ -49,7 +50,7 @@ namespace PlanetsColony.Cargos
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            _tempCargoHandler = collision.GetComponent<CargoHandler>();
+            _tempCargoHandler = collision.GetComponent<SpaceshipCargoHandler>();
             if (_tempCargoHandler != null && _tempCargoHandler.CheckCargo())
             {
                 _tempCargoHandler.DeliverCargo(this);

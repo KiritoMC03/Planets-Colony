@@ -58,10 +58,10 @@ namespace Assets.Scripts.WorkWithSpaceships
                 return;
             }
 
-            var ship = spaceships.Dequeue();
-            _cargoLoaderForShips.LoadCargoForShip(ref ship, ref _factory);
-            ship.AcceptFinish();
-            ship.SetUnityPosition(_transform.position);
+            var spaceshipCargoHandler = spaceships.Dequeue();
+            _cargoLoaderForShips.LoadCargoForShip(ref spaceshipCargoHandler, ref _factory);
+            spaceshipCargoHandler.AcceptFinish();
+            spaceshipCargoHandler.GetLinkToSpaceship().SetUnityPosition(_transform.position);
         }
 
         private void StartShipSendRoutine()

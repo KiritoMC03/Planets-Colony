@@ -11,14 +11,12 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
     [RequireComponent(typeof(SpaceshipCargoKeeper), typeof(SpaceshipCargoReceiver), typeof(SpaceshipCargoUnloader))]
     public class SpaceshipCargoHandler : MonoBehaviour
     {
-        private Transform _transform = null;
         private List<Cargo> _cargos = new List<Cargo>();
-        private Spaceship _cargoTransporter = null;
+        private CargoTransporter _cargoTransporter = null;
 
         private void Awake()
         {
-            _transform = transform;
-            _cargoTransporter = GetComponent<Spaceship>();
+            _cargoTransporter = GetComponent<CargoTransporter>();
             _cargos = new List<Cargo>();
 
             if (_cargoTransporter == null)
@@ -58,5 +56,9 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
             return tempCargo;
         }
         
+        public CargoTransporter GetLinkToSpaceship()
+        {
+            return _cargoTransporter;
+        }
     }
 }

@@ -4,31 +4,38 @@ using PlanetsColony.Levels;
 using System;
 using PlanetsColony.Improvements;
 using PlanetsColony.Cargos;
+using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Spaceships
 {
-    [RequireComponent(typeof(CargoHandler), typeof(Rigidbody2D), typeof(Collider2D))]
+    [RequireComponent(typeof(SpaceshipCargoHandler), typeof(Rigidbody2D), typeof(Collider2D))]
     public class CargoTransporter : Spaceship
     {
-        private CargoHandler _cargoHandler = null;
+        private Transform _transform = null;
+        private SpaceshipCargoHandler _cargoHandler = null;
+
+        private void Awake()
+        {
+            base.DoAwakeWork();
+            _transform = transform;
+            _cargoHandler = GetComponent<SpaceshipCargoHandler>();
+            if (_cargoHandler == null)
+            {
+                throw new NullReferenceException("SpaceshipCargoHandler component not found.");
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var tempTarget = GetTarget();
             if (collision.transform == tempTarget)
             {
-                var tempShipReceiver = tempTarget.GetComponent<SpaceshipsReceiver>();
+                var tempShipReceiver = tempTarget.GetComponent<ISpaceshipsReceiver>();
                 if (tempShipReceiver != null)
                 {
                     tempShipReceiver.AcceptShip(_cargoHandler);
                 }
             }
-        }
-
-        protected override void DoAwakeWork()
-        {
-            base.DoAwakeWork();
-            _cargoHandler = GetComponent<CargoHandler>();
         }
 
         protected override void DoStartWork()
