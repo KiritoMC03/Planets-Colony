@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 255164624}
   - component: {fileID: 255164623}
   m_Layer: 0
-  m_Name: MoneyGain
+  m_Name: Earning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -16,7 +16,7 @@ namespace PlanetsColony
 
         public static StatsSystem Instance = null;
 
-        [SerializeField] private MoneyGain _moneyGain = null;
+        [SerializeField] private Earning _moneyGain = null;
         [SerializeField] private BigInteger _money = 0;
         [SerializeField] private uint _maxShipsCount = 10;
         [SerializeField] private uint _activeShipsCount = 0;
@@ -43,7 +43,7 @@ namespace PlanetsColony
             }
             else
             {
-                _moneyGain = _moneyGain.GetComponent<MoneyGain>();
+                _moneyGain = _moneyGain.GetComponent<Earning>();
             }
         }
 

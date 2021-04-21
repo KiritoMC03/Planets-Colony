@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace PlanetsColony.Trading
 {
-    public class MoneyGain : MonoBehaviour
+    public class Earning : MonoBehaviour, IEarning
     {
         [SerializeField] private Text _text = null;
         [SerializeField] private float _showTextTime = 1.5f;
@@ -30,8 +30,8 @@ namespace PlanetsColony.Trading
 
         public void Show(BigInteger addedMoney)
         {
-            Debug.Log("addedMoney: " + addedMoney);
-            _text.text = "Добавлено монет: " + Converter.ValueToString(addedMoney);
+            Debug.Log(_addMoneyText + addedMoney);
+            _text.text = _addMoneyText + Converter.ValueToString(addedMoney);
             if (_showTextRoutine != null)
             {
                 StopCoroutine(_showTextRoutine);
