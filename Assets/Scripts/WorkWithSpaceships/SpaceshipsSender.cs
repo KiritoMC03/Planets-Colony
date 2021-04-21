@@ -14,17 +14,17 @@ namespace Assets.Scripts.WorkWithSpaceships
         [SerializeField] private float _sendShipWithCargoDelay = 3f;
         private ICargoLoader _cargoLoaderForShips = null;
         private ISpaceshipsStoragePort _spaceshipsStoragePort = null;
-        private Queue<SpaceshipCargoHandler> _tempSpaceships = null;
+        private Queue<ISpaceshipCargoHandler> _tempSpaceships = null;
         private Transform _transform = null;
         private Coroutine _sendShipWithCargoRoutine = null;
-        private Factory _factory = null;
+        private IFactory _factory = null;
 
         private void Awake()
         {
             _transform = transform;
             _spaceshipsStoragePort = GetComponent<ISpaceshipsStoragePort>();
             _cargoLoaderForShips = GetComponent<ICargoLoader>();
-            _factory = GetComponent<Factory>();
+            _factory = GetComponent<IFactory>();
 
             if (_spaceshipsStoragePort == null)
             {
@@ -46,12 +46,12 @@ namespace Assets.Scripts.WorkWithSpaceships
                 }
                 else
                 {
-                    _factory.OnActivate.AddListener(StartShipSendRoutine);
+                    _factory.AddListenerForOnActivate(StartShipSendRoutine);
                 }
             }
         }
 
-        public void SendShipWithCargo(Queue<SpaceshipCargoHandler> spaceships)
+        public void SendShipWithCargo(Queue<ISpaceshipCargoHandler> spaceships)
         {
             if (spaceships.Count < 1)
             {
@@ -59,7 +59,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             }
 
             var spaceshipCargoHandler = spaceships.Dequeue();
-            _cargoLoaderForShips.LoadCargoForShip(ref spaceshipCargoHandler, ref _factory);
+            _cargoLoaderForShips.LoadCargoForShip(spaceshipCargoHandler, _factory);
             spaceshipCargoHandler.AcceptFinish();
             spaceshipCargoHandler.GetLinkToSpaceship().SetUnityPosition(_transform.position);
         }
@@ -69,7 +69,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             _sendShipWithCargoRoutine = StartCoroutine(SendShipWithCargoRoutine(_spaceshipsStoragePort.GetAcceptedShips()));
         }
 
-        private IEnumerator SendShipWithCargoRoutine(Queue<SpaceshipCargoHandler> spaceships)
+        private IEnumerator SendShipWithCargoRoutine(Queue<ISpaceshipCargoHandler> spaceships)
         {
             _tempSpaceships = spaceships;
             while (true)

@@ -4,6 +4,6 @@ namespace PlanetsColony.Cargos
 {
     public interface ISpaceshipsReceiver
     {
-        void AcceptShip(SpaceshipCargoHandler ship);
+        void AcceptShip(ISpaceshipCargoHandler ship);
     }
 }

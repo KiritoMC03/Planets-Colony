@@ -5,19 +5,19 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
 {
     public class SpaceshipCargoKeeper : MonoBehaviour, ISpaceshipCargoKeeper
     {
-        private List<Cargo> _cargos = new List<Cargo>();
+        private List<ICargo> _cargos = new List<ICargo>();
 
         private void Awake()
         {
-            _cargos = new List<Cargo>();
+            _cargos = new List<ICargo>();
         }
 
-        public void AddCargo(Cargo cargo)
+        public void AddCargo(ICargo cargo)
         {
             _cargos.Add(cargo);
         }
 
-        public List<Cargo> ExtractCargos()
+        public List<ICargo> ExtractCargos()
         {
             var tempCargo = _cargos;
             _cargos.Clear();

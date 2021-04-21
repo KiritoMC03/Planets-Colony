@@ -21,11 +21,11 @@ namespace PlanetsColony.Cargos
             }
         }
 
-        public void AcceptShip(SpaceshipCargoHandler ship)
+        public void AcceptShip(ISpaceshipCargoHandler ship)
         {
             if (ship == null)
             {
-                throw new ArgumentNullException("SpaceshipCargoHandler is null.");
+                throw new ArgumentNullException("ISpaceshipCargoHandler is null.");
             }
             ship.AcceptNow();
             _spaceshipsStoragePort.AddShip(ship);

@@ -4,6 +4,6 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
 {
     public interface ISpaceshipCargoUnloader
     {
-        List<Cargo> Extract();
+        List<ICargo> Extract();
     }
 }

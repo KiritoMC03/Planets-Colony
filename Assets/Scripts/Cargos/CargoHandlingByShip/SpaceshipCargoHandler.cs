@@ -7,17 +7,17 @@ using PlanetsColony.Spaceships;
 
 namespace PlanetsColony.Cargos.CargoHandlingByShip
 {
-    [RequireComponent(typeof(CargoTransporter))]
+    [RequireComponent(typeof(ICargoTransporter))]
     [RequireComponent(typeof(SpaceshipCargoKeeper), typeof(SpaceshipCargoReceiver), typeof(SpaceshipCargoUnloader))]
-    public class SpaceshipCargoHandler : MonoBehaviour
+    public class SpaceshipCargoHandler : MonoBehaviour, ISpaceshipCargoHandler
     {
-        private List<Cargo> _cargos = new List<Cargo>();
-        private CargoTransporter _cargoTransporter = null;
+        private List<ICargo> _cargos = new List<ICargo>();
+        private ICargoTransporter _cargoTransporter = null;
 
         private void Awake()
         {
-            _cargoTransporter = GetComponent<CargoTransporter>();
-            _cargos = new List<Cargo>();
+            _cargoTransporter = GetComponent<ICargoTransporter>();
+            _cargos = new List<ICargo>();
 
             if (_cargoTransporter == null)
             {
@@ -30,7 +30,7 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
             return (_cargos != null && _cargos.Count > 0);
         }
 
-        public void AcceptCargo(Cargo cargo)
+        public void AcceptCargo(ICargo cargo)
         {
             this._cargos.Add(cargo);
         }
@@ -48,17 +48,22 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
             _cargoTransporter.SetCanMove(true);
         }
 
-        public List<Cargo> DeliverCargo(Cargos.CargoReceiver cargoReceiver)
+        public List<ICargo> DeliverCargo(ICargoReceiver cargoReceiver)
         {
             var tempCargo = _cargos;
-            cargoReceiver.AcceptCargo(_cargos);
+            cargoReceiver.Receive(_cargos);
             _cargos.Clear();
             return tempCargo;
         }
-        
-        public CargoTransporter GetLinkToSpaceship()
+
+        public ICargoTransporter GetLinkToSpaceship()
         {
             return _cargoTransporter;
+        }
+
+        public GameObject GetUnityObject()
+        {
+            return gameObject;
         }
     }
 }

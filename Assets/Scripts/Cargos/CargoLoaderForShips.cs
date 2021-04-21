@@ -41,7 +41,7 @@ namespace PlanetsColony.Cargos
             }
         }
 
-        public void LoadCargoForShip(ref SpaceshipCargoHandler ship, ref Factory factory)
+        public void LoadCargoForShip(ISpaceshipCargoHandler ship, IFactory factory)
         {
             for (int i = 0; i < _resourceInfo.Length; i++)
             {

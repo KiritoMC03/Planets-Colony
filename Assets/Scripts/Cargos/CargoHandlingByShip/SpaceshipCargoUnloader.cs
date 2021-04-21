@@ -18,7 +18,7 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
             }
         }
 
-        public List<Cargo> Extract()
+        public List<ICargo> Extract()
         {
             return _spaceshipCargoKeeper.ExtractCargos();
         }

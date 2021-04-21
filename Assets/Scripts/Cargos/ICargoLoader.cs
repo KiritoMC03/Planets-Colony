@@ -6,7 +6,7 @@ namespace PlanetsColony.Cargos
 {
     public interface ICargoLoader
     {
-        void LoadCargoForShip(ref SpaceshipCargoHandler ship, ref Factory factory);
+        void LoadCargoForShip(ISpaceshipCargoHandler ship, IFactory factory);
         float GetResourceRare(Resource.Type type);
     }
 }

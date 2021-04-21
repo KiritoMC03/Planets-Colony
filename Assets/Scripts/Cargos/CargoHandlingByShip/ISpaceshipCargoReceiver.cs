@@ -2,6 +2,6 @@
 {
     public interface ISpaceshipCargoReceiver
     {
-        void Receive(Cargo cargo);
+        void Receive(ICargo cargo);
     }
 }

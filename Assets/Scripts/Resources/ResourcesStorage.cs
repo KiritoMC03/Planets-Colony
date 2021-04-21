@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 namespace PlanetsColony.Resources
 {
-    public class ResourcesStorage : MonoBehaviour
+    public class ResourcesStorage : MonoBehaviour, IResourcesStorage
     {
         public UnityEvent ResourceChange;
 
@@ -19,7 +19,7 @@ namespace PlanetsColony.Resources
             _resources = Resource.GenerateDictionaryByTypes<BigInteger>(0);
         }
 
-        public void AcceptCargoFromShip(List<Cargo> cargos)
+        public void AcceptCargoFromShip(List<ICargo> cargos)
         {
             for (int i = 0; i < cargos.Count; i++)
             {
@@ -31,13 +31,13 @@ namespace PlanetsColony.Resources
             }
         }
 
-#region GettersSetters
+        #region GettersSetters
         public BigInteger GetResourceValue(Resource.Type type)
         {
             try
             {
                 return _resources[type];
-            }  
+            }
             catch
             {
                 throw new Exception($"ResourceType {nameof(type)} don`t found.");
@@ -57,10 +57,11 @@ namespace PlanetsColony.Resources
             }
             return returnValue;
         }
+
         public ref Dictionary<Resource.Type, BigInteger> GetInitResourcesRef()
         {
             return ref _resources;
         }
-#endregion
+        #endregion
     }
 }

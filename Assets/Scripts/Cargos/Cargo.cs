@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace PlanetsColony.Cargos
 {
-    public class Cargo : Resource
+    public class Cargo : Resource, ICargo
     {
         private BigInteger _value { get; set; }
 

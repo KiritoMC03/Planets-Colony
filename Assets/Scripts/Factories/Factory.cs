@@ -46,7 +46,12 @@ namespace PlanetsColony.Factories
             _factorySprite.gameObject.SetActive(false);
         }
 
-        public void SendCargo(SpaceshipCargoHandler ship, Resource.Type resourceType)
+        public void AddListenerForOnActivate(UnityAction call)
+        {
+            OnActivate.AddListener(call);
+        }
+
+        public void SendCargo(ISpaceshipCargoHandler ship, Resource.Type resourceType)
         {
             var tempCargo = _cargoGenerator.GenerateCargo(resourceType,
                 _minGeneratedResource,

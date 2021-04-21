@@ -6,8 +6,8 @@ namespace Assets.Scripts.WorkWithSpaceships
 {
     public interface ISpaceshipsStoragePort
     {
-        void AddShip(SpaceshipCargoHandler ship);
-        Queue<SpaceshipCargoHandler> GetAcceptedShips();
-        void TryAddShip(SpaceshipCargoHandler ship);
+        void AddShip(ISpaceshipCargoHandler ship);
+        Queue<ISpaceshipCargoHandler> GetAcceptedShips();
+        void TryAddShip(ISpaceshipCargoHandler ship);
     }
 }

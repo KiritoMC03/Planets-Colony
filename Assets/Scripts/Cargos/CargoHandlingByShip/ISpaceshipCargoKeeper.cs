@@ -4,7 +4,7 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
 {
     public interface ISpaceshipCargoKeeper
     {
-        void AddCargo(Cargo cargo);
-        List<Cargo> ExtractCargos();
+        void AddCargo(ICargo cargo);
+        List<ICargo> ExtractCargos();
     }
 }

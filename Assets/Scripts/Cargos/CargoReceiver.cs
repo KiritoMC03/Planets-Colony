@@ -10,30 +10,31 @@ namespace PlanetsColony.Cargos
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(ResourcesStorage))]
-    public class CargoReceiver : MonoBehaviour
+    public class CargoReceiver : MonoBehaviour, ICargoReceiver
     {
-        private ResourcesStorage _resourcesStorage = null;
+        private IResourcesStorage _resourcesStorage = null;
         private Collider2D _collider = null;
         private Rigidbody2D _rigidbody = null;
         // временные переменные здесь:
-        private SpaceshipCargoHandler _tempCargoHandler = null;
+        private ISpaceshipCargoHandler _tempCargoHandler = null;
 
         private void Awake()
         {
-            _resourcesStorage = GetComponent<ResourcesStorage>();
-            _collider = GetComponent<Collider2D>();
-            _rigidbody = GetComponent<Rigidbody2D>();
-            CheckInitializeFields();
+            InitFields();
             _collider.isTrigger = true;
         }
 
-        private void CheckInitializeFields()
+        private void InitFields()
         {
+            _resourcesStorage = GetComponent<IResourcesStorage>();
+            _collider = GetComponent<Collider2D>();
+            _rigidbody = GetComponent<Rigidbody2D>();
+
             if (_resourcesStorage == null)
             {
-                throw new Exception("Resources Storage component not found.");
+                throw new NullReferenceException("No component that implements the IResourcesStorage interface was found.");
             }
-            if (_resourcesStorage == null)
+            if (_collider == null)
             {
                 throw new Exception("Collider component not found.");
             }
@@ -43,18 +44,18 @@ namespace PlanetsColony.Cargos
             }
         }
 
-        public void AcceptCargo(List<Cargo> cargo)
+        public void Receive(List<ICargo> cargo)
         {
             _resourcesStorage.AcceptCargoFromShip(cargo);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            _tempCargoHandler = collision.GetComponent<SpaceshipCargoHandler>();
+            _tempCargoHandler = collision.GetComponent<ISpaceshipCargoHandler>();
             if (_tempCargoHandler != null && _tempCargoHandler.CheckCargo())
             {
                 _tempCargoHandler.DeliverCargo(this);
-                ObjectPooler.Instance.DestroyObject(_tempCargoHandler.gameObject);
+                ObjectPooler.Instance.DestroyObject(_tempCargoHandler.GetUnityObject());
                 StatsSystem.Instance.ReduceActiveShipsCount();
                 return;
             }

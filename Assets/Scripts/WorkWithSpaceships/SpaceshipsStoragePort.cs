@@ -8,19 +8,19 @@ namespace Assets.Scripts.WorkWithSpaceships
 {
     public class SpaceshipsStoragePort : MonoBehaviour, ISpaceshipsStoragePort
     {
-        private Queue<SpaceshipCargoHandler> aceptedSpaceShips = null;
+        private Queue<ISpaceshipCargoHandler> aceptedSpaceShips = null;
 
         private void Awake()
         {
-            aceptedSpaceShips = new Queue<SpaceshipCargoHandler>();
+            aceptedSpaceShips = new Queue<ISpaceshipCargoHandler>();
         }
 
-        public void AddShip(SpaceshipCargoHandler ship)
+        public void AddShip(ISpaceshipCargoHandler ship)
         {
             aceptedSpaceShips.Enqueue(ship);
         }
 
-        public void TryAddShip(SpaceshipCargoHandler ship)
+        public void TryAddShip(ISpaceshipCargoHandler ship)
         {
             if (ship != null)
             {
@@ -28,7 +28,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             }
         }
 
-        public Queue<SpaceshipCargoHandler> GetAcceptedShips()
+        public Queue<ISpaceshipCargoHandler> GetAcceptedShips()
         {
             return aceptedSpaceShips;
         }

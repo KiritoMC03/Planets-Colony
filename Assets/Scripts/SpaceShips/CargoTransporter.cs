@@ -8,20 +8,20 @@ using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Spaceships
 {
-    [RequireComponent(typeof(SpaceshipCargoHandler), typeof(Rigidbody2D), typeof(Collider2D))]
-    public class CargoTransporter : Spaceship
+    [RequireComponent(typeof(ISpaceshipCargoHandler), typeof(Rigidbody2D), typeof(Collider2D))]
+    public class CargoTransporter : Spaceship, ICargoTransporter
     {
         private Transform _transform = null;
-        private SpaceshipCargoHandler _cargoHandler = null;
+        private ISpaceshipCargoHandler _cargoHandler = null;
 
         private void Awake()
         {
             base.DoAwakeWork();
             _transform = transform;
-            _cargoHandler = GetComponent<SpaceshipCargoHandler>();
+            _cargoHandler = GetComponent<ISpaceshipCargoHandler>();
             if (_cargoHandler == null)
             {
-                throw new NullReferenceException("SpaceshipCargoHandler component not found.");
+                throw new NullReferenceException("No component that implements the ISpaceshipCargoHandler interface was found.");
             }
         }
 

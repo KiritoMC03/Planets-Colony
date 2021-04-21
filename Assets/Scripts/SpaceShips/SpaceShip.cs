@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PlanetsColony.Spaceships
 {
-    public class Spaceship : MonoBehaviour, IPooledObject
+    public class Spaceship : MonoBehaviour, IPooledObject, ISpaceship
     {
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
         [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.CargoTransporter;
@@ -31,7 +31,7 @@ namespace PlanetsColony.Spaceships
         }
 
         #region GettersSetters
-        internal void SetTarget(Transform target)
+        public void SetTarget(Transform target)
         {
             this._target = target;
         }
@@ -41,7 +41,7 @@ namespace PlanetsColony.Spaceships
             return _target;
         }
 
-        internal void SetDepartureObject(Transform departureObject)
+        public void SetDepartureObject(Transform departureObject)
         {
             this._departureObject = departureObject;
         }
@@ -70,14 +70,13 @@ namespace PlanetsColony.Spaceships
             return _canMove;
         }
 
-        internal void SetCanMove(bool value)
+        public void SetCanMove(bool value)
         {
             _canMove = value;
         }
 
+        protected virtual void DoAwakeWork() { }
 
-        protected virtual void DoAwakeWork() {}
-
-        protected virtual void DoStartWork() {}
+        protected virtual void DoStartWork() { }
     }
 }

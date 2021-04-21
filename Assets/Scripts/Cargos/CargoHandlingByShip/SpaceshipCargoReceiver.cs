@@ -18,7 +18,7 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
             }
         }
 
-        public void Receive(Cargo cargo)
+        public void Receive(ICargo cargo)
         {
             _spaceshipCargoKeeper.AddCargo(cargo);
         }
