@@ -6,17 +6,21 @@ using PlanetsColony.Levels;
 
 namespace PlanetsColony.Cargos
 {
-    [RequireComponent(typeof(ICargoLoader))]
+    [RequireComponent(typeof(IResourceRarity))]
     public class CargoGenerator : MonoBehaviour
     {
-        private ICargoLoader _cargoLoader = null;
+        private IResourceRarity _resourceRarity = null;
         private BigInteger _tempValue = 0;
         private BigInteger _tempBigInt = 0;
         private int _tempInt = 0;
 
         private void Awake()
         {
-            _cargoLoader = GetComponent<ICargoLoader>();
+            _resourceRarity = GetComponent<IResourceRarity>();
+            if (_resourceRarity == null)
+            {
+                throw new NullReferenceException("No component that implements the IResourceRarity interface was found.");
+            }
         }
 
         public Cargo GenerateCargo(Resource.Type type, BigInteger value)
@@ -40,7 +44,7 @@ namespace PlanetsColony.Cargos
         private BigInteger CalculateFinalyValue(Resource.Type type, BigInteger value)
         {
             _tempBigInt = BigInteger.Pow(value, SpaceshipsLevelling.Instance.CurrentLevel);
-            _tempInt = Convert.ToInt32(_cargoLoader.GetResourceRare(type) * 100);
+            _tempInt = Convert.ToInt32(_resourceRarity.GetResourceRare(type) * 100);
             _tempBigInt = (_tempBigInt * _tempInt) / 100;
             return _tempBigInt;
         }
@@ -48,7 +52,7 @@ namespace PlanetsColony.Cargos
         private BigInteger CalculateFinalyValue(Resource.Type type, ulong value)
         {
             _tempBigInt = BigInteger.Pow(value, SpaceshipsLevelling.Instance.CurrentLevel);
-            _tempInt = Convert.ToInt32(_cargoLoader.GetResourceRare(type) * 100);
+            _tempInt = Convert.ToInt32(_resourceRarity.GetResourceRare(type) * 100);
             _tempBigInt = (_tempBigInt * _tempInt) / 100;
             return _tempBigInt;
         }

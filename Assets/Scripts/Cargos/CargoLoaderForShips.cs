@@ -10,55 +10,12 @@ namespace PlanetsColony.Cargos
 {
     public class CargoLoaderForShips : MonoBehaviour, ICargoLoader
     {
-        [Serializable]
-        public struct ResourceInfo
+        public void LoadCargoForShip(ISpaceshipCargoHandler ship, IFactory factory, ResourceRarity.ResourceInfo[] resourceInfo)
         {
-            [SerializeField] private Resource.Type Type;
-            [Header("Precent (0-100)")]
-            [SerializeField] private int _rare;
-
-            public float GetRare()
+            for (int i = 0; i < resourceInfo.Length; i++)
             {
-                return _rare / 100f;
+                factory.SendCargo(ship, resourceInfo[i].GetResourceType());
             }
-
-            public Resource.Type GetResourceType()
-            {
-                return Type;
-            }
-        }
-        [SerializeField] private ResourceInfo[] _resourceInfo;
-
-        private void Awake()
-        {
-            for (int i = 0; i < _resourceInfo.Length; i++)
-            {
-                if (_resourceInfo[i].GetRare() * 100 > 100 || _resourceInfo[i].GetRare() * 100 < 0)
-                {
-                    Application.Quit();
-                    throw new Exception("Rare value Incorrect.");
-                }
-            }
-        }
-
-        public void LoadCargoForShip(ISpaceshipCargoHandler ship, IFactory factory)
-        {
-            for (int i = 0; i < _resourceInfo.Length; i++)
-            {
-                factory.SendCargo(ship, _resourceInfo[i].GetResourceType());
-            }
-        }
-
-        public float GetResourceRare(Resource.Type type)
-        {
-            for (int i = 0; i < _resourceInfo.Length; i++)
-            {
-                if (_resourceInfo[i].GetResourceType() == type)
-                {
-                    return _resourceInfo[i].GetRare();
-                }
-            }
-            return 0f;
         }
     }
 }

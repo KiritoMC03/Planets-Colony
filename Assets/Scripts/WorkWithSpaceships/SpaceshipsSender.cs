@@ -5,15 +5,18 @@ using System.Collections.Generic;
 using PlanetsColony.Cargos;
 using PlanetsColony.Factories;
 using PlanetsColony.Cargos.CargoHandlingByShip;
+using PlanetsColony.Resources;
 
 namespace Assets.Scripts.WorkWithSpaceships
 {
     [RequireComponent(typeof(ISpaceshipsStoragePort), typeof(ICargoLoader), typeof(Factory))]
+    [RequireComponent(typeof(IResourceRarity))]
     public class SpaceshipsSender : MonoBehaviour
     {
         [SerializeField] private float _sendShipWithCargoDelay = 3f;
         private ICargoLoader _cargoLoaderForShips = null;
         private ISpaceshipsStoragePort _spaceshipsStoragePort = null;
+        private IResourceRarity _resourceRarity = null;
         private Queue<ISpaceshipCargoHandler> _tempSpaceships = null;
         private Transform _transform = null;
         private Coroutine _sendShipWithCargoRoutine = null;
@@ -24,6 +27,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             _transform = transform;
             _spaceshipsStoragePort = GetComponent<ISpaceshipsStoragePort>();
             _cargoLoaderForShips = GetComponent<ICargoLoader>();
+            _resourceRarity = GetComponent<IResourceRarity>();
             _factory = GetComponent<IFactory>();
 
             if (_spaceshipsStoragePort == null)
@@ -33,6 +37,10 @@ namespace Assets.Scripts.WorkWithSpaceships
             if (_cargoLoaderForShips == null)
             {
                 throw new NullReferenceException("No component that implements the ICargoLoader interface was found.");
+            }
+            if (_resourceRarity == null)
+            {
+                throw new NullReferenceException("No component that implements the IResourceRarity interface was found.");
             }
             if (_factory == null)
             {
@@ -59,7 +67,7 @@ namespace Assets.Scripts.WorkWithSpaceships
             }
 
             var spaceshipCargoHandler = spaceships.Dequeue();
-            _cargoLoaderForShips.LoadCargoForShip(spaceshipCargoHandler, _factory);
+            _cargoLoaderForShips.LoadCargoForShip(spaceshipCargoHandler, _factory, _resourceRarity.GetResourceInfo()); 
             spaceshipCargoHandler.AcceptFinish();
             spaceshipCargoHandler.GetLinkToSpaceship().SetUnityPosition(_transform.position);
         }

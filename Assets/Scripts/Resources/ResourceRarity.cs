@@ -5,18 +5,18 @@ using System;
 
 namespace PlanetsColony.Resources
 {
-    public class ResourceRarity : MonoBehaviour
+    public class ResourceRarity : MonoBehaviour, IResourceRarity
     {
         [Serializable]
-        public struct ResourceRareInfo
+        public struct ResourceInfo
         {
             [SerializeField] private Resource.Type Type;
             [Header("Precent (0-100)")]
             [SerializeField] private int _rare;
 
-            public int GetRare()
+            public float GetRare()
             {
-                return _rare;
+                return _rare / 100f;
             }
 
             public Resource.Type GetResourceType()
@@ -24,16 +24,35 @@ namespace PlanetsColony.Resources
                 return Type;
             }
         }
-
+        [SerializeField] private ResourceInfo[] _resourceInfo;
 
         private void Awake()
         {
-            /*
-            if (_resourceSalesAccount == null)
+            for (int i = 0; i < _resourceInfo.Length; i++)
             {
-                throw new Exception("Resource Sales Accounte field must not be null.");
+                if (_resourceInfo[i].GetRare() * 100 > 100 || _resourceInfo[i].GetRare() * 100 < 0)
+                {
+                    Application.Quit();
+                    throw new Exception("Rare value Incorrect.");
+                }
             }
-            */
+        }
+
+        public ResourceInfo[] GetResourceInfo()
+        {
+            return _resourceInfo;
+        }
+
+        public float GetResourceRare(Resource.Type type)
+        {
+            for (int i = 0; i < _resourceInfo.Length; i++)
+            {
+                if (_resourceInfo[i].GetResourceType() == type)
+                {
+                    return _resourceInfo[i].GetRare();
+                }
+            }
+            return 0f;
         }
     }
 }

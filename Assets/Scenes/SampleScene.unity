@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 13888987}
   - component: {fileID: 13888986}
   - component: {fileID: 13888985}
+  - component: {fileID: 13888992}
   - component: {fileID: 13888984}
   - component: {fileID: 13888983}
   - component: {fileID: 13888991}
@@ -298,17 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 9
-    _rare: 16
-  - Type: 12
-    _rare: 65
-  - Type: 20
-    _rare: 43
-  - Type: 0
-    _rare: 72
-  - Type: 8
-    _rare: 28
 --- !u!114 &13888986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +382,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &13888992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13888978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 9
+    _rare: 16
+  - Type: 12
+    _rare: 65
+  - Type: 20
+    _rare: 43
+  - Type: 0
+    _rare: 75
+  - Type: 8
+    _rare: 28
 --- !u!1 &35566706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,7 +2966,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &545773011
 PrefabInstance:
@@ -3432,6 +3445,7 @@ GameObject:
   - component: {fileID: 644117661}
   - component: {fileID: 644117662}
   - component: {fileID: 644117664}
+  - component: {fileID: 644117670}
   - component: {fileID: 644117663}
   - component: {fileID: 644117665}
   - component: {fileID: 644117669}
@@ -3607,13 +3621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 11
-    _rare: 78
-  - Type: 1
-    _rare: 16
-  - Type: 22
-    _rare: 26
 --- !u!114 &644117665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3685,6 +3692,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &644117670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644117656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 11
+    _rare: 78
+  - Type: 1
+    _rare: 16
+  - Type: 22
+    _rare: 26
 --- !u!1 &677118946
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,6 +4048,7 @@ GameObject:
   - component: {fileID: 753985567}
   - component: {fileID: 753985568}
   - component: {fileID: 753985570}
+  - component: {fileID: 753985576}
   - component: {fileID: 753985569}
   - component: {fileID: 753985571}
   - component: {fileID: 753985575}
@@ -4197,19 +4224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 12
-    _rare: 38
-  - Type: 13
-    _rare: 43
-  - Type: 18
-    _rare: 27
-  - Type: 4
-    _rare: 37
-  - Type: 5
-    _rare: 41
-  - Type: 0
-    _rare: 0
 --- !u!114 &753985571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4281,6 +4295,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 1
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &753985576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753985562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 12
+    _rare: 38
+  - Type: 13
+    _rare: 43
+  - Type: 18
+    _rare: 27
+  - Type: 4
+    _rare: 37
+  - Type: 5
+    _rare: 41
 --- !u!1 &777346754
 GameObject:
   m_ObjectHideFlags: 0
@@ -10199,6 +10236,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109256212}
   m_CullTransparentMesh: 0
+--- !u!1 &1111709552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111709554}
+  - component: {fileID: 1111709553}
+  m_Layer: 0
+  m_Name: ResourceRarity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1111709553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111709552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo: []
+--- !u!4 &1111709554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111709552}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150372620
 GameObject:
   m_ObjectHideFlags: 0
@@ -10354,6 +10435,7 @@ GameObject:
   - component: {fileID: 1225548156}
   - component: {fileID: 1225548155}
   - component: {fileID: 1225548154}
+  - component: {fileID: 1225548161}
   - component: {fileID: 1225548153}
   - component: {fileID: 1225548152}
   - component: {fileID: 1225548160}
@@ -10517,13 +10599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 11
-    _rare: 79
-  - Type: 22
-    _rare: 31
-  - Type: 9
-    _rare: 12
 --- !u!114 &1225548155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10607,6 +10682,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &1225548161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225548147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 11
+    _rare: 79
+  - Type: 22
+    _rare: 31
+  - Type: 9
+    _rare: 12
 --- !u!1 &1246879040
 GameObject:
   m_ObjectHideFlags: 0
@@ -10842,6 +10936,7 @@ GameObject:
   - component: {fileID: 1278471506}
   - component: {fileID: 1278471505}
   - component: {fileID: 1278471504}
+  - component: {fileID: 1278471511}
   - component: {fileID: 1278471503}
   - component: {fileID: 1278471502}
   - component: {fileID: 1278471510}
@@ -11005,17 +11100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 6
-    _rare: 18
-  - Type: 11
-    _rare: 71
-  - Type: 12
-    _rare: 19
-  - Type: 16
-    _rare: 23
-  - Type: 20
-    _rare: 13
 --- !u!114 &1278471505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11099,6 +11183,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &1278471511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278471497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 6
+    _rare: 18
+  - Type: 11
+    _rare: 71
+  - Type: 12
+    _rare: 19
+  - Type: 16
+    _rare: 23
+  - Type: 20
+    _rare: 13
 --- !u!1 &1279183286
 GameObject:
   m_ObjectHideFlags: 0
@@ -12062,6 +12169,7 @@ GameObject:
   - component: {fileID: 1598648324}
   - component: {fileID: 1598648323}
   - component: {fileID: 1598648322}
+  - component: {fileID: 1598648329}
   - component: {fileID: 1598648321}
   - component: {fileID: 1598648320}
   - component: {fileID: 1598648328}
@@ -12225,13 +12333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 11
-    _rare: 87
-  - Type: 9
-    _rare: 24
-  - Type: 17
-    _rare: 23
 --- !u!114 &1598648323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12315,6 +12416,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &1598648329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598648315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 11
+    _rare: 87
+  - Type: 9
+    _rare: 24
+  - Type: 17
+    _rare: 23
 --- !u!1 &1600169299
 GameObject:
   m_ObjectHideFlags: 0
@@ -12379,7 +12499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603165686
 GameObject:
@@ -13930,6 +14050,7 @@ GameObject:
   - component: {fileID: 2139621744}
   - component: {fileID: 2139621745}
   - component: {fileID: 2139621747}
+  - component: {fileID: 2139621753}
   - component: {fileID: 2139621746}
   - component: {fileID: 2139621748}
   - component: {fileID: 2139621752}
@@ -14105,13 +14226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9801fd073476c884784cfce3e5129fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceInfo:
-  - Type: 13
-    _rare: 43
-  - Type: 12
-    _rare: 78
-  - Type: 16
-    _rare: 49
 --- !u!114 &2139621748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14183,6 +14297,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _spaceshipsPort: {fileID: 1633715323}
+--- !u!114 &2139621753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139621739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed936b0f10915b4eb49382dde14da0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceInfo:
+  - Type: 13
+    _rare: 43
+  - Type: 12
+    _rare: 78
+  - Type: 16
+    _rare: 49
 --- !u!1001 &1473929810417738391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14224,7 +14357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1473929809158898550, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1473929809158898550, guid: 776ab4377f9397942bbb1292541ed86f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14313,7 +14446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4851026892922221223, guid: 706346671dc4db24084d6bd4a9dd50ed, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4851026892922221223, guid: 706346671dc4db24084d6bd4a9dd50ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14370,7 +14503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255096059347365150, guid: 3aedce067036a4442a3e3669c26b472d, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5255096059347365150, guid: 3aedce067036a4442a3e3669c26b472d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14435,7 +14568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6094054755520376110, guid: 2617bf1e7a993f84ba35f599a6aebbba, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6094054755520376110, guid: 2617bf1e7a993f84ba35f599a6aebbba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14492,7 +14625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400237153091541002, guid: b1905cb1e6e32db48a602acd6bcd1324, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6400237153091541002, guid: b1905cb1e6e32db48a602acd6bcd1324, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14545,7 +14678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6521246988404258544, guid: 97648d4e5457ef14f8263ef25e5df6fe, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6521246988404258544, guid: 97648d4e5457ef14f8263ef25e5df6fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14610,7 +14743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6602192659192679623, guid: 5c2c05633bef3d4458f40c349c32cf60, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6602192659192679623, guid: 5c2c05633bef3d4458f40c349c32cf60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14691,7 +14824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6913823247573476587, guid: 98e09079aba1aee4295c3dbe7c415bc7, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6913823247573476587, guid: 98e09079aba1aee4295c3dbe7c415bc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14744,7 +14877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7027915188073934249, guid: 270e34449fe7336408ae0dfbbe56968d, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7027915188073934249, guid: 270e34449fe7336408ae0dfbbe56968d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14809,7 +14942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8273100419664313531, guid: 3ea8eda31255d91449e832e670f947c7, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8273100419664313531, guid: 3ea8eda31255d91449e832e670f947c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14862,7 +14995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8414471138841495348, guid: 27db0860f0d9fbc42ac8b1917a20839d, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8414471138841495348, guid: 27db0860f0d9fbc42ac8b1917a20839d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
