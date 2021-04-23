@@ -24,7 +24,7 @@ namespace PlanetsColony
             Instance = this;
             if (_factoryLevelling == null)
             {
-                throw new Exception("FactoryLevelling field must not be null.");
+                throw new NullReferenceException("No component that implements the IFactoryLevelling interface was found.");
             }
 
             if (!PlayerPrefs.HasKey(UPDATE_KEY))

@@ -12,19 +12,19 @@ namespace PlanetsColony.Levels
         public UnityEvent OnSpaceshipsLevelUp;
 
         public static SpaceshipsLevelling Instance = null;
-        public int MaxLevel 
-        { 
-            get => _maxLevel; 
+        public int MaxLevel
+        {
+            get => _maxLevel;
             private set => _maxLevel = value;
         }
-        public int CurrentLevel 
-        { 
+        public int CurrentLevel
+        {
             get => _currentLevel;
-            private set => _currentLevel = value; 
+            private set => _currentLevel = value;
         }
+        [SerializeField] private SpaceshipsLevelSprites _spaceshipsLevelSprites = null;
         [SerializeField] private int _maxLevel = 16;
         [SerializeField] private int _currentLevel = 1;
-        [SerializeField] private SpaceshipsLevelSprites _spaceshipsLevelSprites = null;
 
         private void Awake()
         {
@@ -33,7 +33,10 @@ namespace PlanetsColony.Levels
             {
                 throw new Exception("MaxLevel must be greater than zero.");
             }
-
+            if (_spaceshipsLevelSprites == null)
+            {
+                throw new NullReferenceException("Spaceships Level Sprites field must not be null.");
+            }
         }
 
         public BigInteger CalculateMoneyForLevelUp()

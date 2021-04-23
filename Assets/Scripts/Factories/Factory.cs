@@ -9,7 +9,7 @@ using PlanetsColony.Cargos.CargoHandlingByShip;
 
 namespace PlanetsColony.Factories
 {
-    [RequireComponent(typeof(CargoGenerator), typeof(IFactoryLevel))]
+    [RequireComponent(typeof(ICargoGenerator), typeof(IFactoryLevel))]
     public class Factory : MonoBehaviour, IFactory
     {
         public UnityEvent OnActivate;
@@ -22,7 +22,7 @@ namespace PlanetsColony.Factories
         [SerializeField] private string _id = "";
 
         private Transform _transform = null;
-        private CargoGenerator _cargoGenerator = null;
+        private ICargoGenerator _cargoGenerator = null;
         private IFactoryLevel _factoryLevel = null;
         private bool _isActive = false;
 
@@ -88,7 +88,7 @@ namespace PlanetsColony.Factories
         private void InitFields()
         {
             _transform = transform;
-            _cargoGenerator = GetComponent<CargoGenerator>();
+            _cargoGenerator = GetComponent<ICargoGenerator>();
             _factoryLevel = GetComponent<IFactoryLevel>();
             if (_factorySprite == null)
             {
@@ -97,6 +97,10 @@ namespace PlanetsColony.Factories
             if (_factoryLevel == null)
             {
                 throw new NullReferenceException("No component that implements the IFactoryLevel interface was found.");
+            }
+            if (_cargoGenerator == null)
+            {
+                throw new NullReferenceException("No component that implements the ICargoGenerator interface was found.");
             }
         }
 

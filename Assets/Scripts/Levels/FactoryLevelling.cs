@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PlanetsColony.Levels
 {
-    public class FactoryLevelling : MonoBehaviour
+    public class FactoryLevelling : MonoBehaviour, IFactoryLevelling
     {
         [SerializeField] private ulong _moneyForBuildFactory = (ulong)Mathf.Pow(10, 10);
         private static BigInteger _moneyForBuild;

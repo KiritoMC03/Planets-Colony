@@ -25,29 +25,26 @@ namespace PlanetsColony
         {
             Instance = this;
 			Application.targetFrameRate = 600;
+
+            if (_moneyGain == null)
+            {
+                throw new NullReferenceException("Money Gain field must not be null.");
+            }
         }
 
         private void Start()
         {
             if (SaveLoadSystem.Instance == null)
             {
-                throw new Exception("Не найдено ни одного объекта с компоненом SaveLoadSystem.");
+                throw new NullReferenceException("Не найдено ни одного объекта с компоненом SaveLoadSystem.");
             }
             else
             {
                 _money = SaveLoadSystem.Instance.LoadMoney();
             }
-            if (_moneyGain == null)
-            {
-                Debug.LogError("Money Gain field must not be null.");
-            }
-            else
-            {
-                _moneyGain = _moneyGain.GetComponent<Earning>();
-            }
         }
 
-#region MoneyWork
+        #region MoneyWork
         internal void AddMoney(BigInteger value)
         {
             Debug.Log("value: " + value);

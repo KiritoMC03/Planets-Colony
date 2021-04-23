@@ -7,7 +7,7 @@ using PlanetsColony.Levels;
 namespace PlanetsColony.Cargos
 {
     [RequireComponent(typeof(IResourceRarity))]
-    public class CargoGenerator : MonoBehaviour
+    public class CargoGenerator : MonoBehaviour, ICargoGenerator
     {
         private IResourceRarity _resourceRarity = null;
         private BigInteger _tempValue = 0;

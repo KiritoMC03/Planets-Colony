@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PlanetsColony.Levels
 {
-    public class SpaceshipsLevelSprites : MonoBehaviour
+    public class SpaceshipsLevelSprites : MonoBehaviour, ISpaceshipsLevelSprites
     {
         [SerializeField] private Sprite[] _spriteForLevels = null;
 

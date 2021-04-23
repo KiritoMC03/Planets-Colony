@@ -40,10 +40,5 @@ namespace PlanetsColony.Trading
         {
             return _allResourceSoldValue;
         }
-
-        public ref Dictionary<Resource.Type, BigInteger> GetValuesList()
-        {
-            return ref _values;
-        }
     }
 }
