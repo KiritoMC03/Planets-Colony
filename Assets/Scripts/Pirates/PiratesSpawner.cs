@@ -37,53 +37,14 @@ namespace PlanetsColony.Pirates
             Instantiate(_pirate, FindSpawnPosition(_centralSun, _spawnBanRadius, _maxSpawnRadius), Quaternion.identity);
         }
 
-        private Vector2 FindSpawnPosition(Transform centre, float spawnBanRadius, float maxSpawnRadius)
+        private Vector2 FindSpawnPosition(Transform centre, float minSpawnRadius, float maxSpawnRadius)
         {
-            var f = (Vector2)centre.transform.position + ((maxSpawnRadius - spawnBanRadius) * UnityEngine.Random.insideUnitCircle);
-
-            /*
-            var x = Mathf.Cos(UnityEngine.Random.Range(0, 1)) * UnityEngine.Random.Range(spawnBanRadius, maxSpawnRadius);
-            var y = Mathf.Cos(UnityEngine.Random.Range(0, 1)) * UnityEngine.Random.Range(spawnBanRadius, maxSpawnRadius);
-            SetAxisOffset(ref x, centre.position.x, spawnBanRadius);
-            SetAxisOffset(ref y, centre.position.y, spawnBanRadius);
-            */
-            f = SetRange(f, spawnBanRadius);
-            return f; //new Vector2(x, y);
-        }
-
-        private Vector2 SetRange(Vector2 position, float spawnBanRadius)
-        {
-            if (position.x > 0)
-            {
-                position.x += spawnBanRadius;
-            }
-            else
-            {
-                position.x -= spawnBanRadius;
-            }
-
-            if (position.y > 0)
-            {
-                position.y += spawnBanRadius;
-            }
-            else
-            {
-                position.y -= spawnBanRadius;
-            }
+            var centrePosition = (Vector2)centre.transform.position;
+            var angle = UnityEngine.Random.Range(-4f, 4f);
+            var offset = UnityEngine.Random.Range(minSpawnRadius, maxSpawnRadius);
+            var position = centrePosition + new Vector2(Mathf.Sin(angle) * offset, Mathf.Cos(angle) * offset);
 
             return position;
-        }
-
-        private void SetAxisOffset(ref float axis, float centreAxis, float spawnBanRadius)
-        {
-            if (axis > 0)
-            {
-                axis += /*spawnBanRadius*/ + centreAxis;
-            }
-            else
-            {
-                axis += /*-spawnBanRadius*/ + centreAxis;
-            }
         }
     }
 }
