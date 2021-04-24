@@ -1,4 +1,5 @@
-﻿using PlanetsColony.Spaceships;
+﻿using PlanetsColony.Pirates;
+using PlanetsColony.Spaceships;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,16 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
         void AcceptFinish();
         void AcceptNow();
         bool CheckCargo();
+        /// <summary>
+        /// Must deliver the load to the argument object.
+        /// </summary>
+        /// <returns>Copy of the delivered cargo.</returns>
         List<ICargo> DeliverCargo(ICargoReceiver cargoReceiver);
+        /// <summary>
+        /// Must deliver the load to the argument object.
+        /// </summary>
+        /// <returns>Copy of the delivered cargo.</returns>
+        List<ICargo> DeliverCargo(IPirate pirate);
         ICargoTransporter GetLinkToSpaceship();
         GameObject GetUnityObject();
     }

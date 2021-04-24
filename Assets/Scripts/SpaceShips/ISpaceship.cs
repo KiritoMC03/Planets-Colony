@@ -4,12 +4,9 @@ namespace PlanetsColony.Spaceships
 {
     public interface ISpaceship
     {
-        Transform GetDepartureObject();
+        IDeparturePlaceKeeper DeparturePlaceKeeper { get; }
+        IFlying Flying { get; }
         Transform GetTarget();
-        bool IsCanMove();
-        void SetCanMove(bool value);
-        void SetDepartureObject(Transform departureObject);
-        void SetDepartureObjectAsTarget();
         void SetTarget(Transform target);
         void UpdateTargetPoint();
     }

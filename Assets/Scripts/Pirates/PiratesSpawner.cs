@@ -8,6 +8,7 @@ namespace PlanetsColony.Pirates
     public class PiratesSpawner : MonoBehaviour
     {
         [SerializeField] private Pirate _pirate = null;
+        [SerializeField] private int _spawnCount = 10;
         [SerializeField] private float _spawnBanRadius = 10f;
         [SerializeField] private float _maxSpawnRadius = 100f;
         [SerializeField] private Transform _centralSun = null;
@@ -26,7 +27,7 @@ namespace PlanetsColony.Pirates
 
         private void Start()
         {
-            for (int i = 0; i < 5000; i++)
+            for (int i = 0; i < _spawnCount; i++)
             {
                 Spawn();
             }

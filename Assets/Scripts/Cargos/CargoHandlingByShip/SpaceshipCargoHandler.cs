@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlanetsColony.Resources;
 using PlanetsColony.Spaceships;
+using PlanetsColony.Pirates;
 
 namespace PlanetsColony.Cargos.CargoHandlingByShip
 {
@@ -37,21 +38,29 @@ namespace PlanetsColony.Cargos.CargoHandlingByShip
 
         public void AcceptNow()
         {
-            _cargoTransporter.SetCanMove(false);
+            _cargoTransporter.Flying.SetCanMove(false);
             gameObject.SetActive(false);
         }
 
         public void AcceptFinish()
         {
-            _cargoTransporter.SetDepartureObjectAsTarget();
+            _cargoTransporter.DeparturePlaceKeeper.SetDepartureObjectAsTarget();
             gameObject.SetActive(true);
-            _cargoTransporter.SetCanMove(true);
+            _cargoTransporter.Flying.SetCanMove(true);
         }
 
         public List<ICargo> DeliverCargo(ICargoReceiver cargoReceiver)
         {
             var tempCargo = _cargos;
             cargoReceiver.Receive(_cargos);
+            _cargos.Clear();
+            return tempCargo;
+        }
+
+        public List<ICargo> DeliverCargo(IPirate pirate)
+        {
+            var tempCargo = _cargos;
+            pirate.StealCargos(_cargos);
             _cargos.Clear();
             return tempCargo;
         }

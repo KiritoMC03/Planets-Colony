@@ -2950,7 +2950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0901c658d9344ce48a603f8d70a6f0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pirate: {fileID: 1580572930968219305, guid: 4be66fab9ea724d48bcd6c8b9b640a01, type: 3}
+  _pirate: {fileID: 1122732240689744995, guid: 4be66fab9ea724d48bcd6c8b9b640a01, type: 3}
   _spawnBanRadius: 30
   _maxSpawnRadius: 35
   _centralSun: {fileID: 371690590}

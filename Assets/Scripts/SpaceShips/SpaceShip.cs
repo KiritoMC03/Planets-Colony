@@ -5,8 +5,11 @@ using UnityEngine;
 
 namespace PlanetsColony.Spaceships
 {
-    public class Spaceship : MonoBehaviour, IPooledObject, ISpaceship
+    public class Spaceship : MonoBehaviour, IPooledObject, IDeparturePlaceKeeper, IFlying
     {
+        public IFlying Flying { get; private set; }
+        public IDeparturePlaceKeeper DeparturePlaceKeeper { get; private set; }
+
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
         [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.CargoTransporter;
         [SerializeField] private Transform _target = null;
@@ -75,7 +78,11 @@ namespace PlanetsColony.Spaceships
             _canMove = value;
         }
 
-        protected virtual void DoAwakeWork() { }
+        protected virtual void DoAwakeWork()
+        {
+            Flying = GetComponent<IFlying>();
+            DeparturePlaceKeeper = GetComponent<IDeparturePlaceKeeper>();
+        }
 
         protected virtual void DoStartWork() { }
     }
