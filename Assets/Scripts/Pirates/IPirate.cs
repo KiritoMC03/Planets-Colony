@@ -6,6 +6,8 @@ namespace PlanetsColony.Pirates
 {
     public interface IPirate
     {
+        Transform GetTarget();
+        void SetTarget(Transform target);
         void SetSpawnPosition(Vector2 position);
         void StealCargos(List<ICargo> cargos);
     }

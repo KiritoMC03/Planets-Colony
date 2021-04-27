@@ -11,6 +11,7 @@ namespace PlanetsColony.Pirates
     public class Pirate : MonoBehaviour, IFlying, IPirate
     {
         [SerializeField] private float _speed = 100f;
+        private Transform _target = null;
         private List<ICargo> _cargos = null;
         private bool _escape = false;
         private Vector2 _spawnPosition = Vector2.zero;
@@ -32,7 +33,10 @@ namespace PlanetsColony.Pirates
             }
             else
             {
-                MoveTo(Vector2.zero);
+                if (_target != null)
+                {
+                    MoveTo(_target.position);
+                }
             }
         }
 
@@ -89,6 +93,16 @@ namespace PlanetsColony.Pirates
         public void StealCargos(List<ICargo> cargos)
         {
             this._cargos = cargos;
+        }
+
+        public void SetTarget(Transform target)
+        {
+            _target = target;
+        }
+
+        public Transform GetTarget()
+        {
+            return _target;
         }
     }
 }

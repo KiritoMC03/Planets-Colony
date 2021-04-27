@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Neptune : MonoBehaviour
+namespace PlanetsColony
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Neptune : Planet
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

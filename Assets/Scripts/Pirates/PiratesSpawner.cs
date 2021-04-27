@@ -7,18 +7,32 @@ namespace PlanetsColony.Pirates
 {
     public class PiratesSpawner : MonoBehaviour
     {
-        [SerializeField] private Pirate _pirate = null;
+
+        [Header("Implements IPirate.")]
+        [SerializeField] private GameObject _piratePrefab = null;
         [SerializeField] private int _spawnCount = 10;
         [SerializeField] private float _spawnBanRadius = 10f;
         [SerializeField] private float _maxSpawnRadius = 100f;
+        [Header("Implements IPirateGuide.")]
+        [SerializeField] private GameObject _pirateGuide = null;
         [SerializeField] private Transform _centralSun = null;
+        
+        private IPirate _pirate = null;
+        private IPirateGuide _guide = null;
 
         private void Awake()
         {
+            _pirate = _piratePrefab.GetComponent<IPirate>();
+            _guide = _pirateGuide.GetComponent<IPirateGuide>();
             if (_pirate == null)
             {
-                throw new Exception("Pirate field must not be null.");
+                throw new NullReferenceException("Pirate Prefab field ERROR. No component that implements the IPirate interface was found.");
             }
+            if (_guide == null)
+            {
+                throw new NullReferenceException("Pirate Guide field ERROR. No component that implements the IPirateGuide interface was found.");
+            }
+
             if (_centralSun == null)
             {
                 throw new Exception("Central Sun field must not be null.");
@@ -29,13 +43,17 @@ namespace PlanetsColony.Pirates
         {
             for (int i = 0; i < _spawnCount; i++)
             {
-                Spawn();
+                var spawnPosition = FindSpawnPosition(_centralSun, _spawnBanRadius, _maxSpawnRadius);
+                var target = _guide.GetRandomTarget().transform;
+                Spawn(spawnPosition, target);
             }
         }
 
-        public void Spawn()
+        public void Spawn(Vector3 spawnPosition, Transform target)
         {
-            Instantiate(_pirate, FindSpawnPosition(_centralSun, _spawnBanRadius, _maxSpawnRadius), Quaternion.identity);
+            var pirate = ObjectPooler.Instance.GetObject(ObjectPooler.ObjectInfo.ObjectType.Pirate);
+            pirate.GetComponent<IPirate>().SetTarget(target);
+            pirate.transform.position = spawnPosition;
         }
 
         private Vector2 FindSpawnPosition(Transform centre, float minSpawnRadius, float maxSpawnRadius)
