@@ -26,5 +26,10 @@ namespace PlanetsColony.Cargos
         {
             return _type;
         }
+
+        public static Cargo Void()
+        {
+            return new Cargo(0, 0);
+        }
     }
 }

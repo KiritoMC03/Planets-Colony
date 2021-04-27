@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3960273510302901688}
   - component: {fileID: 6536732309308414423}
   - component: {fileID: 7358150779320729165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pirate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87aa7f37ad65e544a8529263c5124bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 300
 --- !u!212 &3960273510302901688
 SpriteRenderer:
   m_ObjectHideFlags: 0

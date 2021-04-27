@@ -9,6 +9,8 @@ namespace PlanetsColony.Pirates
         Transform GetTarget();
         void SetTarget(Transform target);
         void SetSpawnPosition(Vector2 position);
+        void StealCargo(ICargo cargo);
+        void TryStealCargo(ICargo cargo);
         void StealCargos(List<ICargo> cargos);
     }
 }

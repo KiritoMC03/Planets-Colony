@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 13888982}
   - component: {fileID: 13888981}
   - component: {fileID: 13888980}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Mercury
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2190,6 +2190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
 --- !u!4 &434427666 stripped
@@ -2567,6 +2571,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
 --- !u!4 &484167799 stripped
@@ -2669,6 +2677,10 @@ PrefabInstance:
     - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
       propertyPath: m_Name
       value: Factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
@@ -2951,7 +2963,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _piratePrefab: {fileID: 3960273510302901689, guid: 4be66fab9ea724d48bcd6c8b9b640a01, type: 3}
-  _spawnCount: 10
+  _spawnCount: 100000
+  _spawnDelay: 0.5
   _spawnBanRadius: 30
   _maxSpawnRadius: 35
   _pirateGuide: {fileID: 1696987752}
@@ -3035,6 +3048,10 @@ PrefabInstance:
     - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
       propertyPath: m_Name
       value: Factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
@@ -3468,7 +3485,7 @@ GameObject:
   - component: {fileID: 644117659}
   - component: {fileID: 644117658}
   - component: {fileID: 644117657}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Jupiter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4071,7 +4088,7 @@ GameObject:
   - component: {fileID: 753985566}
   - component: {fileID: 753985565}
   - component: {fileID: 753985563}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Mars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10414,7 +10431,7 @@ GameObject:
   - component: {fileID: 1225548151}
   - component: {fileID: 1225548150}
   - component: {fileID: 1225548149}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Saturn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10915,7 +10932,7 @@ GameObject:
   - component: {fileID: 1278471501}
   - component: {fileID: 1278471500}
   - component: {fileID: 1278471499}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Neptune
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12148,7 +12165,7 @@ GameObject:
   - component: {fileID: 1598648319}
   - component: {fileID: 1598648318}
   - component: {fileID: 1598648317}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Uranus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13411,6 +13428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
 --- !u!4 &1911124397 stripped
@@ -13477,6 +13498,10 @@ PrefabInstance:
     - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
       propertyPath: m_Name
       value: Factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
@@ -13809,6 +13834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 4888922963209753190, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70068b906871a5c47bfc34a0602a65f3, type: 3}
 --- !u!4 &1991902719 stripped
@@ -14080,7 +14109,7 @@ GameObject:
   - component: {fileID: 2139621743}
   - component: {fileID: 2139621742}
   - component: {fileID: 2139621740}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Venus
   m_TagString: Untagged
   m_Icon: {fileID: 0}

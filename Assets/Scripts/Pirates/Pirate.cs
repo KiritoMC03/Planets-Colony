@@ -4,6 +4,7 @@ using PlanetsColony.Spaceships;
 using PlanetsColony.Cargos.CargoHandlingByShip;
 using System.Collections.Generic;
 using PlanetsColony.Cargos;
+using PlanetsColony.Factories;
 
 namespace PlanetsColony.Pirates
 {
@@ -42,13 +43,52 @@ namespace PlanetsColony.Pirates
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            var cargoHandler = collision.gameObject.GetComponent<ISpaceshipCargoHandler>();
-            if (cargoHandler != null)
+            var factory = collision.gameObject.GetComponent<IFactory>();
+            if (factory != null)
             {
-                cargoHandler.DeliverCargo(this);
+                Debug.Log("Here");
+                //factory.SendCargo()
+                factory.IsRobbed = true;
                 Escape();
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var factory = collision.gameObject.GetComponent<IFactory>();
+            if (factory != null)
+            {
+                Debug.Log("Here");
+                //factory.SendCargo()
+                factory.IsRobbed = true;
+                Escape();
+            }
+        }
+
+        private void CheckFactory(Collision2D collision)
+        {
+            var factory = collision.gameObject.GetComponent<IFactory>();
+            if (factory != null)
+            {
+                Debug.Log("Here");
+                //factory.SendCargo()
+                factory.IsRobbed = true;
+                Escape();
+            }
+        }
+
+        private void CheckFactory(Collider2D collision)
+        {
+            var factory = collision.gameObject.GetComponent<IFactory>();
+            if (factory != null)
+            {
+                Debug.Log("Here");
+                //factory.SendCargo()
+                factory.IsRobbed = true;
+                Escape();
+            }
+        }
+
 
         public void SetSpawnPosition(Vector2 position)
         {
@@ -90,9 +130,23 @@ namespace PlanetsColony.Pirates
             throw new System.NotImplementedException();
         }
 
+        public void StealCargo(ICargo cargo)
+        {
+            _cargos.Add(cargo);
+        }
+
+        public void TryStealCargo(ICargo cargo)
+        {
+            if (_cargos == null)
+            {
+                _cargos = new List<ICargo>();
+            }
+            _cargos.Add(cargo);
+        }
+
         public void StealCargos(List<ICargo> cargos)
         {
-            this._cargos = cargos;
+            _cargos = cargos;
         }
 
         public void SetTarget(Transform target)

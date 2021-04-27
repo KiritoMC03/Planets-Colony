@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using PlanetsColony.Utils;
 using PlanetsColony.Cargos;
 using PlanetsColony.Cargos.CargoHandlingByShip;
+using PlanetsColony.Pirates;
 
 namespace PlanetsColony.Factories
 {
@@ -14,6 +15,7 @@ namespace PlanetsColony.Factories
     {
         public UnityEvent OnActivate;
 
+        public bool IsRobbed { get; set; }
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;
@@ -53,11 +55,31 @@ namespace PlanetsColony.Factories
 
         public void SendCargo(ISpaceshipCargoHandler ship, Resource.Type resourceType)
         {
+            if (IsRobbed)
+            {
+                var voidCargo = Cargo.Void();
+                ship.AcceptCargo(voidCargo);
+                IsRobbed = false;
+                return;
+            }
+            else
+            {
+                var tempCargo = _cargoGenerator.GenerateCargo(resourceType,
+                   _minGeneratedResource,
+                   _maxGeneratedResource,
+                   MultiplierCalculator.CalculateGeneratedResourceMultiplier(_factoryLevel.GetLevel()));
+                ship.AcceptCargo(tempCargo);
+            }
+        }
+
+        public void SendCargo(IPirate pirate, Resource.Type resourceType)
+        {
             var tempCargo = _cargoGenerator.GenerateCargo(resourceType,
-                _minGeneratedResource,
-                _maxGeneratedResource,
-                MultiplierCalculator.CalculateGeneratedResourceMultiplier(_factoryLevel.GetLevel()));
-            ship.AcceptCargo(tempCargo);
+                      _minGeneratedResource,
+                      _maxGeneratedResource,
+                      MultiplierCalculator.CalculateGeneratedResourceMultiplier(_factoryLevel.GetLevel()));
+            pirate.StealCargo(tempCargo);
+            IsRobbed = true;
         }
 
         public bool GetIsActive()
