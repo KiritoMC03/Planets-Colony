@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3960273510302901691}
   - component: {fileID: 1122732240689744995}
+  - component: {fileID: -2765926153907266055}
   - component: {fileID: 3299264231375120539}
   - component: {fileID: 4350201108052176234}
   - component: {fileID: 3960273510302901688}
@@ -48,7 +49,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87aa7f37ad65e544a8529263c5124bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 300
+  _isKeepCargos: 0
+--- !u!114 &-2765926153907266055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960273510302901689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54a9055f92a2274fb5e3b47074b8cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 100
   _spaceshipWheel: {fileID: 3960273510302901689}
   _spaceshipMotor: {fileID: 3960273510302901689}
 --- !u!114 &3299264231375120539

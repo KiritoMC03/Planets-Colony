@@ -15,7 +15,7 @@ namespace PlanetsColony.Factories
     {
         public UnityEvent OnActivate;
 
-        public bool IsRobbed { get; set; }
+        public bool IsRobbed { get; set; } = false;
         [SerializeField] private uint _minGeneratedResource = 0;
         [SerializeField] private uint _maxGeneratedResource = 100;
         [SerializeField] private SpriteRenderer _factorySprite = null;

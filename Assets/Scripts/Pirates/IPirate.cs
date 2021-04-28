@@ -12,5 +12,7 @@ namespace PlanetsColony.Pirates
         void StealCargo(ICargo cargo);
         void TryStealCargo(ICargo cargo);
         void StealCargos(List<ICargo> cargos);
+        bool IsEscape();
+        Vector3 GetSpawnPosition();
     }
 }

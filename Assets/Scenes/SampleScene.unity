@@ -12574,7 +12574,7 @@ GameObject:
   - component: {fileID: 1633715319}
   - component: {fileID: 1633715318}
   - component: {fileID: 1633715317}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12737,7 +12737,7 @@ MonoBehaviour:
   - {fileID: 1225548148}
   - {fileID: 1598648316}
   - {fileID: 1278471498}
-  delay: 3
+  delay: 5
 --- !u!114 &1633715324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14872,6 +14872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PirateSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7127550801958390881, guid: 4411196f86e6713478953e455922a7f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7127550801958390910, guid: 4411196f86e6713478953e455922a7f2, type: 3}
       propertyPath: _pirateGuide
       value: 
@@ -14880,6 +14884,10 @@ PrefabInstance:
       propertyPath: _centralSun
       value: 
       objectReference: {fileID: 371690590}
+    - target: {fileID: 7127550801958390910, guid: 4411196f86e6713478953e455922a7f2, type: 3}
+      propertyPath: _spawnDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7127550801958390911, guid: 4411196f86e6713478953e455922a7f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

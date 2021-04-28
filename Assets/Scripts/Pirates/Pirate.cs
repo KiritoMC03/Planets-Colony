@@ -12,56 +12,17 @@ namespace PlanetsColony.Pirates
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class Pirate : MonoBehaviour, IFlying, IPirate
     {
-        [SerializeField] private float _speed = 100f;
-        [Header("Implements IWheel.")]
-        [SerializeField] private GameObject _spaceshipWheel = null;
-        [Header("Implements IMotor.")]
-        [SerializeField] private GameObject _spaceshipMotor = null;
-        private IWheel _wheel = null;
-        private IMotor _motor = null;
+        [SerializeField] private bool _isKeepCargos = true;
         private Rigidbody2D _rigidbody = null;
         private Transform _target = null;
-        private Transform _transform = null;
         private Vector2 _spawnPosition = Vector2.zero;
-        private Vector3 _localVelocity = Vector3.zero;
-        private List<ICargo> _cargos = null;
+        private IPirateCargoKeeper _pirateCargoKeeper = null;
         private bool _escape = false;
 
         private void Awake()
         {
             InitFields();
         }
-
-        private void FixedUpdate()
-        {
-            if (_escape)
-            {
-                Move();
-                _wheel.RotateTo(_transform, _spawnPosition);
-            }
-            else
-            {
-                if (_target != null)
-                {
-                    Move();
-                    _wheel.RotateTo(_transform, _target.position);
-                }
-            }
-        }
-
-        /*
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            var factory = collision.gameObject.GetComponent<IFactory>();
-            if (factory != null)
-            {
-                Debug.Log("Here");
-                //factory.SendCargo()
-                factory.IsRobbed = true;
-                Escape();
-            }
-        }
-        */
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -84,38 +45,43 @@ namespace PlanetsColony.Pirates
             _escape = true;
         }
 
-        public void Move()
+        public bool IsEscape()
         {
-            _motor.SetLocalVelocity();
+            return _escape;
         }
 
         public bool IsCanMove()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void SetCanMove(bool value)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void StealCargo(ICargo cargo)
         {
-            _cargos.Add(cargo);
+            if (_isKeepCargos)
+            {
+                _pirateCargoKeeper.Accept(cargo);
+            }
         }
 
         public void TryStealCargo(ICargo cargo)
         {
-            if (_cargos == null)
+            if (_isKeepCargos)
             {
-                _cargos = new List<ICargo>();
+                _pirateCargoKeeper.TryAccept(cargo);
             }
-            _cargos.Add(cargo);
         }
 
         public void StealCargos(List<ICargo> cargos)
         {
-            _cargos = cargos;
+            if (_isKeepCargos)
+            {
+                _pirateCargoKeeper.Accept(cargos);
+            }
         }
 
         public void SetTarget(Transform target)
@@ -128,27 +94,24 @@ namespace PlanetsColony.Pirates
             return _target;
         }
 
+        public Vector3 GetSpawnPosition()
+        {
+            return _spawnPosition;
+        }
+
         private void InitFields()
         {
-            _transform = transform;
             _rigidbody = GetComponent<Rigidbody2D>();
-
-            try
+            if (_isKeepCargos)
             {
-                _wheel = _spaceshipWheel.GetComponent<IWheel>();
-            }
-            catch
-            {
-                throw new NullReferenceException("Wheel field must not be null.");
-            }
-
-            try
-            {
-                _motor = _spaceshipMotor.GetComponent<IMotor>();
-            }
-            catch
-            {
-                throw new NullReferenceException("No component that implements the IMotor interface was found.");
+                try
+                {
+                    _pirateCargoKeeper = GetComponent<IPirateCargoKeeper>();
+                }
+                catch
+                {
+                    throw new NullReferenceException("No component that implements the IPirateCargoKeeper interface was found.");
+                }
             }
         }
     }
