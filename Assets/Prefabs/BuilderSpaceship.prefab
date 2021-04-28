@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3715416314242437360}
   - component: {fileID: 6384738252506808496}
+  - component: {fileID: -4591748445851200679}
+  - component: {fileID: -303439399670504037}
   - component: {fileID: 3715416314242437366}
   - component: {fileID: 3715416314242437367}
   - component: {fileID: 3715416314242437364}
@@ -48,7 +50,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   _target: {fileID: 0}
+  _spaceshipWheel: {fileID: 3715416314242437365}
+  _spaceshipMotor: {fileID: 3715416314242437365}
   _factoryBuildTime: 3
+--- !u!114 &-4591748445851200679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715416314242437365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c66630f26553f41b1d22b366135b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 300
+--- !u!114 &-303439399670504037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715416314242437365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf92a8e0ee27294daf699fccb632a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseDevelopedSpeed: 150
 --- !u!50 &3715416314242437366
 Rigidbody2D:
   serializedVersion: 4
@@ -85,9 +115,9 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.0713466, y: 0.031333335, z: 0.051342886, w: 0.031333335}
-    pivot: {x: 0.5379928, y: 0.48816162}
-    oldSize: {x: 0.28672, y: 0.28}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.41, y: 0.72}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -141,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: -303380407
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b7294256cda347d4095264720bf7a8f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 902b1cc0eea419146a7b7205112987ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

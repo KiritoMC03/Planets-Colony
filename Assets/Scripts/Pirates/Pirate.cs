@@ -5,6 +5,7 @@ using PlanetsColony.Cargos.CargoHandlingByShip;
 using System.Collections.Generic;
 using PlanetsColony.Cargos;
 using PlanetsColony.Factories;
+using System;
 
 namespace PlanetsColony.Pirates
 {
@@ -12,35 +13,43 @@ namespace PlanetsColony.Pirates
     public class Pirate : MonoBehaviour, IFlying, IPirate
     {
         [SerializeField] private float _speed = 100f;
+        [Header("Implements IWheel.")]
+        [SerializeField] private GameObject _spaceshipWheel = null;
+        [Header("Implements IMotor.")]
+        [SerializeField] private GameObject _spaceshipMotor = null;
+        private IWheel _wheel = null;
+        private IMotor _motor = null;
+        private Rigidbody2D _rigidbody = null;
         private Transform _target = null;
+        private Transform _transform = null;
+        private Vector2 _spawnPosition = Vector2.zero;
+        private Vector3 _localVelocity = Vector3.zero;
         private List<ICargo> _cargos = null;
         private bool _escape = false;
-        private Vector2 _spawnPosition = Vector2.zero;
-        private Transform _transform = null;
-        private Rigidbody2D _rigidbody = null;
-        private Vector3 _localVelocity = Vector3.zero;
 
         private void Awake()
         {
-            _transform = transform;
-            _rigidbody = GetComponent<Rigidbody2D>();
+            InitFields();
         }
 
         private void FixedUpdate()
         {
             if (_escape)
             {
-                MoveTo(_spawnPosition);
+                Move();
+                _wheel.RotateTo(_transform, _spawnPosition);
             }
             else
             {
                 if (_target != null)
                 {
-                    MoveTo(_target.position);
+                    Move();
+                    _wheel.RotateTo(_transform, _target.position);
                 }
             }
         }
 
+        /*
         private void OnCollisionEnter2D(Collision2D collision)
         {
             var factory = collision.gameObject.GetComponent<IFactory>();
@@ -52,43 +61,18 @@ namespace PlanetsColony.Pirates
                 Escape();
             }
         }
+        */
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var factory = collision.gameObject.GetComponent<IFactory>();
             if (factory != null)
             {
-                Debug.Log("Here");
-                //factory.SendCargo()
+                _rigidbody.velocity = Vector2.zero;
                 factory.IsRobbed = true;
                 Escape();
             }
         }
-
-        private void CheckFactory(Collision2D collision)
-        {
-            var factory = collision.gameObject.GetComponent<IFactory>();
-            if (factory != null)
-            {
-                Debug.Log("Here");
-                //factory.SendCargo()
-                factory.IsRobbed = true;
-                Escape();
-            }
-        }
-
-        private void CheckFactory(Collider2D collision)
-        {
-            var factory = collision.gameObject.GetComponent<IFactory>();
-            if (factory != null)
-            {
-                Debug.Log("Here");
-                //factory.SendCargo()
-                factory.IsRobbed = true;
-                Escape();
-            }
-        }
-
 
         public void SetSpawnPosition(Vector2 position)
         {
@@ -100,24 +84,9 @@ namespace PlanetsColony.Pirates
             _escape = true;
         }
 
-        public void MoveTo(Vector2 target)
+        public void Move()
         {
-            SetLocalVelocity(CalculateVelocity(_speed, target));
-        }
-
-        private void SetLocalVelocity(Vector2 velocity)
-        {
-            _rigidbody.velocity = Vector2.zero;
-
-            _localVelocity = _transform.InverseTransformDirection(_rigidbody.velocity);
-            _localVelocity = velocity;
-            _rigidbody.velocity = _transform.TransformDirection(_localVelocity);
-        }
-
-        private Vector2 CalculateVelocity(float speed, Vector2 target)
-        {
-            var offset = (target - (Vector2)_transform.position).normalized;
-            return speed * offset * Time.fixedDeltaTime;
+            _motor.SetLocalVelocity();
         }
 
         public bool IsCanMove()
@@ -157,6 +126,30 @@ namespace PlanetsColony.Pirates
         public Transform GetTarget()
         {
             return _target;
+        }
+
+        private void InitFields()
+        {
+            _transform = transform;
+            _rigidbody = GetComponent<Rigidbody2D>();
+
+            try
+            {
+                _wheel = _spaceshipWheel.GetComponent<IWheel>();
+            }
+            catch
+            {
+                throw new NullReferenceException("Wheel field must not be null.");
+            }
+
+            try
+            {
+                _motor = _spaceshipMotor.GetComponent<IMotor>();
+            }
+            catch
+            {
+                throw new NullReferenceException("No component that implements the IMotor interface was found.");
+            }
         }
     }
 }

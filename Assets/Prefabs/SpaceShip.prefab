@@ -52,6 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   _target: {fileID: 0}
+  _spaceshipWheel: {fileID: 3715416314242437365}
+  _spaceshipMotor: {fileID: 3715416314242437365}
 --- !u!114 &7058662365246435075
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace PlanetsColony.Spaceships
 {
-    [RequireComponent(typeof(SpaceshipMotor))]
+    [RequireComponent(typeof(Motor))]
     public class SpaceshipMotorImprover : MonoBehaviour
     {
-        private SpaceshipMotor _spaceshipMotor = null;
+        private Motor _spaceshipMotor = null;
         private float _speedImprovement = 0f;
 
         private void Awake()
         {
-            _spaceshipMotor = GetComponent<SpaceshipMotor>();
+            _spaceshipMotor = GetComponent<Motor>();
 
             if (_spaceshipMotor == null)
             {

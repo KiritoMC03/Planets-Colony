@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3960273510302901691}
   - component: {fileID: 1122732240689744995}
+  - component: {fileID: 3299264231375120539}
+  - component: {fileID: 4350201108052176234}
   - component: {fileID: 3960273510302901688}
   - component: {fileID: 6536732309308414423}
   - component: {fileID: 7358150779320729165}
@@ -47,6 +49,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 300
+  _spaceshipWheel: {fileID: 3960273510302901689}
+  _spaceshipMotor: {fileID: 3960273510302901689}
+--- !u!114 &3299264231375120539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960273510302901689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c66630f26553f41b1d22b366135b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 100
+--- !u!114 &4350201108052176234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960273510302901689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf92a8e0ee27294daf699fccb632a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseDevelopedSpeed: 150
 --- !u!212 &3960273510302901688
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,8 +117,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b1573ee28c107f14d8088a505c21e072, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

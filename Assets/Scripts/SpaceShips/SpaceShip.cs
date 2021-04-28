@@ -13,7 +13,14 @@ namespace PlanetsColony.Spaceships
         public ObjectPooler.ObjectInfo.ObjectType Type => type;
         [SerializeField] private ObjectPooler.ObjectInfo.ObjectType type = ObjectPooler.ObjectInfo.ObjectType.CargoTransporter;
         [SerializeField] private Transform _target = null;
+        [Header("Implements IWheel.")]
+        [SerializeField] private GameObject _spaceshipWheel = null;
+        [Header("Implements ISpaceshipMotor.")]
+        [SerializeField] private GameObject _spaceshipMotor = null;
 
+        private IWheel _wheel = null;
+        private IMotor _motor = null;
+        private Transform _transform = null;
         private Transform _departureObject = null;
         private Vector3 _targetPoint = Vector3.zero;
         private bool _canMove = true;
@@ -30,7 +37,16 @@ namespace PlanetsColony.Spaceships
 
         private void Update()
         {
+            _wheel.RotateTo(_transform, _targetPoint);
             UpdateTargetPoint();
+        }
+
+        private void FixedUpdate()
+        {
+            if (IsCanMove())
+            {
+                _motor.SetLocalVelocity();
+            }
         }
 
         #region GettersSetters
@@ -80,8 +96,19 @@ namespace PlanetsColony.Spaceships
 
         protected virtual void DoAwakeWork()
         {
+            _transform = transform;
             Flying = GetComponent<IFlying>();
             DeparturePlaceKeeper = GetComponent<IDeparturePlaceKeeper>();
+            _wheel = _spaceshipWheel.GetComponent<IWheel>();
+            if (_wheel == null)
+            {
+                throw new NullReferenceException("No component that implements the IWheel interface was found.");
+            }
+            _motor = _spaceshipMotor.GetComponent<IMotor>();
+            if (_motor == null)
+            {
+                throw new NullReferenceException("No component that implements the IMotor interface was found.");
+            }
         }
 
         protected virtual void DoStartWork() { }
