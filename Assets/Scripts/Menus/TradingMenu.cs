@@ -18,7 +18,7 @@ namespace PlanetsColony
 
         private ResourceTradingElement[] _generatedElements;
         private uint _activeElementsCount = 0;
-        private static string _elementsCountIsNullMessage = "На складе пока нет ресурсов!";
+        private const string ELEMENTS_COUNT_IS_NULL_TEXT = "На складе пока нет ресурсов!";
 
         private void Awake()
         {
@@ -122,7 +122,7 @@ namespace PlanetsColony
         {
             if (_activeElementsCount == 0)
             {
-                _elementsCountIsNull.text = _elementsCountIsNullMessage;
+                _elementsCountIsNull.text = ELEMENTS_COUNT_IS_NULL_TEXT;
                 _elementsCountIsNull.gameObject.SetActive(true);
             }
             else

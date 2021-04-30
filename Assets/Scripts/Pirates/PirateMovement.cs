@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
-using PlanetsColony.Spaceships;
+﻿using System;
+using UnityEngine;
+using PlanetsColony.Spaceships.Components;
 
 namespace PlanetsColony.Pirates
 {

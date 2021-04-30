@@ -1,12 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
-using PlanetsColony.Levels;
-using System;
-using PlanetsColony.Improvements;
+﻿using System;
+using UnityEngine;
 using PlanetsColony.Cargos;
 using PlanetsColony.Cargos.CargoHandlingByShip;
 
-namespace PlanetsColony.Spaceships
+namespace PlanetsColony.Spaceships.Types
 {
     [RequireComponent(typeof(ISpaceshipCargoHandler), typeof(Rigidbody2D), typeof(Collider2D))]
     public class CargoTransporter : Spaceship, ICargoTransporter

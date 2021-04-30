@@ -1,8 +1,7 @@
-﻿using PlanetsColony.Improvements;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using PlanetsColony.Improvements;
+using PlanetsColony.Spaceships.Components;
 
 namespace PlanetsColony.Spaceships
 {

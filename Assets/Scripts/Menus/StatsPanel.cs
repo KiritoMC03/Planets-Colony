@@ -12,10 +12,10 @@ namespace PlanetsColony
         [SerializeField] private Text _maxShipsCount = null;
         [SerializeField] private Text _activeShipsCount = null;
 
-        private const string _moneyValueText = "Деньги: ";
-        private const string _allResourceSoldText = "Всего ресурсов продано: ";
-        private const string _maxShipsCountText = "Максимальное число кораблей: ";
-        private const string _activeShipsCountText = "Всего кораблей активно: ";
+        private const string MONEY_VALUE_TEXT = "Деньги: ";
+        private const string ALL_RESOURCE_SOLD_TEXT = "Всего ресурсов продано: ";
+        private const string MAX_SHIP_COUNT_TEXT = "Максимальное число кораблей: ";
+        private const string ACTIVE_SHIPS_COUNT_TEXT = "Всего кораблей активно: ";
 
         private string _calcMoney = null;
         private string _calcAllResourceSold = null;
@@ -36,7 +36,7 @@ namespace PlanetsColony
         public void SetStatsText()
         {
             CalculateStrings();
-            _moneyValue.text = _moneyValueText + _calcMoney;
+            _moneyValue.text = MONEY_VALUE_TEXT + _calcMoney;
             _allResourceSold.text = _calcAllResourceSold;
             _maxShipsCount.text = _calcShipsCount;
             _activeShipsCount.text = _calcactiveShipsCount;
@@ -45,9 +45,9 @@ namespace PlanetsColony
         private void CalculateStrings()
         {
             _calcMoney = Converter.ValueToString(StatsSystem.Instance.GetMoney());
-            _calcAllResourceSold = _allResourceSoldText + Converter.ValueToString(ResourceSalesAccount.GetAllResourceSoldValue()) + ResourcesSystem.GetUnitsOfMeasurement();
-            _calcShipsCount = _maxShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetMaxShipsCount());
-            _calcactiveShipsCount = _activeShipsCountText + Converter.ValueToString(StatsSystem.Instance.GetActiveShipsCount());
+            _calcAllResourceSold = ALL_RESOURCE_SOLD_TEXT + Converter.ValueToString(ResourceSalesAccount.GetAllResourceSoldValue()) + ResourcesSystem.GetUnitsOfMeasurement();
+            _calcShipsCount = MAX_SHIP_COUNT_TEXT + Converter.ValueToString(StatsSystem.Instance.GetMaxShipsCount());
+            _calcactiveShipsCount = ACTIVE_SHIPS_COUNT_TEXT + Converter.ValueToString(StatsSystem.Instance.GetActiveShipsCount());
         }
     }
 }

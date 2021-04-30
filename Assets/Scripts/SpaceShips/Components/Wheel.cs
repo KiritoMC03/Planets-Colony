@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlanetsColony.Spaceships
+namespace PlanetsColony.Spaceships.Components
 {
     public class Wheel : MonoBehaviour, IWheel
     {

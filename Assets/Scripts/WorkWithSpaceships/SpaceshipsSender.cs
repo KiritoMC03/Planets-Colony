@@ -17,10 +17,10 @@ namespace Assets.Scripts.WorkWithSpaceships
         private ICargoLoader _cargoLoaderForShips = null;
         private ISpaceshipsStoragePort _spaceshipsStoragePort = null;
         private IResourceRarity _resourceRarity = null;
+        private IFactory _factory = null;
         private Queue<ISpaceshipCargoHandler> _tempSpaceships = null;
         private Transform _transform = null;
         private Coroutine _sendShipWithCargoRoutine = null;
-        private IFactory _factory = null;
 
         private void Awake()
         {

@@ -12,12 +12,12 @@ namespace PlanetsColony
 
         [SerializeField] private FactoryLevelling _factoryLevelling = null;
 
-        private static string MONEY_VALUE_KEY = "moneyValue";
+        private const string MONEY_VALUE_KEY = "moneyValue";
+        private const string ALLRESOURCE_SOLD_VALUE_KEY = "resourceSoldValue";
         private string _tempMoneyValue = "";
-        private static string ALLRESOURCE_SOLD_VALUE_KEY = "resourceSoldValue"; 
         private string _tempResourceSoldValue = "";
 
-        private static string UPDATE_KEY = "Beta 0.5.6";
+        private const string UPDATE_KEY = "Beta 0.7.9";
 
         private void Awake()
         {

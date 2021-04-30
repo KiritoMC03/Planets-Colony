@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlanetsColony.Spaceships
+namespace PlanetsColony.Spaceships.Components
 {
     public interface IWheel
     {

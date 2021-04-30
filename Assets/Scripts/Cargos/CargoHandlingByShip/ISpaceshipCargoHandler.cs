@@ -1,7 +1,7 @@
-﻿using PlanetsColony.Pirates;
-using PlanetsColony.Spaceships;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using PlanetsColony.Pirates;
+using PlanetsColony.Spaceships.Types;
 
 namespace PlanetsColony.Cargos.CargoHandlingByShip
 {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlanetsColony.Spaceships
+namespace PlanetsColony.Spaceships.Types
 {
     public interface ICargoTransporter : ISpaceship
     {

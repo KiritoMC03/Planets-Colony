@@ -17,18 +17,18 @@ namespace PlanetsColony
         private IFactory _tempFactory = null;
         private IFactoryLevel _tempFactoryLevel = null;
 
-        private string _factoryLevelText = "Уровень завода: ";
-        private string _levelUpText = "Улучшить завод.";
-        private string _levelBuildText = "Построить завод.";
-        private string _needMoneyText = "Нужно денег: ";
+        private const string FACTOY_LEVEL_TEXT = "Уровень завода: ";
+        private const string LEVEL_UP_TEXT = "Улучшить завод.";
+        private const string FACTORY_BUILD_TEXT = "Построить завод.";
+        private const string NEED_MONEY_TEXT = "Нужно денег: ";
 
         public void Activate(IFactory planetFactory)
         {
             SetTempFields(planetFactory);
             _planetName.text = planetFactory.GetName();
-            _factoryLevel.text = _factoryLevelText + _tempFactoryLevel.GetLevel();
-            _levelUpButton_text.text = (_tempFactoryLevel.GetLevel() > 0) ? _levelUpText : _levelBuildText;
-            _needMoney.text = _needMoneyText + Converter.ValueToString(FactoryLevelling.CalculateNeedMoney(_tempFactoryLevel.GetLevel() + 1));
+            _factoryLevel.text = FACTOY_LEVEL_TEXT + _tempFactoryLevel.GetLevel();
+            _levelUpButton_text.text = (_tempFactoryLevel.GetLevel() > 0) ? LEVEL_UP_TEXT : FACTORY_BUILD_TEXT;
+            _needMoney.text = NEED_MONEY_TEXT + Converter.ValueToString(FactoryLevelling.CalculateNeedMoney(_tempFactoryLevel.GetLevel() + 1));
         }
 
         public void UpdateText()

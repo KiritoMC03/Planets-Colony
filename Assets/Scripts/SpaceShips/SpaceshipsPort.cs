@@ -1,4 +1,5 @@
 ﻿using PlanetsColony.Factories;
+using PlanetsColony.Spaceships.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ namespace PlanetsColony.Spaceships
 {
     public class SpaceshipsPort : MonoBehaviour
     {
+        // ToDo: заменить поля для кораблей на GameObject с последующей проверкой реализации интерфейса необходимых типов кораблей.
         [SerializeField] private Spaceship ship = null;
         [SerializeField] private BuilderSpaceship builderShip = null;
         [SerializeField] private Transform[] planets = null;

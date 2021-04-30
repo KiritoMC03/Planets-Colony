@@ -14,7 +14,7 @@ namespace PlanetsColony.Factories
         [SerializeField] private SpaceshipsPort _spaceshipsPort = null;
         private IFactory _factory = null;
         private bool _canLevelUp = true;
-        private string _keyForSaveLoad = "_level";
+        private const string KEY_FOR_SAVELOAD = "_level";
 
         private void OnApplicationQuit()
         {
@@ -50,12 +50,12 @@ namespace PlanetsColony.Factories
 
         private void SaveLevel()
         {
-            PlayerPrefs.SetFloat(_factory.GetID() + _keyForSaveLoad, _level);
+            PlayerPrefs.SetFloat(_factory.GetID() + KEY_FOR_SAVELOAD, _level);
         }
 
         private void LoadLevel()
         {
-            _level = Convert.ToUInt32(PlayerPrefs.GetFloat(_factory.GetID() + _keyForSaveLoad));
+            _level = Convert.ToUInt32(PlayerPrefs.GetFloat(_factory.GetID() + KEY_FOR_SAVELOAD));
         }
 
         public void LevelUp()

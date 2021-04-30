@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlanetsColony.Spaceships
+namespace PlanetsColony.Spaceships.Components
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class Motor : MonoBehaviour, IMotor

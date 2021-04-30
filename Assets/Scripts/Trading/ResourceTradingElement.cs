@@ -16,17 +16,14 @@ namespace PlanetsColony
         [SerializeField] private Text _oneCost = null;
         [SerializeField] private InputField _tradeValueField = null;
 
-        private static string _oneCostText = "Цена за тонну: ";
-
+        private const string ONE_COST_TEXT = "Цена за тонну: ";
+        private TradingMenu _tradingMenu = null;
+        private Resource.Type _resourceType;
         private BigInteger _cost = 1;
         private BigInteger _resourceValue = 0;
         private BigInteger _tradeValue = 0;
-        private Resource.Type _resourceType;
-        private bool _maySale = false;
-
-        private TradingMenu _tradingMenu = null;
-
         private BigInteger tempCost = 0;
+        private bool _maySale = false;
 
         private void OnEnable()
         {
@@ -100,7 +97,7 @@ namespace PlanetsColony
         {
             if (_oneCost != null)
             {
-                _oneCost.text = _oneCostText + Converter.ValueToString(cost);
+                _oneCost.text = ONE_COST_TEXT + Converter.ValueToString(cost);
             }
         }
         #endregion

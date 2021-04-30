@@ -10,7 +10,7 @@ namespace PlanetsColony.Improvements
 
         internal static CargoTransporterSpeedImprovement Instance = null;
         private static int _level = 1;
-        private static string _label = "Скорость грузоперевозчиков: ";
+        private const string LABEL = "Скорость грузоперевозчиков: ";
 
         private void Awake()
         {
@@ -28,7 +28,7 @@ namespace PlanetsColony.Improvements
 
         public string GetLabel()
         {
-            return _label;
+            return LABEL;
         }
 
         public int GetLevel()

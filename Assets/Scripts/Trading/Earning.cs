@@ -12,7 +12,7 @@ namespace PlanetsColony.Trading
     {
         [SerializeField] private Text _text = null;
         [SerializeField] private float _showTextTime = 1.5f;
-        private string _addMoneyText = "Добавлено монет: ";
+        private const string ADD_MONEY_TEXT = "Добавлено монет: ";
         private Coroutine _showTextRoutine = null;
 
         private void Awake()
@@ -30,8 +30,8 @@ namespace PlanetsColony.Trading
 
         public void Show(BigInteger addedMoney)
         {
-            Debug.Log(_addMoneyText + addedMoney);
-            _text.text = _addMoneyText + Converter.ValueToString(addedMoney);
+            Debug.Log(ADD_MONEY_TEXT + addedMoney);
+            _text.text = ADD_MONEY_TEXT + Converter.ValueToString(addedMoney);
             if (_showTextRoutine != null)
             {
                 StopCoroutine(_showTextRoutine);

@@ -13,9 +13,9 @@ namespace PlanetsColony
         [SerializeField] private Text _maxLevel = null;
         [SerializeField] private Text _levelUpCost = null;
 
-        private string _currentLevelText = "Уровень развития кораблей: ";
-        private string _maxLevelText = "Предельный уровень развития кораблей: ";
-        private string _levelUpCostText = "Стоимость развития кораблей: ";
+        private const string CURRENT_LEVEL_TEXT = "Уровень развития кораблей: ";
+        private const string MAX_LEVEL_TEXT = "Предельный уровень развития кораблей: ";
+        private const string LEVELUP_COST_TEXT = "Стоимость развития кораблей: ";
 
         private void Start()
         {
@@ -25,9 +25,9 @@ namespace PlanetsColony
 
         private void SetText()
         {
-            _currentLevel.text = _currentLevelText + SpaceshipsLevelling.Instance.CurrentLevel;
-            _maxLevel.text = _maxLevelText + SpaceshipsLevelling.Instance.MaxLevel;
-            _levelUpCost.text = _levelUpCostText + Converter.ValueToString(SpaceshipsLevelling.Instance.CalculateMoneyForLevelUp());
+            _currentLevel.text = CURRENT_LEVEL_TEXT + SpaceshipsLevelling.Instance.CurrentLevel;
+            _maxLevel.text = MAX_LEVEL_TEXT + SpaceshipsLevelling.Instance.MaxLevel;
+            _levelUpCost.text = LEVELUP_COST_TEXT + Converter.ValueToString(SpaceshipsLevelling.Instance.CalculateMoneyForLevelUp());
         }
 
         public void UpdateText()

@@ -9,12 +9,6 @@ namespace PlanetsColony.Utils
 {
     public class MultiplierCalculator : MonoBehaviour
     {
-        private static ulong _resourceValueMultiplier = 0;
-
-        private void Awake()
-        {
-        }
-
         public static BigInteger CalculateGeneratedResourceMultiplier(uint level)
         {
             return level;

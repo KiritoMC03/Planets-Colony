@@ -48,7 +48,7 @@ namespace PlanetsColony
         [Header("Не должны повторяться!")]
         [SerializeField] private List<ResourceInfo> _resourceInfo = null;
 
-        private static string unitsOfMeasurement = " тонн.";
+        private const string UNITS_OF_MEASUREMENT = " тонн.";
 
         private void Awake()
         {
@@ -134,7 +134,7 @@ namespace PlanetsColony
 
         public static string GetUnitsOfMeasurement()
          {
-             return unitsOfMeasurement;
+             return UNITS_OF_MEASUREMENT;
          }
 #endregion
     }
